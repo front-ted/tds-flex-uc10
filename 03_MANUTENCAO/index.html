@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Manutenção de repositórios: operações de branch e merge</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção <b>Grau de pontuação/símbolos</b>, acesse <b>Preferências</b> – <b>Configurações</b> – <b>Fala</b>. Altere o padrão <b>Pouco</b> para <b>Tudo</b>. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade.</p>
+            
+            <h2><span class="titulo-geral">Manutenção de repositórios:</span><br>operações de <i>branch</i> e <i>merge</i></h2>
+            <p>Como é sabido, os <i>softwares</i> estão sempre evoluindo. Para que a manutenção seja realizada, ou seja, modificações, novas versões, correções de erros, entre outros, é necessário um controle, que geralmente é realizado por meio de ferramentas e métodos específicos. Com a utilização dos repositórios, é possível controlar e notificar o que ocorre durante todo o ciclo de vida do sistema/<i>software</i>. Utiliza-se, então, a gerência de configuração de <i>software</i>, tornando o processo mais rastreável e, ainda, indispensável dentro de equipes de desenvolvimento que, por muitas vezes, trabalham em conjunto nos códigos. </p>
+            <p>Explicando de uma forma mais clara, um repositório é uma “pasta” onde são disponibilizados os arquivos de um projeto, incluindo-se, aqui, o versionamento. Um repositório pode ser criado ou baixado com base em alguma hospedagem, de onde se baixa os projetos para uma máquina local, ou, ainda, para onde são enviadas as alterações realizadas. Assim, o desenvolvimento ocorre de forma descentralizada, em que cada desenvolvedor tem uma versão total do repositório em sua máquina local e envia somente os “pedaços” alterados para que todos possam pegar do repositório.</p>
+            <p>Falando ainda sobre os repositórios, quando os arquivos são baixados e somente o que foi implementado é enviado, você está trabalhando com versões. Logo, você faz o versionamento do que foi alterado para que se possa manter o controle e a manutenção dos repositórios, evitando que ocorram sobrescritas ou perdas de arquivos.</p>
+            <p>Existem algumas plataformas de repositórios que podem ser citadas como exemplos: GitHub, BitBucket e GitLab. O GitHub foi um dos primeiros utilizados em hospedagem de repositórios, e qualquer pessoa que tenha cadastro na plataforma pode colaborar com projetos <i>open source</i> ou privados. </p>
+            <p>O BitBucket também é uma plataforma destinada à hospedagem e à gerência de código-fonte de projetos, sendo indicado para equipes pequenas, permitindo que sejam criados, de forma gratuita, repositórios privados para no máximo cinco desenvolvedores. Além disso, o BitBucket tem integração com Jira e Trello, o que permite que os repositórios sejam gerenciados por meio dessas ferramentas.</p>
+            <p>O GitLab também é uma plataforma para hospedar e gerenciar códigos-fonte e permite que qualquer usuário possa criar repositórios públicos ou privados, com a diferença de que os privados têm quantidade limitada de usuários.</p>
+            <p>Nos repositórios, são feitos os <b>commits</b> de tudo o que foi trabalhado, de novas versões, de ajustes, entre outros. Tudo o que é realizado dentro do repositório fica registrado, conforme apresentado na figura a seguir.</p>
+            <img src="imgs/fig1.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig1.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig1.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig1.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 1 – Exemplo de repositório no BitBucket <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem da tela do repositório BitBucket nas cores azul e branco, na qual consta a lista de <b>commits</b> realizados, bem como quem os realizou, com as devidas mensagens e datas em que foram executados. Há um menu à esquerda, no qual constam códigos, <i>commits</i>, <i>branches</i>, <i>pull requests</i>, <i>pipelines</i>, tudo o que foi realizado em <i>deploy</i>, segurança e <i>downloads</i>.</p>
+            <p>Os <b>commits</b> são como fotografias das últimas versões enviadas ao repositório. A cada nova alteração na versão do <i>software</i>, pode-se fechar o <b>commit</b> e guardar no histórico do projeto. Esse histórico, por sua vez, é a união de todos os <b>commits</b> realizados ao longo do projeto, e a cada novo há uma nova versão do projeto.</p>
+            <p>Ainda no tema dos repositórios, modificações de outros desenvolvedores são disponibilizadas no repositório, assim como as que são realizadas por você. A figura a seguir mostra como funcionam essas operações de <i>check-in</i> e <i>check-out</i> dos códigos dentro do repositório. Mais adiante, serão abordadas as operações e de que forma elas ocorrem por meio da criação e utilização de <i>branches</i>.</p>
+            <img src="imgs/fig2.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig2.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig2.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig2.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 2 – Exemplo de operações de entrada e saída de modificações <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem apresenta, à esquerda, a área de trabalho local do desenvolvedor, com suas modificações. Ao centro, é indicado o <i>check-in</i> e o <i>check-out</i> das modificações realizadas. À direita, observa-se a representação de um repositório onde são disponibilizadas as modificações realizadas por outros desenvolvedores.</p>
+            <p>Para organizar o versionamento do código, utilizam-se <i>branches</i>, que são uma forma de organizar todo o trabalho realizado com versionamento de código. Geralmente se tem uma <i>branch</i> denominada <i>master</i>, onde fica a versão oficial do projeto a ser codificado, mantido ou alterado. Uma <i>branch</i> consiste em uma cópia dos códigos de um <i>software</i> que é gerenciada por um sistema de controle de versão. Ela tem como finalidade auxiliar equipes de desenvolvimento a implementar códigos separando o trabalho em andamento do código testado e estável.</p>
+            <p>Quando se pensa em fazer uma alteração, o indicado é que seja criada uma ramificação (<i>branch</i>) da <i>master</i> e que se trabalhe somente nela, pois dessa forma o código oficial não é afetado. Sendo assim, ao terminar o trabalho na <i>branch</i> criada, pode-se unir o que foi trabalhado com a <i>master</i>.</p>
+            <p>Na figura a seguir, veja um exemplo de <i>branch</i> criada no BitBucket.</p>
+            <img src="imgs/fig3.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig3.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig3.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig3.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 3 – Exemplo de <i>branch</i> no BitBucket <br>
+              Fonte: BitBucket (2023)
+            </p>
+            <p class="acessivel no-print">Imagem de tela do repositório do BitBucket mostrando a <i>branch</i> criada, bem como quem a criou e a data em que isso ocorreu.</p>
+            <p>Ainda não ficou claro? É possível exemplificar de uma forma mais acessível. Você pode pensar em <i>branches</i> como pastinhas onde são armazenados os <b>commits</b>, conforme mostrado no exemplo da figura a seguir. </p>
+            <img src="imgs/fig4.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig4.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig4.png" class="img-responsive center-block">
+            </a>
+            
+            <div class="acessivel print">
+              <img src="imgs/fig4.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 4 – Exemplo de histórico de <b>commits</b> no GitHub <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem da tela do repositório GitHub no navegador, apresentando os <b>commits</b> realizados por outros desenvolvedores, bem como quais são os arquivos e as datas em que foram realizados, com fundo preto e letras escritas em branco.</p>
+            <p>Então, se for realizado um <b>commit</b> na nova <i>branch</i> (ramificação) e não mesclar (fizer <i>merge</i>) com a <i>master</i>, esse <b>commit</b> nunca irá para a versão oficial do código. Cada <i>branch</i> carrega o seu histórico e o que está nela só será transformado em algo oficial quando for realizada a <i>merge</i> com a <i>branch master</i>, e assim será obtida a versão final do projeto.</p>
+            <p>Alguns comandos como <b>git status</b>, <b>git init</b> e <b>git add</b> serão bastante executados durante a utilização do Git. Esses comandos são respectivamente para verificar como está o repositório, se há alterações, se arquivos foram excluídos e se o diretório em questão é um repositório. O <b>git init</b> inicia um novo repositório, enquanto o <b>git add</b> adiciona todos os arquivos novos que foram trabalhados. </p>
+            <p>Outros comandos que serão de fundamental importância e que serão trazidos em exemplos mais adiante são: <b>git commit -m “mensagem do commit”</b>, que define que as alterações até aquele determinado momento são uma versão do código-fonte; <b>git push</b>, que envia os arquivos do último <b>commit</b> ao repositório <i>on-line</i>; <b>git pull</b>, que baixa o último <b>commit</b> de um repositório <i>on-line</i> (se não há certeza de que está trabalhando no último <b>commit</b>, o ideal é executar um <b>git pull origin master</b>); e <b>pull request</b> (solicitação de <i>pull</i>), que é uma maneira de propor alguma alteração no código, permitindo que você informe outras pessoas sobre as alterações por <i>push</i> feitas em uma ramificação de um repositório.</p>
+            <p>Quem mantém o repositório (quem tem permissão de escrita nele) pode revisar e alterar proposta e discutir em cima dela, antes de aprovar e ter aquela alteração de fato incorporada.</p>
+            <p>Para vincular um repositório local com o GitHub, por exemplo, é necessária a execução dos comandos <b>git remote add origin</b> e <b>git push origin master</b>. Então, serão solicitados o usuário e a senha criados no GitHub.</p>
+            <p>Um outro comando muito utilizado também, principalmente porque se faz necessário clonar um repositório <i>on-line</i>, para sua máquina local, para que possa realizar a implementação no código, é o <b>git clone endereço do repositório online</b>.</p>
+            <p>Veja, agora, alguns comandos utilizados para inicializar um repositório Git local, por exemplo, para a criação, o acesso e a inicialização de uma pasta, conforme apresentado na figura a seguir.</p>
+            <img src="imgs/fig5.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig5.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig5.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig5.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 5 – Comandos para criação e acesso ao repositório local <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem com fundo preto apresentando o <i>prompt</i> de comando, com os textos: “mkdir workspace” e “cd workspace” em cor branca, fazendo a inicialização do repositório local e entrando nele.</p>
+            <p>O comando <b>mkdir workspace</b> faz a criação do local e o comando <b>cd workspace</b> acessará o local criado. Para que essa pasta chamada <b>workspace</b> se torne um repositório Git, é necessário executar o comando <b>git init</b>.</p>
+            <p>Quando se inicia um repositório, automaticamente se tem uma <i>branch master</i> e se dá início nessa <i>branch</i>. Realizar a troca de <i>branches</i> é como fazer a troca de pastas, fazendo-se necessária a execução de um comando para criar nova <i>branch</i> e acessá-la. Se o caso fosse trabalhar com um repositório remoto, ou seja, um repositório hospedado em um servidor, seria necessário executar o comando <b>git clone</b> para fazer o <i>download</i> do projeto existente em vez de iniciar um do zero.</p>
+            <p>No Git, é possível ter três estados em que o código pode estar dentro de um repositório: <i>working directory</i>, <i>staging area</i> e <i>git diretory</i> (repositor). O <i>working directory</i> corresponde ao estado atual do código, ou seja, aquilo que está sendo trabalhado no momento. A <i>staging area</i> é uma área de preparação antes de fechar um <b>commit</b> de fato, ou seja, é possível enviar alterações e continuar trabalhando no código em vez de fazer o <b>commit</b>, até que o trabalho esteja completamente pronto para fechar o <b>commit</b>, trabalhando de <i>working directory</i> para <i>staging area</i> e vice-versa. Por fim, o <i>git directory</i> é onde são armazenados todos os <b>commits</b>, enviados para o repositório remoto e compartilhados com outros usuários.</p>
+            <p>É possível verificar o estado em que o código se encontra por meio da execução do comando <b>git status</b>. Se você executar esse comando em um repositório que foi criado recentemente (<i>workspace</i>), não aparecerá nada e a mensagem informada será de que a <i>branch</i> atual é a <i>master</i>, que não há <b>commit</b> e que não há nada para fechar um <b>commit</b>, nenhum arquivo para acompanhar. Veja na figura a seguir o que ocorre após executar o comando.</p>
+            <img src="imgs/fig6.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig6.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig6.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig6.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 6 – Execução do comando <b>git status</b> no repositório criado <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem apresentando o <i>prompt</i> de comando, com fundo em cor preta e letras escritas em branco, amarelo e verde, onde foi executado o comando <b>git status</b> e apresentado o resultado em tela.</p>
+            <p>Quando um arquivo com conteúdo é criado e o comando for executado novamente, o Git apresentará a mensagem de que há arquivos que não estão sendo acompanhados (<i>untracked files</i>), e ele mesmo ensina a adicionar arquivos na <i>staging area</i>. Veja a figura a seguir.</p>
+            <img src="imgs/fig7.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig7.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig7.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig7.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 7 – Mensagem após a criação de arquivo com conteúdo e execução do <b>git status</b> <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem apresentando um <i>prompt</i> de comando após a ação de inserir um arquivo ao repositório e executar o comando <b>git status</b>. Ele mostra que há um arquivo a ser adicionado e que a adição deverá ser realizada utilizando o comando <b>git add</b>.</p>
+            <p>Agora, veja como adicionar o arquivo que você criou para criar um <b>commit</b> no repositório. Para isso, é preciso utilizar o comando <b>git add</b> e adicionar o nome do arquivo, ficando da seguinte forma: <b>git add exercício-de-git.txt</b>. </p>
+            <p>Após esse comando, pode-se fazer o <b>git status</b> novamente e obter o resultado final com a mensagem informando de que há alterações a serem consolidadas ou, ainda, que se pode remover o arquivo com o comando <b>git rm -cached&lt;file&gt;</b>, pois, se o arquivo foi adicionado sem querer, é possível realizar a remoção. Se, de fato, a necessidade for o <b>commit</b>, pode-se prosseguir executando o comando <b>git commit -m “colocar uma mensagem sobre o que está sendo enviado”</b>, conforme é apresentado na figura a seguir.</p>
+            <img src="imgs/fig8.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig8.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig8.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig8.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 8 – Exemplo de execução do <b>git commit</b> <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem do <i>prompt</i> de comando com fundo em cor preta, com o texto “git commit -m entre aspas adiciona o arquivo exercício-de-git.txt”, escrito nas cores branco, amarelo, verde e azul, apresentando a mensagem de que o arquivo foi adicionado, ou seja, que houve a modificação e inserção no repositório.</p>
+            <p>Além dos comandos realizados para inserção, remoção, <b>commit</b> de arquivos e verificação do <i>status</i> do repositório, também se pode utilizar o comando <b>git log</b> para ajudar a visualizar o que está dentro do repositório no <i>git directory</i>. Ao executá-lo, será apresentada a lista de <b>commits</b> que foram realizados e, para que saia do leitor do histórico, é necessário pressionar a letra <b>q</b> no seu teclado. Na figura a seguir, é apresentado o resultado com base na execução do comando <b>git log</b> no <i>prompt</i> de comando dentro do repositório.</p>
+            <img src="imgs/fig9.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig9.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig9.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig9.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 9 – Exemplo de execução do comando <b>git log</b> <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem com fundo na cor preta, com letras escritas na cor branca, apresentando o resultado da execução do comando <b>git log</b>, mostrando que foi adicionado o arquivo.</p>
+            <p>Diante do que foi apresentado até aqui, você aprendeu uma série de comandos a serem realizados no repositório para a adição, deleção e modificação de arquivos. Você também já sabe fazer a inicialização de repositórios, por meio de diferentes plataformas, bem como a verificação de <i>status</i> e <i>logs</i> destes. Já sabe, também, a respeito das <i>branches</i> e para que elas servem.</p>
+            <p>Agora você aprenderá mais a respeito da utilização de <i>branches</i> (ramificações) e <i>merges</i> (mesclagens). Imagine que você precisa criar uma área de testes antes de solidificar seu trabalho na <i>branch master</i>. Para iniciar, utilize o comando <b>git checkout</b>, para criar e trocar de <i>branch</i> para que o histórico da <i>master</i> não fique bagunçado. Esse cuidado se deve ao fato de que o histórico é algo muito importante e funciona como se fosse uma documentação do seu código.</p>
+            <p>Para você criar uma <i>branch</i> e passar a utilizá-la, a sintaxe é <b>git checkout -b nome_da_branch</b>. Execute o comando <b>git checkout</b> com o parâmetro <b>-b</b> e o nome da <i>branch</i> que será criada e utilizada. Se quiser apenas trocar de uma <i>branch</i> para outra, execute o comando da seguinte forma: <b>git checkout nome_da_branch</b>. Além de ser utilizado para trocar de <i>branches</i>, o comando <b>git checkout</b> também pode ser usado para reverter o seu código para uma versão anterior, se utilizar, em vez do nome da <i>branch</i>, o <i>hash</i> (<i>id</i>) de um <b>commit</b> antigo. Conforme apresentado na figura a seguir, ocorreu a criação e a troca para a <i>branch</i> denominada “teste” no exemplo dado.</p>
+            <img src="imgs/fig10.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig10.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig10.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig10.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 10 – Exemplo de criação e troca para a nova <i>branch</i> criada <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem apresenta a criação da <i>branch</i> denominada “teste” utilizando o comando <b>git checkout -b</b> e o nome da <i>branch</i>. Em seguida, é executado o comando <b>git status</b>, em que é mostrado que não há nada a ser comitado. A imagem tem fundo na cor preta e texto referente aos comandos na cor branca.</p>
+            <p>Agora, como exemplo, você criará um arquivo com o seu nome, adicioná-lo ao <i>stage</i> e fechar um <b>commit</b>. Siga o passo a passo:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <ul class="cor01">
+                <li>Digite <b>echo “meu nome é fulano de tal” &gt; fulanodetal.txt</b> e tenha como saída:</li>
+                <p>
+                  <code>
+                    <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(teste)</span> <br>
+                    $ echo "meu nome é fulano de tal" &gt; fulanodetal.txt
+                  </code>
+                </p>
+                <li>Digite <b>git status</b> para verificar o <i>status</i> e tenha como saída:</li>
+                <p>
+                  <code>
+                    <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(teste)</span> <br>
+                    $ git status <br>
+                    Onbranch teste <br>
+                    Untracked files: <br>
+                    &nbsp;&nbsp;(use "gitadd<file>..." to include in whatwillbecommitted) <br>
+                    fulanodetal.txt <br>
+                    <br>
+                    nothing added to commit but untracked files present (use "git add" to track)                    
+                  </code>
+                </p>
+                <li>Digite <b>git add fulanodetal.txt</b> e tenha como saída:</li>
+                <p>
+                  <code>
+                    <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(teste)</span> <br>
+                    $ git add fulanodetal.txt <br>
+                    warning: in the working copy of 'fulanodetal.txt', LF will be replaced by CRLF the next time Git touches it
+                  </code>
+                </p>
+                <li>Digite <b>git commit -m “adiciona o arquivo com meu nome”</b> e tenha como saída:</li>
+                <p>
+                  <code>
+                    <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(teste)</span> <br>
+                    $ git commit -m "adiciona arquivo com meu nome" <br>
+                    [teste 75d7ae2] adiciona arquivo com meu nome <br>
+                    1 file changed, 1 insertion(+) <br>
+                    Create mode 100644 fulanodetal.txt
+                  </code>
+                </p>
+              </ul>
+            </div>
+            <p>Agora que você tem duas <i>branches</i>, uma com um <b>commit</b> a mais do que a outra (no caso, a <i>branch</i> teste tem um a mais do que a <i>master</i>), é preciso unir as duas para formar o histórico ideal. Para que isso ocorra, você deve executar o comando <b>git merge nome_da_outra_branch</b>. Para que funcione corretamente, é preciso estar na <i>branch</i> que receberá os <b>commits</b> realizados da <i>branch</i> teste.</p>
+            <p>A <i>merge</i> (mesclagem) é uma forma de unificar aquilo que foi feito em outras <i>branches</i>. Para essa mesclagem, utilize <b>git merge</b> em conjunto com <b>git checkout</b> para ter a certeza de que a <i>head</i> está apontando para a <i>branch</i> correta (que deverá receber as alterações) para selecionar a <i>branch</i> atual e utilize <b>git branch -d</b> para excluir algo que não faça mais sentido. </p>
+            <p>O <b>git merge</b> combina as sequências de <b>commits</b> realizadas em um único histórico. Conforme você aprendeu anteriormente, basta realizar o comando <b>git checkout nome_da_branch</b> (que, neste caso, é a <i>master</i>). Quando se realizam <i>merges</i>, podem ocorrer conflitos no momento em que elas ocorrerem, editando o conteúdo dos arquivos afetados com indicações visuais, marcando o conteúdo em conflito. Essas marcações são <b>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</b>, <b>======</b> e <b>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</b>. Dessa forma, é possível encontrar facilmente os conflitos a serem resolvidos. </p>
+            <p>Veja, a seguir, como ficará a execução e como fazer a troca de teste para <i>master</i>:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <p>
+                <code>
+                  <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app </span><span class="colorCode4">(teste)</span> <br>
+                  $ git checkout master <br>
+                  Switched to branch 'master' <br>
+                  Your branch is up to date with 'origin/master'. <br>
+                  <br>
+                  <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(master)</span> <br>
+                  $
+                </code>
+              </p>
+            </div>
+            <p>Faça, agora, a <i>merge</i> das <i>branches</i> executando o comando a seguir:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <p>
+                <code>
+                  <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(master)</span> <br>
+                  $ git merge teste <br>
+                  Updating 912b7aa..75d7ae2 <br>
+                  Fast-forward <br>
+                   fulanodetal.txt | 1 + <br>
+                   1 file changed, 1 insertion(+) <br>
+                  Create mode 100644 fulanodetal.txt <br>
+                  <br>
+                  <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(master)</span> <br>
+                  $
+                </code>
+              </p>
+            </div>
+            <p>Seu trabalho com o arquivo está concluído. Você aprendeu a criar <i>branch</i>, trabalhar na <i>branch</i> nova criada e realizar <i>merge</i> com a <i>branch</i> principal.</p>
+            <p>Agora, você aprenderá como deletar a <i>branch</i> criada para aquela implementação específica, pois não terá mais serventia para você. O primeiro passo é saber quantas <i>branches</i> há no repositório. Para isso, execute o comando <b>git branch</b>, no qual o asterisco (*) informará em qual <i>branch</i> se está no momento da execução:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <p>
+                <code>
+                  <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app</span> <span class="colorCode4">(master)</span> <br>
+                  $ git branch <br>
+                  * master <br>
+                  &nbsp;&nbsp;teste
+                </code>
+              </p>
+            </div>
+            <p>Esse caso está mostrando que a <i>branch</i> em que se está é a <i>master</i> e que existe, no repositório, a <i>branch</i> teste (que foi criada para o exemplo). Agora, delete a <i>branch</i> teste com o comando <b>git branch -d nome_da_branch</b>.</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <p>
+                <code>
+                  <span class="colorCode1">priscila.goncalves@NB-005378</span> <span class="colorCode2">MINGW64</span> <span class="colorCode3">~/alfabravo-app </span> <span class="colorCode4">(master)</span> <br>
+                  $ git branch -d teste <br>
+                  Deleted branch teste (was 75d7ae2).
+                </code>
+              </p>
+            </div>
+            <p>Suponha que as alterações que você fez na <i>master</i> causaram erros no código e é preciso reverter isso. Você pode reverter essas alterações fazendo o uso do comando <b>git revert numero_do_commit</b>, o qual já traz a mensagem descritiva da reversão. </p>
+            <p>Espera-se que você tenha conseguido aprender um pouco a respeito de manutenção de repositórios, criação e utilização de <i>branches</i> e execução de <i>merges</i>. Sobretudo, espera-se que você tenha percebido a importância de utilizar controles de versões para que possa trabalhar em equipe com controle do histórico, marcação e resgate de versões estáveis, ramificação de projeto (<i>branches</i>), maior segurança, rastreabilidade, organização e confiança.</p>
+            <div class="caixa-destaque bg-auxiliar-claro-03 borda-primaria-03 icone importante">
+              <p>Veja, aqui, uma sugestão de exercícios que você poderá fazer para fixar o que aprendeu nesta unidade curricular (UC).</p>
+              <p>Comece criando uma conta no GitHub ou no BitBucket. Depois, crie um repositório <i>on-line</i>, vincule com o repositório local, utilize os comandos anteriormente apresentados aqui, clone repositórios de colegas e faça <i>pull</i> de alterações que os colegas fizerem.</p>
+            </div>
+
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+    <div class="modal fade" id="modal-fluxo01" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Inicialmente, um novo repositório é criado (comando <b>init</b>), o qual servirá de ponto central para o armazenamento dos arquivos do projeto.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo02" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Em seguida, cada membro da equipe deve fazer uma cópia desse repositório para seu dispositivo local (comando <b>clone</b>). A partir desse momento, as alterações são feitas de forma local até serem enviadas para o servidor central (comando <b>push</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo03" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Quando um desenvolvedor conclui uma tarefa, uma nova <i>branch</i> (ramificação) deve ser criada no seu repositório local.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo04" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Sempre que necessário, o desenvolvedor deve guardar as modificações com uma mensagem de alteração, salvando esse histórico em seu repositório local (comando <b>commit</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo05" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Antes do início de cada nova tarefa, realização dos <b>commits</b> necessários, o desenvolvedor deve atualizar o repositório local, com os arquivos mais recentes (comando <b>pull</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo06" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Na etapa final do processo, após concluir uma determinada tarefa, o desenvolvedor deve enviar as alterações realizadas para o servidor central (comando <b>push</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modais 100% -->
+
+    
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

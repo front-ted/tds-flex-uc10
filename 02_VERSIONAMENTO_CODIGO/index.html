@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Versionamento de código: procedimentos, rotina de trabalho e aplicabilidade. Comandos de versionamento</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso" class="print">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <!--PÁGINA 1-->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção <b>Grau de pontuação/símbolos</b>, acesse <b>Preferências</b> – <b>Configurações</b> – <b>Fala</b>. Altere o padrão <b>Pouco</b> para <b>Tudo</b>. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade.</p>
+            
+            <h2><span class="titulo-geral">Versionamento de código: procedimentos, rotina de trabalho e aplicabilidade. Comandos de versionamento</h2>
+            <h3>O versionamento </h3>
+            <p>O versionamento de código é o procedimento de controle e salvamento das diversas versões dos arquivos que compõem um sistema, ou seja, os diferentes arquivos de uma aplicação são salvos a cada alteração. Essa ação permite o controle e a recuperação dos dados a cada etapa do desenvolvimento do <i>software</i>.</p>
+            <p>Deve-se enxergar o desenvolvimento de um projeto como um processo que é dividido em várias etapas, e quando se fala em projetos relacionados a aplicações (<i>softwares</i>) não é diferente. Ao passo que um sistema vai sendo desenvolvido, diversas funcionalidades são implementadas, para cumprirmos os objetivos finais da aplicação, porém essas funcionalidades não são estáticas, ou seja, podem sofrer alterações.</p>
+            <p>Sendo assim, quando o programador executa melhorias, altera ou desenvolve uma nova funcionalidade, as versões anteriores dos arquivos do sistema devem estar guardadas de maneira organizada, prática e segura. Tal ação permite o controle e a recuperação das versões anteriores dos arquivos de um <i>software</i>, justificando, assim, a importância do versionamento de código em um projeto.</p>
+            <img src="imgs/fig1.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig1.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig1.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig1.png" class="img-responsive center-block hidden-xs">
+              <img src="imgs/fig1.png" class="img-responsive center-block visible-xs">
+            </div>
+            <p class="legenda-imagem">
+              Figura 1 – Versionamento <br>
+              Fonte: Ariane G. (2023)
+            </p>
+            <p class="acessivel no-print">A figura apresenta uma ilustração de um programador com as diversas versões dos arquivos que compõem um sistema de forma ilustrativa cartonizada, executando, assim, o versionamento da aplicação.</p>
+            <h4>Aplicabilidade</h4>
+            <p>De maneira geral e específica, o versionamento de códigos em uma equipe evita, de forma eficiente, grande parte dos conflitos durante o desenvolvimento de uma aplicação. Nesse cenário, é possível entender <b>conflitos</b> como todos aqueles problemas que a manipulação de um mesmo arquivo por mais de uma pessoa pode causar, prejudicando de alguma maneira o processo de desenvolvimento de <i>software</i>. Porém, ainda há muitos outros benefícios obtidos pela utilização correta do versionamento do <i>software</i>.</p>
+            <p>A otimização do trabalho de uma equipe ocorre de maneira natural, a partir do momento em que os conflitos de trabalhar em um mesmo projeto simultaneamente são evitados. As alterações são mantidas de forma controlada e ágil, permitindo que um mesmo arquivo, por exemplo, seja alterado ao mesmo tempo por mais de um desenvolvedor, por meio de comandos que permitem esse controle, os quais serão vistos no decorrer deste conteúdo.</p>
+            <p>Outro ponto importante a ressaltar é a significativa melhoria na segurança do projeto, uma vez que é natural a ocorrência de erros no processo de alteração de arquivos e implementação de novas funcionalidades. Ao realizar o controle de versão, é possível retornar o arquivo a uma versão anterior ao erro apresentado.</p>
+            <p>Para enxergar de forma prática como o versionamento de <i>software</i> pode ser relevante em uma equipe, durante as etapas do desenvolvimento de um projeto, pense no exemplo a seguir.</p>
+            <div class="caixa-destaque bg-primaria-02 borda-primaria-03">
+              <p>Você fez o <i>download</i> do repositório inicial do projeto e começou a executar alterações nos arquivos, implementando funcionalidades e melhorias. Porém, nesse mesmo período de tempo, outro desenvolvedor fez alterações nos mesmos arquivos que você e atualizou o servidor com esses novos arquivos. Quando você for enviar a sua versão, a ferramenta de controle de versão emitirá um alerta sobre o ocorrido e será possível mesclar as duas versões, mostrando as alterações e onde elas ocorreram. Assim, as mudanças poderão ser executadas com total liberdade e consciência do programador.  </p>
+            </div>
+            <p>Veja, a seguir, um segundo exemplo, porém ainda utilizando o primeiro como base.</p>
+            <div class="caixa-destaque bg-primaria-02 borda-primaria-03">
+              <p>Pense que, após as alterações serem concluídas, os arquivos foram mesclados e implementados. Na etapa de testes, verificou-se que as melhorias feitas nesse arquivo estavam ocasionando um problema de segurança dentro do sistema, havendo, assim, a necessidade de retornar à versão anterior do arquivo em questão, ou seja, antes de essa funcionalidade ser implementada. Se o controle de versão do <i>software</i> foi feito de maneira correta, essa situação não será um problema, visto que o histórico do arquivo é acessível, assim como o retorno a versões anteriores.</p>
+            </div>
+            <h4>Como ocorre o versionamento de código (procedimentos)</h4>
+            <p>Por ser um processo contínuo que deve ocorrer durante toda a construção do sistema, a cada alteração significativa, o versionamento de código muitas vezes ocorre por meio do próprio ambiente de programação (IDE, sigla para <i>integrated development environment</i>, em português ambiente de desenvolvimento integrado), e grande parte das interfaces de programação mais utilizadas atualmente possibilita essa funcionalidade de versionamento integrado.</p>
+            <p>Vale ressaltar que o controle de versões também pode ser feito por meio do terminal do sistema operacional, ou por interface gráfica, se a ferramenta utilizada disponibilizar essa funcionalidade.</p>
+            <p>Porém, para realizar o versionamento de código, é necessário o uso de ferramentas específicas, as denominadas ferramentas de controle de versão de <i>software</i>. Atualmente, as ferramentas de controle de <i>software</i> podem ser classificadas em dois grupos, os sistemas centralizados e os sistemas distribuídos.</p>
+            <p>No <b>sistema centralizado</b>, o servidor ao qual o projeto está alocado é o único repositório central. É um sistema comum e popularmente utilizado em redes locais, visto que é capaz de suprir com eficiência as necessidades da maior parte das equipes. Esse sistema utiliza a arquitetura cliente-servidor, ou seja, primeiro os arquivos acessam o servidor para depois poderem comunicar-se. Costuma manter uma veloz e boa comunicação de dados. </p>
+            <p>A figura a seguir demonstra o controle de versão por meio de um sistema centralizado, no qual todas as requisições e alterações dependem da passagem por um repositório central.</p>
+            
+            <img src="imgs/fig2.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig2.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig2.png" class="img-responsive center-block">
+            </a>
+
+            <div class="acessivel print">
+              <img src="imgs/fig2.png" class="img-responsive center-block">
+            </div>
+
+            <p class="legenda-imagem">
+              Figura 2 – Sistema centralizado <br>
+              Fonte: Dias (2016)
+            </p>
+            <p class="acessivel no-print">A figura demonstra o controle de versão por meio de um sistema centralizado, no qual todas as requisições e alterações dependem da passagem por um repositório central. Apresenta três computadores, os quais pertencem, respectivamente, aos usuários Aline, Roberto e André. Esses usuários comunicam-se com o repositório central por meio de operações de <b>commit</b> e <b>update</b>.</p>
+            <p>Para conseguir realizar acesso ao repositório e outras operações pertinentes, os usuários precisam obrigatoriamente estar conectados. Cada desenvolvedor terá uma cópia em sua máquina para realizar as edições, mantendo as versões-base no servidor. Nessa estrutura, o desenvolvedor adicionará os arquivos inteiros e enviará para alterações direto no servidor. Esse tipo de sistema de controle de versão é mais indicado para equipes menores e que trabalham em uma rede local.</p>
+            <p>Já no <b>sistema distribuído</b>, os diretórios presentes nas máquinas de cada desenvolvedor trabalham de forma individual (como se cada um tivesse o próprio servidor). Cada usuário que for desenvolver código terá uma cópia completa do repositório central diretamente em seu ambiente local. Nesse sistema, os <i>desktops</i> podem fazer a comunicação entre si, apesar de, na maior parte das vezes, utilizarem um servidor central de envios para controle de fluxo. Esse servidor, muitas vezes, é oferecido diretamente pela ferramenta como um servidor remoto de hospedagem dos arquivos do sistema.</p>
+            <p>Embora seja necessária a conexão com a rede para realizar o envio das alterações e das adições para atualizar o projeto e compartilhar com outros desenvolvedores, os comandos de gerenciamento da cópia local já podem ser aplicados. Em outras palavras, cada <i>desktop</i> terá um repositório, e as operações como <b>commit</b> e <b>update</b> ocorrem de forma local. É possível também haver comunicação com outros <i>desktops</i>, para atualizações nos arquivos locais e também envio de alterações para um destino, por meio dos comandos <b>pull</b> e <b>push</b> (detalhados no decorrer deste conteúdo).</p>
+            <p>A figura a seguir mostra um exemplo de sistema distribuído em que a comunicação ocorre entre os diferentes <i>desktops</i> individualmente e também com um servidor de controle de fluxo central.</p>
+            <img src="imgs/fig3.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig3.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig3.png" class="img-responsive center-block">
+            </a>
+            
+            <div class="acessivel print">
+              <img src="imgs/fig3.png" class="img-responsive center-block">
+            </div>
+            
+            <p class="legenda-imagem">
+              Figura 3 – Sistema distribuído <br>
+              Fonte: Dias (2016)
+            </p>
+            <p class="acessivel no-print">A figura mostra um exemplo de sistema distribuído em que a comunicação ocorre entre os diferentes <i>desktops</i> individualmente e também com um servidor de controle de fluxo central. Apresenta, mais uma vez, os usuários Aline, Roberto e André. Dessa vez, os <i>desktops</i> desses usuários conseguem comunicar-se individualmente. A imagem apresenta setas demonstrando os comandos <b>push</b> e <b>pull</b>, bem como os comandos <b>commit</b> e <b>update</b> aplicados pela máquina de Aline diretamente no repositório.</p>
+            <p>Esse tipo de sistema é mais indicado para equipes com uma quantidade maior de desenvolvedores ou que não trabalhem em uma rede local.</p>
+            <h4>Fluxo de trabalho com versionamento de <i>software</i></h4>
+            <p>Aqui você verá, de maneira prática, como ocorrem e quais são as etapas para o desenvolvimento de um projeto com controle de versões.</p>
+
+            <div class="no-print" aria-hidden="true">
+              <p class="text-center">Clique ou toque para visualizar o conteúdo.</p>
+              <div class="painel-fluxo hidden-xs">
+                <button type="button" class="btn-fluxo btn-fluxo01" data-toggle="modal" data-target="#modal-fluxo01"></button>
+                <button type="button" class="btn-fluxo btn-fluxo02" data-toggle="modal" data-target="#modal-fluxo02"></button>
+                <button type="button" class="btn-fluxo btn-fluxo03" data-toggle="modal" data-target="#modal-fluxo03"></button>
+                <button type="button" class="btn-fluxo btn-fluxo04" data-toggle="modal" data-target="#modal-fluxo04"></button>
+                <button type="button" class="btn-fluxo btn-fluxo05" data-toggle="modal" data-target="#modal-fluxo05"></button>
+                <button type="button" class="btn-fluxo btn-fluxo06" data-toggle="modal" data-target="#modal-fluxo06"></button>
+              </div>
+              <div class="visible-xs">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <button type="button" class="btn-fluxo btn-fluxo01" data-toggle="modal" data-target="#modal-fluxo01"></button>
+                  </div>
+                  <div class="col-xs-6">
+                    <button type="button" class="btn-fluxo btn-fluxo02" data-toggle="modal" data-target="#modal-fluxo02"></button>
+                  </div>
+                  <div class="col-xs-6">
+                    <button type="button" class="btn-fluxo btn-fluxo03" data-toggle="modal" data-target="#modal-fluxo03"></button>
+                  </div>
+                  <div class="col-xs-6">
+                    <button type="button" class="btn-fluxo btn-fluxo04" data-toggle="modal" data-target="#modal-fluxo04"></button>
+                  </div>
+                  <div class="col-xs-6">
+                    <button type="button" class="btn-fluxo btn-fluxo05" data-toggle="modal" data-target="#modal-fluxo05"></button>
+                  </div>
+                  <div class="col-xs-6">
+                    <button type="button" class="btn-fluxo btn-fluxo06" data-toggle="modal" data-target="#modal-fluxo06"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <ol type="1">
+                <li>Inicialmente, um novo repositório é criado (comando <b>init</b>), o qual servirá de ponto central para o armazenamento dos arquivos do projeto.</li>
+                <li>Em seguida, cada membro da equipe deve fazer uma cópia desse repositório para seu dispositivo local (comando <b>clone</b>). A partir desse momento, as alterações são feitas de forma local até serem enviadas para o servidor central (comando <b>push</b>).</li>
+                <li>Quando um desenvolvedor conclui uma tarefa, uma nova <i>branch</i> (ramificação) deve ser criada no seu repositório local.</li>
+                <li>Sempre que necessário, o desenvolvedor deve guardar as modificações com uma mensagem de alteração, salvando esse histórico em seu repositório local (comando <b>commit</b>).</li>
+                <li>Antes do início de cada nova tarefa, realização dos <b>commits</b> necessários, o desenvolvedor deve atualizar o repositório local, com os arquivos mais recentes (comando <b>pull</b>).</li>
+                <li>Na etapa final do processo, após concluir uma determinada tarefa, o desenvolvedor deve enviar as alterações realizadas para o servidor central (comando <b>push</b>).</li>
+              </ol>
+            </div>
+
+            <h3>Ferramentas de controle de versão</h3>
+            <p>Como já citado anteriormente, o Git é a ferramenta de controle de versão mais utilizada e difundida mundialmente, porém é preciso mencionar que existem outras ferramentas, como CVS (Concurrent Version System), Subversion, entre outras, que apresentam proposta semelhante ao Git.</p>
+            <p>Aqui serão abordados recursos de versionamento de códigos, presentes nos comandos do Git, porém as funcionalidades desses recursos são comuns à maior parte das ferramentas de controle de versão.  </p>
+            <img src="imgs/fig4.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig4.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig4.png" class="img-responsive center-block">
+            </a>
+            
+            <div class="acessivel print">
+              <img src="imgs/fig4.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 4 – Ferramentas de versionamento de <i>software</i> <br>
+              Fonte: Cortuk (2019)
+            </p>
+            <p class="acessivel no-print">A imagem apresenta os logos de diversas ferramentas de versionamento de <i>software</i>, sendo elas: Subversion, Git, CVS, Mercurial, TFS.</p>
+            <h4>Git</h4>
+            <p>Lançado em 2005, o Git é um sistema gratuito e <i>open source</i> de controle de versão distribuído. Dotado de uma vasta comunidade, o Git atualmente é a mais difundida ferramenta de controle de versão disponível. </p>
+            <p>Essa ferramenta tem algumas peculiaridades. As principais são: necessidade de instalação para o funcionamento local; e não ter interface gráfica de forma nativa, assim a aplicação de seus recursos deve ser feita por meio do terminal do sistema operacional ou pelo recurso disponibilizado pelo IDE utilizado pelo programador.</p>
+            <p>Ao longo de sua carreira como programador, você poderá deparar-se com os termos Git e GitHub. Assim sendo, é interessante dissertar brevemente sobre a diferença entre eles.</p>
+            <p>É possível entender o Git como um <i>software</i> de controle de versão. Já o GitHub é visto como uma plataforma de versionamento, com alguns aspectos de redes sociais, em que os programadores podem criar perfis e publicar seus projetos, sejam eles de forma pública, sejam eles de forma privativa. Vale ressaltar a interação entre o Git e o GitHub, que ocorre quando as versões dos arquivos locais controladas pelo Git são enviadas para o repositório remoto associado do GitHub. </p>
+            <img src="imgs/fig5.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig5.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig5.png" class="img-responsive center-block">
+            </a>
+            
+            <div class="acessivel print">
+              <img src="imgs/fig5.png" class="img-responsive center-block">
+            </div>
+
+            <p class="legenda-imagem">
+              Figura 5 – Logos do Git e do GitHub <br>
+              Fonte: GitHub (c2023)
+            </p>
+            <p class="acessivel no-print">A figura apresenta os logotipos do Git e do GitHub.</p>
+            <h4>CVS </h4>
+            <p>O CVS é uma plataforma de controle de versão consolidada no mercado há anos. É considerado um sistema de qualidade de produção, fazendo uso de uma arquitetura cliente-servidor, em que os desenvolvedores têm acesso a cópias controladas dos arquivos do projeto nos quais estão trabalhando. Um destaque do CVS é a sua simplicidade, facilitando o aprendizado por parte da equipe.</p>
+            <img src="imgs/fig6.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig6.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig6.png" class="img-responsive center-block">
+            </a>
+
+            <div class="acessivel print">
+              <img src="imgs/fig6.png" class="img-responsive center-block">
+            </div>
+
+            <p class="legenda-imagem">
+              Figura 6 – Interface de opções integradas do CVS <br>
+              Fonte: TortoiseCVS ([s. d.])
+            </p>
+            <p class="acessivel no-print">A figura apresenta e demonstra a seleção de arquivos para aplicação de comandos como <b>Updade</b> e <b>Commit</b> do CVS. Exibe um menu de opções quando o usuário clica com o botão direito sobre o arquivo. Dentre essas opções, estão: CVS Update, CVS Commit, CVS mais opções.</p>
+            <h4>Subversion</h4>
+            <p>O Subversion é uma ferramenta bastante utilizada no meio corporativo, principalmente por sua confiabilidade e sua segurança. Englobando a maior parte dos recursos do CVS, o Subversion é muito utilizado em projetos corporativos de grande porte. A figura a seguir demonstra o funcionamento da ferramenta Subversion, apresentando um processo simples de interação dos desenvolvedores com o repositório central (sistema centralizado), por meio de <b>commits</b> e <b>updates</b>.</p>
+            <img src="imgs/fig7.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig7.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig7.png" class="img-responsive center-block">
+            </a>
+            
+            <div class="acessivel print">
+              <img src="imgs/fig7.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 7 – Funcionamento básico do Subversion <br>
+              Fonte: WKU Physics ([s. d.])
+            </p>
+            <p class="acessivel no-print">A figura demonstra o funcionamento da ferramenta Subversion, apresentando um processo simples de interação dos desenvolvedores com o repositório por meio de <b>commits</b> e <b>updates</b>. Apresenta a imagem de um repositório central comunicando-se com as estações de trabalho de dois usuários (Alice e Bob) por meio de comandos <b>commit</b> e <b>update</b>.</p>
+            <p>Embora o Subversion não seja um dos lançamentos mais recentes, ainda se mantém no mercado entre os mais utilizados.</p>
+            <h4>Mercurial </h4>
+            <p>O Mercurial merece destaque nesta lista por ser uma ferramenta de controle de versão utilizada por grandes empresas do setor de tecnologia, como Facebook e Google. A agilidade de uso e a facilidade em trabalhar com grandes equipes tornam a abordagem distribuída do Mercurial um grande destaque para essa ferramenta.</p>
+            <img src="imgs/fig8.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig8.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig8.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig8.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 8 – Sistema distribuído do Mercurial <br>
+              Fonte: adaptado de LabTel (c2023)
+            </p>
+            <p class="acessivel no-print">A figura demonstra a funcionalidade do Mercurial apresentando a abordagem do sistema de controle de versão distribuído. Apresenta três <i>notebooks</i> utilizando o sistema Mercurial para comunicarem-se entre si e também com o repositório remoto.</p>
+            <p>Em comparação ao Git, há uma pequena diferença em <i>performance</i> na qual o Git se destaca, entretanto o Mercurial também apresenta respostas rápidas.</p>
+            <h4>TFS/Azure DevOps Server </h4>
+            <p>O TFS (Team Foundation Server) era o nome do controle de versão centralizado não gratuito da Microsoft lançado em 2005. No ano de 2018, com diversas atualizações relevantes no sistema, foi renomeado para Azure DevOps Services. Além de realizar o gerenciamento de versões, essa ferramenta também conta com suas próprias ferramentas colaborativas de desenvolvimento e integra-se ao Git.</p>
+
+            <h3>Principais funcionalidades de uma ferramenta de controle de versão (com base em comandos Git)</h3>
+            <p>As funcionalidades das ferramentas de controle de versão de <i>software</i> podem ser explicadas de maneira prática, à medida que se conhecem seus comandos, os quais resumem e tornam possível o processo de versionamento de código.</p>
+            <p>Aqui, você verá um pouco mais sobre os comandos comentados ao longo deste conteúdo.</p>
+
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class='panel-group gaitinha' id='accordion01' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading01'>
+                    <h3 class='panel-title'>
+                      <a role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse01' aria-expanded='false' aria-controls='collapse01'>
+                        Commit 
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
+                    <div class='panel-body'>
+                      <p>Este comando realizará a adição das alterações mais recentes dos arquivos para o repositório. Tais alterações devem ser revisadas no repositório principal e, posteriormente, confirmadas. Com isso, quando outros desenvolvedores solicitarem esse arquivo ao servidor central, receberão a versão mais atualizada dele.</p>
+                      <p>Os diferentes <b>commits</b> realizados em arquivos de um projeto, dentro do repositório da ferramenta de controle de versão de <i>software</i>, são mantidos de forma constante, proporcionando, assim, o fácil acesso às diferentes versões de um arquivo.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading02'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse02' aria-expanded='false' aria-controls='collapse02'>
+                        Push 
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse02' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading02'>
+                    <div class='panel-body'>
+                      <p>Este comando é responsável por enviar arquivos do repositório local para o repositório remoto. Dessa forma, o comando <b>push</b> envia todos os <b>commits</b> que foram produzidos pelo desenvolvedor para a confirmação no repositório remoto do servidor central. Isso permite que o resto da equipe tenha acesso a esse arquivo atualizado.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading03'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse03' aria-expanded='false' aria-controls='collapse03'>
+                        Pull 
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse03' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading03'>
+                    <div class='panel-body'>
+                      <p>De forma oposta ao comando <b>push</b>, o comando <b>pull</b> é utilizado para trazer os arquivos do repositório remoto para o repositório local, garantindo que o desenvolvedor está trabalhando com a versão mais atualizada desses dados.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <p><b>Commit </b></p>
+              <p>Este comando realizará a adição das alterações mais recentes dos arquivos para o repositório. Tais alterações devem ser revisadas no repositório principal e, posteriormente, confirmadas. Com isso, quando outros desenvolvedores solicitarem esse arquivo ao servidor central, receberão a versão mais atualizada dele.</p>
+              <p>Os diferentes <b>commits</b> realizados em arquivos de um projeto, dentro do repositório da ferramenta de controle de versão de <i>software</i>, são mantidos de forma constante, proporcionando, assim, o fácil acesso às diferentes versões de um arquivo.</p>
+              <p><b>Push </b></p>
+              <p>Este comando é responsável por enviar arquivos do repositório local para o repositório remoto. Dessa forma, o comando <b>push</b> envia todos os <b>commits</b> que foram produzidos pelo desenvolvedor para a confirmação no repositório remoto do servidor central. Isso permite que o resto da equipe tenha acesso a esse arquivo atualizado.</p>
+              <p><b>Pull </b></p>
+              <p>De forma oposta ao comando <b>push</b>, o comando <b>pull</b> é utilizado para trazer os arquivos do repositório remoto para o repositório local, garantindo que o desenvolvedor está trabalhando com a versão mais atualizada desses dados.</p>
+            </div>
+
+            <p>A figura a seguir apresenta a interação entre um repositório local com o repositório remoto, por meio dos comandos <b>pull</b> e <b>push</b>, permitindo atualizar e acessar os <b>commits</b> do repositório remoto.</p>
+            <img src="imgs/fig9.png" class="img-responsive center-block hidden-xs">
+            <a href="imgs/fig9.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig9.png" class="img-responsive center-block">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig9.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 9 – Demonstração de comandos e funcionamento <br>
+              Fonte: Java T Point (c2021)
+            </p>
+            <p class="acessivel no-print">A figura apresenta a interação entre um repositório local com o repositório remoto, por meio dos comandos <b>pull</b> e <b>push</b>, permitindo atualizar e acessar os <b>commits</b> do repositório remoto. Demonstra a imagem de um repositório local e de um repositório remoto, utilizando os comandos <b>pull</b> e <b>push</b> para a interação.</p>
+
+            <h3>Rotina de trabalho</h3>
+            <p>Neste tópico, você verá como o versionamento de código se aplica dentro da rotina de trabalho de uma equipe. Neste cenário apresentado, você trabalhará com uma equipe de três programadores: Luís, Ana, Camila.</p>
+            <p>Como primeiro passo, utilizando o Git, os membros da equipe criam um repositório, o qual armazenará os arquivos do projeto que está sendo desenvolvido. Camila realiza um primeiro <b>commit</b> nos arquivos do projeto, denominado “versão inicial”.</p>
+            <p>A partir desse momento, todos os programadores devem trabalhar de maneira alinhada, sempre utilizando as funcionalidades da ferramenta de controle de versão para manter os arquivos do projeto atualizados, tanto em seu repositório local quanto no repositório remoto, fazendo com que todos os membros da equipe tenham acesso às últimas versões e alterações dos arquivos.</p>
+            <p>Realizam-se <b>commits</b> que descrevem as alterações realizadas e levam-se essas atualizações ao repositório central (comando <b>push</b>) para que os outros programadores possam também acessar essas modificações e trazê-las para o seu repositório local também (comando <b>pull</b>).</p>
+            <p>Essas práticas evitam diversas situações de conflito e mantêm a organização do projeto mesmo com os membros da equipe trabalhando de forma simultânea nos mesmos arquivos. </p>
+            <p>Agora serão simuladas, na prática, ações de membros da equipe de desenvolvimento, demonstrando o desfecho de cada situação, com e sem a aplicação do versionamento de código.</p>
+            <div class="caixa-destaque bg-primaria-02 borda-primaria-03">
+              <p>Os programadores Ana e Luís estão trabalhando no mesmo projeto. Em determinado momento, acabam trabalhando no mesmo arquivo de forma simultânea. Nesse caso, Ana realizou um <b>commit</b> no arquivo, porém Luís já havia atualizado esse arquivo anteriormente.</p>
+              <p>Tendo em vista essa situação, veja os dois cenários possíveis:</p>
+              <p><b>1. A equipe não utiliza nenhum tipo de ferramenta para o controle de versão de <i>software</i></b></p>
+              <p>Neste caso, acontecerá uma situação de conflito, visto que Ana está realizando um <b>commit</b> em um arquivo desatualizado, pois não tem a última versão desenvolvida por Luís.</p>
+              <p><b>2. A equipe utiliza uma ferramenta de controle de versão de <i>software</i></b></p>
+              <p>Nesta situação, Ana teria sempre os arquivos atualizados em sua máquina. Mesmo que Luís houvesse realizado mais atualizações no arquivo em questão, Ana estaria ciente, e seu <b>commit</b> seria sobre a última versão do arquivo citado. Assim, situações de conflito seriam evitadas. </p>
+            </div>
+
+            <h3>Numerações de uma versão de <i>software</i></h3>
+            <p>O versionamento de código permite à equipe decidir a forma como ele será aplicado durante o desenvolvimento de um projeto. Após definida essa etapa, cada versão do projeto que for gerada terá uma hierarquia com base em sua numeração: a numeração principal (primeiro número) muda quando houver alguma alteração completa na aplicação ou questões de incompatibilidade; a numeração secundária identifica novas funcionalidade ou complementos; e, por fim, a terceira numeração demonstra pequenos ajuste ou correção de pequenas falhas.</p>
+            <img src="imgs/fig10.png" class="img-responsive center-block hidden-xs" title="A figura apresenta o significado de cada número de uma versão de um sistema, partindo da numeração maior para a menor. O numero em questão é 2 ponto 1 ponto 5. Partindo da esquerda para a direita, o primeiro número demonstra pequenos ajustes e correções de bugs. O segundo número demonstra a aplicação de novas funcionalidades ou implementações de melhorias. Por fim, o terceiro número apresenta grandes mudanças no funcionamento ou na estrutura da aplicação.">
+            <a href="imgs/fig10.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/fig10.png" class="img-responsive center-block" title="A figura apresenta o significado de cada número de uma versão de um sistema, partindo da numeração maior para a menor. O numero em questão é 2 ponto 1 ponto 5. Partindo da esquerda para a direita, o primeiro número demonstra pequenos ajustes e correções de bugs. O segundo número demonstra a aplicação de novas funcionalidades ou implementações de melhorias. Por fim, o terceiro número apresenta grandes mudanças no funcionamento ou na estrutura da aplicação.">
+            </a>
+            <div class="acessivel print">
+              <img src="imgs/fig10.png" class="img-responsive center-block">
+            </div>
+            <p class="legenda-imagem">
+              Figura 10 – Entendendo a numeração de uma versão de <i>software</i> <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">A figura apresenta o significado de cada número de uma versão de um sistema, partindo da numeração maior para a menor. O numero em questão é 2 ponto 1 ponto 5. Partindo da esquerda para a direita, o primeiro número demonstra pequenos ajustes e correções de <i>bugs</i>. O segundo número demonstra a aplicação de novas funcionalidades ou implementações de melhorias. Por fim, o terceiro número apresenta grandes mudanças no funcionamento ou na estrutura da aplicação.</p>
+            <p>É preciso perceber que essa numeração aplicada à versão do <i>software</i> deve seguir uma sequência lógica. É essa sequência que permitirá encontrar onde ocorreu determinada falha, evitando, assim, o comprometimento da estrutura do sistema em questão.</p>
+
+          </div>
+
+          <!--PÁGINA 2-->
+          <div class="pagina" style="display: block !important;">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção <b>Grau de pontuação/símbolos</b>, acesse <b>Preferências</b> – <b>Configurações</b> – <b>Fala</b>. Altere o padrão <b>Pouco</b> para <b>Tudo</b>. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade.</p>
+            
+            <h2><span class="titulo-geral">Comandos de versionamento:</span><br>operações e funcionalidades</h2>
+            <h3>Introdução </h3>
+            <p>Neste conteúdo, você conhecerá como funciona o processo de versionamento e entender a importância de cada uma dessas etapas. Para isso, serão digitados vários comandos na interface de linha de comando, para ver, na prática, como se trabalha com a ferramenta Git. Então, para aproveitar melhor este conteúdo, certifique-se de já ter instalado a ferramenta GitBash no seu computador.</p>
+            <p>Após compreender o ciclo de versionamento, você conhecerá algumas possíveis expansões dos comandos principais que aprenderá. Além disso, também aprenderá como realizar o versionamento de <i>software</i> utilizando ferramentas com interfaces gráficas, neste caso, o GitHub Desktop. Recomenda-se que você já tenha também essa ferramenta instalada.</p>
+            <div class="caixa-destaque borda-primaria-03 icone anotar">
+              <p>Você pode consultar o conteúdo <b>Repositórios remotos e sistemas de gerenciamento de configuração</b> para informações sobre instalação e primeiros passos com GitHub Desktop e GitBash.</p>
+            </div>
+
+            <h3>Operações e funcionalidades</h3>
+            <p>Para exemplificar o versionamento de um projeto Java, será criado um novo projeto no Apache NetBeans IDE (<i>integrated development environment</i>, em português ambiente de desenvolvimento integrado) e, dentro da pasta do projeto, será iniciado o versionamento. Para exemplo, o projeto será chamado de <b>GitExemplo</b>.</p>
+            <img src="imgs/01.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/01.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/01.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 1 – Criação do projeto <b>GitExemplo</b> no NetBeans <br>
+              Fonte: Apache NetBeans IDE (2023)
+            </p>
+            <p class="acessivel no-print">Tela de criação de projeto do NetBeans com campo <b>Project Name</b> preenchido com valor “GitExemplo”.</p>
+            <div class="caixa-destaque bg-auxiliar-claro-03">
+              <p>Durante a criação do projeto, lembre-se de verificar o local onde o projeto será criado por meio do campo <b>Project Location</b>. </p>
+            </div>
+            <p>Após criar o projeto, acesse esse diretório e abra o GitBash, clicando com o botão direito do <i>mouse</i> e selecionando a opção <b>GitBash here</b>.</p>
+            <img src="imgs/02.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/02.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/02.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 2 – Acessando o GitBash no diretório do projeto <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Tela do Windows Explorer evidenciando menu de contexto aberto sobre a pasta destacando a opção <b>Git Bash here</b>.</p>
+            <h4>Iniciando o versionamento</h4>
+            <p>Um repositório Git rastreia e salva o histórico de todas as alterações feitas nos arquivos em um projeto. Ele salva esses dados em um diretório chamado <b>.git</b>, que é responsável por rastrear e salvar o histórico de todas as alterações feitas nos arquivos do diretório. </p>
+            <p>Para iniciar o versionamento em um diretório, utiliza-se o seguinte comando:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>git init</b>
+            </div>
+            <img src="imgs/03.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/03.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/03.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 3 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">Tela do GitBash mostrando o comando <b>git init</b> sendo executado na pasta criada anteriormente para o projeto Java.</p>
+            <p>Após executá-lo, será criada a pasta <b>.git</b>.</p>
+            <img src="imgs/04.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/04.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/04.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 4 – Pasta do projeto com a pasta <b>.git</b> <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Tela do Windows Explorer na pasta do projeto evidenciando uma nova pasta <b>.git</b>.</p>
+            <div class="caixa-destaque borda-primaria-03 icone atencao">
+              <p>Caso a pasta <b>.git</b> não apareça no seu diretório, isso pode significar que o seu explorador de arquivos está configurado para não exibir itens ocultos. Se deseja habilitar a exibição de itens ocultos, abra o <b>Explorador de Arquivos</b> e selecione <b>Exibir</b> > <b>Mostrar</b> > <b>Itens ocultos</b>.</p>
+              <p>Vale lembrar que a exibição dos itens ocultos não interferirá no versionamento do projeto. Então, caso não deseje habilitar essa opção, você pode ignorá-la.</p>
+            </div>
+            <h4>Configurando o versionamento</h4>
+            <p>Se é a primeira vez que você está utilizando o GitBash no seu computador, então é necessário configurar o nome e o <i>e-mail</i> do seu usuário para que o versionamento reconheça quem é o responsável pelas alterações nos arquivos. Para isso, use dois comandos, um para configurar o nome e outro para configurar o <i>e-mail</i>.</p>
+            <p>Para adicionar um nome de autor do usuário atual:</p>
+            <div class="caixa-destaque borda-primaria-03" style="width: 100%; max-width: 600px;">
+              <p><b>git config --global user.name “Nome Sobrenome”</b></p>
+              
+            </div>
+            <p>Para adicionar um endereço de <i>e-mail</i> a todos os <b>commits</b> do usuário atual:</p>
+            <div class="caixa-destaque borda-primaria-03" style="width: 100%; max-width: 600px;">
+              <b>git config --global user.email “exemplo@email.com”</b>
+            </div>
+            <img src="imgs/05.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/05.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/05.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 5 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">Janela do GitBash mostrando a execução dos comandos <b>git config --global user.name “Lucas Fraga”</b> e, em seguida, <b>git config --global user.email “lucas@gmail.com”</b>.</p>
+            <h4>Verificando o <i>status</i>: git status</h4>
+            <p>Para verificar o <i>status</i> do versionamento, utiliza-se o comando <b>git status</b>. O comando é relativamente simples e retorna informações muito úteis sobre o que está acontecendo no versionamento dos arquivos e diretórios. Se o comando <b>git status</b> for executado no diretório do projeto, você terá a seguinte saída:</p>
+            <img src="imgs/06.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/06.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/06.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 6 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">
+              Terminal do GitBash mostrando o comando <b>git status</b> executado com a seguinte resposta: <br>
+              No commits yet <br>
+              <br>
+              Untracked files: <br>
+              (use "git add &lt;file&gt;..." to include in what will be committed) <br>
+              build.xml <br>
+              manifest.mf <br>
+              nbproject/ <br>
+              src/ <br>
+              <br>
+              nothing added to commit but untracked files present (use "git add" to track)<br>
+            </p>
+            <p>Perceba que, atualmente, o versionamento identificou os arquivos <b>build.xml</b> e <b>manifest.mf</b> e os diretórios <b>nbprojecte src</b> com o <i>status</i> <b>untracked</b>, que significa “não rastreado”. </p>
+            <p>Dentro de um repositório, os seus arquivos e as suas pastas podem ter dois <i>status</i>: <b>untracked</b> (do inglês, “não rastreado”) e <b>tracked</b> (do inglês, “rastreado”).</p>
+            <p>O <i>status</i> <b>untracked</b> é o estado inicial de todo arquivo adicionado ou editado. Logo, sempre que você iniciar o versionamento em um repositório local, os arquivos serão reconhecidos com o estado de “não rastreado”.</p>
+            <p>Sabe-se que o Git é uma ferramenta de rastreamento de versão. Essa ferramenta nunca começará a rastrear um arquivo até que você peça especificamente a ela para fazer isso. Se você fizer alguma alteração nos arquivos, o estado deles permanecerá “não rastreado” até usar o comando para rastrear.</p>
+            <h4>Preparando os arquivos</h4>
+            <p>O comando <b>git add</b> adiciona arquivos novos ou alterados em seu diretório à área de preparo do Git, marcando-os para inclusão no próximo rastreamento. </p>
+            <p>Às vezes, esse comando pode passar a impressão de ser uma etapa desnecessária. Afinal, por que é preciso preparar o rastreamento dos arquivos e só depois realizá-lo de fato? Pois bem. O que faz o comando <b>git add</b> tão importante é que, por meio dele, é possível moldar a história sem alterar a forma como se trabalha.</p>
+            <p>Imagine que, no seu dia a dia como desenvolvedor de <i>software</i>, você precise programar uma determinada funcionalidade para um sistema (a qual será chamada de <b>funcionalidade A</b>). Por ser algo simples, você aproveitou para fazer a implementação de mais um recurso para adiantar o seu trabalho (<b>funcionalidade B</b>). </p>
+            <p>Após implementar e testar, você deve fazer um relatório de tudo aquilo que você fez. Esse relatório terá todo o registro do que foi feito e desfeito dentro do projeto, incluindo cada linha de código escrita ou modificada. Se algo no sistema projetado der errado, basta seguir o relatório para desfazer tudo que foi feito. Aqui, há as seguintes possibilidades:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <ol type="1">
+                <li>Você pode implementar as duas funcionalidades e fazer um único relatório.</li>
+                <li>Você pode implementar a <b>funcionalidade A</b> e fazer um relatório; depois pode implementar a <b>funcionalidade B</b> e fazer mais um relatório.</li>
+                <li>Você pode implementar as duas funcionalidades e fazer dois relatórios separados.</li>
+              </ol>
+            </div>
+            <p>Se você optar pela opção 1, caso algo dê errado, você terá perdido um dia inteiro de trabalho, pois terá de desfazer tudo o que foi feito caso o sistema apresente algum problema. Se você optou pelas opções 2 e 3, você poderá corrigir o problema do sistema sem afetar a outra funcionalidade implementada. Então, se o problema parou de funcionar durante a implementação da <b>funcionalidade B</b>, você poderá desfazer tudo relacionado a essa funcionalidade sem afetar o que foi implementado na <b>funcionalidade A</b>. </p>
+            <p>Esta é exatamente uma das principais vantagens que o versionamento de projetos proporciona: o registro de tudo o que foi feito em um projeto, que pode ser usado para restaurar a versão anterior caso algum problema aconteça. Esse “registro” é chamado, na linguagem técnica, de <b>commit</b>, e o que se faz com o comando <b>git add</b> é dizer quais arquivos serão adicionados ao registro – em outras palavras, quais arquivos serão rastreados (<b>tracked</b>).</p>
+            <p>Como você está na fase inicial de desenvolvimento do seu projeto (afinal, apenas criou o projeto no Apache NetBeans IDE), é conveniente adicionar todos os arquivos e todas as pastas ao registro do <b>commit</b>. Para isso, é possível informar individualmente todos os arquivos ou usar o caractere ponto-final, que se refere a “tudo que estiver dentro dessa pasta”.</p>
+            <p>Nesse exemplo, você executará o segundo comando <b>git add .</b> e depois verificará o estado do versionamento com o comando <b>git status</b>.</p>
+            <img src="imgs/07.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/07.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/07.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 7 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">
+              terminal do GitBash mostrando a execução do comando <b>git add .</b>, que não apresenta nenhuma resposta, e depois do comando <b>git status</b>, que mostra: <br>
+              On branch master <br>
+              <br>
+              No commits yet <br>
+              <br>
+              Changes to be committed: <br>
+              (use "git rm --cached <file>..." to unstage) <br>
+              new file:   build.xml <br>
+              new file:   manifest.mf <br>
+              new file:   nbproject/build-impl.xml <br>
+              new file:   nbproject/genfiles.properties <br>
+              new file:   nbproject/private/private.properties <br>
+              new file:   nbproject/project.properties <br>
+              new file:   nbproject/project.xml <br>
+              new file:   src/gitexemplo/GitExemplo.java <br>
+              <br>
+              As últimas oito linhas estão na cor verde.
+            </p>
+            <p>Perceba que, agora, seus arquivos estão na cor verde, o que significa que eles estão prontos para ser rastreados.</p>
+            <p>Se você quisesse informar os arquivos e as pastas individualmente, o comando ficaria da seguinte maneira:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>git add build.xml manifest.mfnbproject/* src/*</b>
+            </div>
+            <p>Perceba que, no caso das pastas, usa-se o asterisco no final. O motivo disso é simples: na interface de linha de comandos, o asterisco é conhecido como um curinga (também chamado de <i>wildcard</i>, no inglês) para completar o nome de algo. Pensando no seu comando, é preciso informar cada um dos arquivos que você quer, digitando o nome de cada um deles manualmente. Porém, graças ao asterisco, você está dizendo para o comando que usará <b>nome da pasta/qualquer coisa que estiver dentro dela</b>, o que faz economizar bastante tempo ao digitar os comandos.</p>
+            <div class="caixa-destaque borda-primaria-03 icone dica">
+              <p>Se esses conceitos são novos para você, pesquise na internet por “manipulação de arquivos e diretórios em linha de comando”, para conhecer e aprofundar-se mais no uso de interfaces de linha de comando, também conhecido como CLI (Command Line Interface).</p>
+            </div>
+            <h4>Salvando rastreamento</h4>
+            <p>No Git, um <b>commit</b> é um <i>snapshot</i> do seu repositório em um ponto específico no tempo, que permite guardar o estado do seu repositório. Dessa forma, ao longo do tempo, haverá uma “linha do tempo” do repositório, na qual estará registrado tudo o que aconteceu para que se chegasse ao resultado final.</p>
+            <p>Após selecionar quais arquivos irão para o registro de <b>commit</b>, você pode salvar o rastreamento com o comando <b>git commit</b>. Esse comando tem algumas possíveis sintaxes, mas a forma mais utilizada é <b>git commit -m “Uma mensagem aqui...”</b>, na qual se inclui uma breve mensagem para que se saiba a que esse <b>commit</b> se refere (o argumento <b>-m</b> é a sintaxe que diz ao comando que será adicionada uma mensagem). Procure sempre ser breve e claro nessa mensagem, para que você, futuramente, saiba o que foi implementado nessa versão do <i>software</i>. Futuramente, você trabalhará com outros programadores no mesmo projeto, e essa informação será muito importante para que vocês consigam diferenciar uma versão da outra.</p>
+            <p>Veja algumas dicas para escrever uma boa mensagem nos seus <b>commits</b>.</p>
+            <div class="caixa-destaque bg-auxiliar-claro-03 borda-primaria-03">
+              <ul class="marcador-seta">
+                <li>Tenha cuidado com a gramática, para não escrever palavras que possam causar confusão.</li>
+                <li>Tente realizar um <b>commit</b> para cada alteração feita no código. Dessa forma, caso seja necessário retonar algum <b>commit</b> anterior, poucos trechos serão afetados.</li>
+                <li>Seja transparente e breve em relação ao que foi feito. Caso implemente apenas parte de uma funcionalidade, procure especificar exatamente o que foi feito com poucas palavras.</li>
+              </ul>
+            </div>
+            <p>Como você está realizando o seu primeiro <b>commit</b>, realize-o com a mensagem “Criação do projeto”, pois foi exatamente isso que você fez nesta etapa. Então, o seu comando ficará com a seguinte sintaxe:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>git commit -m “Criação do projeto”</b>
+            </div>
+            <img src="imgs/08.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/08.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/08.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 8 – Comando <b>git commit</b> no terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">Terminal do GitBash mostrando o comando git commit -m “Criação do projeto” sendo executado, mostrando como resposta os nomes dos arquivos do projeto que foram incluídos.</p>
+            <div class="caixa-destaque borda-primaria-03 icone anotar">
+              <p>Caso o nome e o <i>e-mail</i> do usuário não tenham sido corretamente configurados, uma mensagem (“Author identity unknown”) aparecerá como resposta ao comando. Basta usar os comandos <b>git config --global user.email</b> e <b>git config --global user.name</b>, explicados anteriormente.</p>
+            </div>
+            <p>Após isso, conclui-se o rastreamento da versão do projeto. A partir daqui, sempre que você fizer alguma mudança no projeto, pode realizar um novo <i>snapshot</i> dele com os comandos <b>gitadd</b> e <b>gitcommit</b>.</p>
+            <div class="caixa-destaque borda-primaria-03 icone saiba-mais">
+              <p>O termo <i>snapshot</i> refere-se a uma captura instantânea de volume ou um retrato fiel de uma situação do ambiente. O termo vem de uma analogia à fotografia, já que é a captura de um estado em um determinado ponto no tempo.</p>
+            </div>
+            <p>Agora, volte para o seu código do Apache NetBeans IDE. Altere o código do seu arquivo principal e escreva um “Hello World”. Aproveitando, também limpe os comentários gerados na criação do projeto para deixar o seu código mais limpo. O código ficará da seguinte maneira:</p>
+            <pre>
+              <code>
+package gitexemplo;
+
+public classGitExemplo {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+              </code>
+            </pre>
+            <img src="imgs/09.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/09.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/09.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 9 – Código-fonte de Hello World em Java <br>
+              Fonte: Apache NetBeans IDE (2023)
+            </p>
+            <p class="acessivel no-print">Janela principal do NetBeans com o arquivo <b>GitExemplo</b> aberto, mostrando o código listado anteriormente.</p>
+            <p>No Apache NetBeans IDE, você pode ter percebido que, ao lado das linhas de código, apareceram algumas setas vermelhas. Se você clicar em alguma delas, verá que o editor de código está apontando quais trechos de código foram removidos em comparação ao último <b>commit</b> realizado. Esse recurso pode ser muito útil caso você precise consultar rapidamente as mudanças feitas no código direto pelo Apache NetBeans IDE.</p>
+            <p>Voltando ao terminal do GitBash, agora que você já concluiu as alterações do seu projeto, precisa digitar apenas dois comandos:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>gitadd .</b> <br>
+              <b>gitcommit -m “Hello World”</b>
+            </div>
+            <p>Pronto! Com isso, você conclui o seu segundo <b>commit</b>. Guarde bem essa informação, pois voltará nesse assunto em breve.</p>
+
+          </div>
+
+          <!--PÁGINA 3-->
+          <div class="pagina">
+            <h3>Criando repositório remoto</h3>
+            <p>Repositórios remotos são versões do seu projeto que estão hospedadas na Internet ou em outra rede. Você pode ter vários deles e, também, ter várias pessoas trabalhando no mesmo repositório, o que torna possível a colaboração de vários programadores no desenvolvimento de um mesmo projeto de <i>software</i>.</p>
+            <p>Até aqui, você já criou um repositório local, fez o versionamento do seu projeto e tem todas essas informações guardadas no computador. Agora, você criará um repositório remoto em que guardará todos os registros de versão do projeto, incluindo o código-fonte. Para isso, você utilizará o GitHub, uma plataforma de repositórios remotos e versionamento bastante popular e acessível para todos, já que conta com várias ferramentas para gerenciar o versionamento de projetos de forma gratuita.</p>
+            <div class="caixa-destaque borda-primaria-03 icone atencao">
+              <p>Antes de continuar, é importante que você já tenha uma conta criada na plataforma GitHub. Caso ainda não tenha, faça uma pausa na leitura deste conteúdo, crie a sua conta e depois volte para seguir com esta prática.</p>
+              <p>É bem simples criar uma conta no GitHub. Basta acessar o <i>site</i> oficial e clicar sobre o botão <b>Sign up</b> localizado no canto superior direto da página. Um formulário será aberto para você preencher com seus dados e cadastrar o seu usuário na plataforma.</p>
+              <img src="imgs/10.png" class="img-responsive center-block hidden-xs mt-40 print">
+              <a href="imgs/10.png" target="_blank" class="visible-xs no-print">
+                <p>Clique ou toque para ampliar.</p>
+                <img src="imgs/10.png" class="img-responsive center-block">
+              </a>
+              <p class="legenda-imagem">
+                Figura 10 – Página inicial do <i>site</i> GitHub <br>
+                Fonte: GitHub (2023)
+              </p>
+              <p class="acessivel no-print">Página inicial do GitHub. Ao fundo, uma imagem espacial. À frente, um título em letras grandes (“Let’s build from here”) e o texto “Harnesses for productivity. Designed for collaboration. Celebrated for built-in security. Welcome to the plataforma developers love”. No topo à direita, há opções de busca, de <b>Sign in</b> (autenticar-se) e de <b>Sing up</b> (cadastrar-se).</p>
+            </div>
+            <h4>Criando um repositório remoto no GitHub</h4>
+            <p>Com seu usuário autenticado na plataforma do GitHub, clique no símbolo de mais (<b>+</b>) localizado na barra superior da página, mais precisamente ao lado direito, e clique na opção <b>New repository</b> para acessar à página de criação de repositórios remotos.</p>
+            <img src="imgs/11.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/11.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/11.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 11 – Criação de novo repositório no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">detalhe da página do GitHub no canto superior direito com menu suspenso revelando a opção <b>New repository</b>, que está selecionada.</p>
+            <p>Você será direcionado a uma página chamada <b>Create a new repository</b>, na qual terá um breve formulário para preencher com as informações do seu repositório.</p>
+            <img src="imgs/12.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/12.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/12.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 12 – Criação de novo repositório no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Página de criação de repositório do GitHub com título <b>Create a new repository</b> e uma série de campos abaixo a serem preenchidos.</p>
+            <p>A seguir, entenda melhor o que cada uma dessas opções significa.</p>
+
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo.</p>
+              <div class='panel-group gaitinha' id='accordion011' role='tablist' aria-multiselectable='true'>
+                
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading011'>
+                    <h3 class='panel-title'>
+                      <a role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse011' aria-expanded='false' aria-controls='collapse011'>
+                        Repository name
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse011' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading011'>
+                    <div class='panel-body'>
+                      <p>Aqui, você informará o nome do repositório que será criado. É uma boa prática o nome do repositório ter o mesmo nome do projeto, mas isso não é uma regra. As regras que precisam ser lembradas são: o nome do repositório não pode conter espaços ou caracteres especiais (se houver, o GitHub inserirá um hífen no lugar do caractere); e o nome do repositório não pode ser igual ao de outro repositório que você já tenha criado.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading021'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion011' href='#collapse021' aria-expanded='false' aria-controls='collapse021'>
+                        Description
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse021' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading021'>
+                    <div class='panel-body'>
+                      <p>Neste campo, você pode trazer uma breve descrição do repositório para que você e outras pessoas saibam do que se trata esse projeto.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading031'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion011' href='#collapse031' aria-expanded='false' aria-controls='collapse031'>
+                        Public/Private
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse031' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading031'>
+                    <div class='panel-body'>
+                      <p>Você pode escolher se deseja que o repositório fique visível apenas para você (<b>private</b>) ou para todos que acessarem o seu perfil (<b>public</b>). Outros poderão visualizar e baixar o seu projeto caso a opção <b>public</b> seja selecionada. Para a criação de um portfólio, isso é ótimo! Porém, caso esteja lidando com um projeto mais sensível, a melhor opção é deixa-lo como <b>private</b>.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading041'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion011' href='#collapse041' aria-expanded='false' aria-controls='collapse041'>
+                        Initialize this reposity with
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse041' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading041'>
+                    <div class='panel-body'>
+                      <p>Este é um trecho referente à inicialização do repositório remoto. É como se você estivesse criando uma pasta no servidor do GitHub e usando o <b>git init</b> para iniciar o versionamento. Logo, é possível selecionar a inicialização com um arquivo <b>README.md</b> e configurar um arquivo <b>.gitignore</b> (um arquivo de regras que diz ao repositório quais arquivos, pastas ou extensões serão ignorados no versionamento).</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading051'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion011' href='#collapse051' aria-expanded='false' aria-controls='collapse051'>
+                        Choose a license
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse051' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading051'>
+                    <div class='panel-body'>
+                      <p>Os repositórios públicos no GitHub costumam ser usados para compartilhar <i>software</i> de código aberto. Para que seu repositório seja realmente de código aberto, você precisará licenciá-lo para que outras pessoas tenham liberdade para usar, alterar e distribuir o <i>software</i>. Nessa opção, você seleciona o licenciamento do seu repositório.</p>
+                      <p>Para esse exemplo, o <b>Repository name</b> foi preenchido com o nome do projeto, “Git Exemplo”, e foi usado o espaço para demonstrar a correção que o GitHub faz quando se usa o espaço nesse campo. Em <b>Description</b>, o projeto foi descrito como “Um repositório para exemplificar o uso dos comandos Git e repositório remoto do GitHub”. A última configuração feita foi selecionar <b>Public</b> na visibilidade do repositório. Após isso, deve-se clicar em <b>Create repository</b> para finalizar a criação.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <p><b>Repository name</b></p>
+              <p>Aqui, você informará o nome do repositório que será criado. É uma boa prática o nome do repositório ter o mesmo nome do projeto, mas isso não é uma regra. As regras que precisam ser lembradas são: o nome do repositório não pode conter espaços ou caracteres especiais (se houver, o GitHub inserirá um hífen no lugar do caractere); e o nome do repositório não pode ser igual ao de outro repositório que você já tenha criado.</p>
+              <p><b>Description</b></p>
+              <p>Neste campo, você pode trazer uma breve descrição do repositório para que você e outras pessoas saibam do que se trata esse projeto.</p>
+              <p><b>Public/Private</b></p>
+              <p>Você pode escolher se deseja que o repositório fique visível apenas para você (<b>private</b>) ou para todos que acessarem o seu perfil (<b>public</b>). Outros poderão visualizar e baixar o seu projeto caso a opção <b>public</b> seja selecionada. Para a criação de um portfólio, isso é ótimo! Porém, caso esteja lidando com um projeto mais sensível, a melhor opção é deixa-lo como <b>private</b>.</p>
+              <p><b>Initialize this reposity with</b></p>
+              <p>Este é um trecho referente à inicialização do repositório remoto. É como se você estivesse criando uma pasta no servidor do GitHub e usando o <b>git init</b> para iniciar o versionamento. Logo, é possível selecionar a inicialização com um arquivo <b>README.md</b> e configurar um arquivo <b>.gitignore</b> (um arquivo de regras que diz ao repositório quais arquivos, pastas ou extensões serão ignorados no versionamento).</p>
+              <p><b>Choose a license</b></p>
+              <p>Os repositórios públicos no GitHub costumam ser usados para compartilhar <i>software</i> de código aberto. Para que seu repositório seja realmente de código aberto, você precisará licenciá-lo para que outras pessoas tenham liberdade para usar, alterar e distribuir o <i>software</i>. Nessa opção, você seleciona o licenciamento do seu repositório.</p>
+              <p>Para esse exemplo, o <b>Repository name</b> foi preenchido com o nome do projeto, “Git Exemplo”, e foi usado o espaço para demonstrar a correção que o GitHub faz quando se usa o espaço nesse campo. Em <b>Description</b>, o projeto foi descrito como “Um repositório para exemplificar o uso dos comandos Git e repositório remoto do GitHub”. A última configuração feita foi selecionar <b>Public</b> na visibilidade do repositório. Após isso, deve-se clicar em <b>Create repository</b> para finalizar a criação.</p>
+            </div>
+            <p>Assim que o repositório for criado, você será redirecionado para uma nova página. Perceba que o endereço dessa página tem a seguinte estrutura:</p>
+            <div class="caixa-destaque borda-primaria-03"  style="width: 100%; max-width: 600px;">
+              https://github.com/<b>Nome do usuário/Nome do repositório</b>
+            </div>
+            <p>Esse é o endereço de acesso do seu repositório, onde “nome do usuário” será o nome do usuário que você definiu durante o processo de criação de conta no GitHub e “nome do repositório” será o nome que você definiu durante a criação do repositório remoto. Lembre-se de que, caso tenha usado espaço ou algum caráter especial, o GitHub substituirá esses caracteres por um hífen, já que estes não são permitidos na codificação de endereços eletrônicos.</p>
+            
+            
+            <div class="caixa-destaque borda-primaria-03 icone dica" style="width: 100%; max-width: 600px;">
+              <p>Para ter mais informações sobre como funcionam as regras de codificação de endereços eletrônicos na <i>web</i>, pesquise por “Codificação de URL” ou “Codificação por cento”.</p>
+            </div>
+            <p>Nessa nova página, a plataforma do GitHub trará algumas sugestões de comandos para executar caso o seu repositório local ainda não exista ou caso ele já exista. Dentre as opções, siga a segunda abordagem <b>...or push an existing repository from the command line</b>, que se refere ao envio de um projeto já versionado para o repositório remoto.</p>
+            <img src="imgs/13.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/13.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/13.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 13 – Repositório remoto no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Página de configuração do repositório no GitHub, trazendo <b>Quick setup – if you’ve none this kind of thing before</b> acima; no meio, uma seção com título <b>…or create a new repositor on the command line</b>, seguido de alguns comandos <b>git</b>. Abaixo, outra seção, com título <b>…or push an existing repositor from the command line</b>, seguido de comandos <b>git</b> e, mais abaixo, outra seção com título <b>…or import code from another repository</b>, seguido de comandos <b>git</b>.</p>
+            <p>É possível copiar os comandos sugeridos pelo GitHub ou digitá-los manualmente. Por questões didáticas, a recomendação é que você digite cada comando para entender melhor cada etapa do processo. Futuramente, você pode aproveitar esse recurso para agilizar o processo no seu dia a dia como desenvolvedor. O primeiro comando que você usará será o <b>git remote</b>. </p>
+            <h4>Adicionando repositório remoto</h4>
+            <p>O comando <b>git remote</b> permite criar, visualizar e excluir conexões com outros repositórios. As conexões remotas são mais como favoritos do que <i>links</i> diretos para outros repositórios. Em vez de fornecer acesso em tempo real a outro repositório, eles servem de nomes convenientes que podem ser usados para referenciar uma URL (<i>uniform resource locator</i>) não tão conveniente.</p>
+            <p>Na prática, é preciso dizer “para onde” serão enviados os arquivos do seu repositório. Então, seguindo o exemplo, seria necessário enviar para o endereço:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>https://github.com/lucasfrag/Git-Exemplo.git</b>
+            </div>
+            <p>Porém, digitar esse endereço manualmente na linha de comando seria algo muito trabalhoso e tornaria a operação de envio para o repositório remoto mais complexa e cansativa. Portanto, com o comando <b>git remote add &lt;nome> &lt;endereço do repositório remoto></b>, você vinculará um nome simples que servirá de “nome alternativo” para esse endereço.</p>
+            <p>Seguindo o exemplo, o comando ficará:	</p>
+            <div class="caixa-destaque borda-primaria-03" style="width: 100%;max-width: 600px;">
+              <b>git remote add origin https://github.com/lucasfrag/Git-Exemplo.git</b>
+            </div>
+            <img src="imgs/14.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/14.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/14.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 14 – Terminal do GitBash <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Terminal do GitBash mostrando a execução do comando <b>git remote add origin https://github.com/lucasfrag/Git-Exemplo.git</b>, sem resposta.</p>
+            <div class="caixa-destaque borda-primaria-03 icone atencao">
+              <p>O comando que você deve executar no seu computador deve conter o nome do seu usuário do GitHub e o nome do seu repositório remoto.</p>
+            </div>
+            <p>Nesse comando, “origin” é o nome alternativo definido. Por boas práticas, esse é um nome padrão utilizado para se referir ao repositório remoto principal. Então, sempre que você usar o termo “origin” nos comandos do Git, a ferramenta entenderá que está se referindo a esse endereço eletrônico que foi vinculado.</p>
+            <h4>Selecionando a ramificação principal</h4>
+            <p>Uma das funções mais importantes no controle de versões do Git são as ramificações, também conhecidas como <i>branches</i>.</p>
+            <p>Imagine que você tem um projeto 100% funcional e surge a necessidade de modificar uma das funcionalidades desse projeto. Se fizer essa mudança diretamente, corre o risco de quebrar o que já está funcionando e causar outros problemas posteriores que podem comprometer todo o <i>software</i>. Porém, quando se cria uma ramificação do código principal, é possível fazer alterações sem modificar o que está funcionando. Então, pode-se pensar nas ramificações como áreas isoladas onde o código é duplicado e é possível modificar e testar o projeto sem afetar outras versões já funcionais. </p>
+            <p>Futuramente, os conceitos e as práticas de ramificações serão mais aprofundados. Por ora, tudo o que você precisa é definir a ramificação principal com o comando <b>git branch</b> (para fazer essa definição, use o argumento <b>-m</b>). Então, execute o seguinte comando:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>git branch -m master</b>
+            </div>
+            <img src="imgs/15.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/15.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/15.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 15 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">Terminal do GitBash mostrando o comando <b>git branch -m master</b> sem resposta.</p>
+            <div class="caixa-destaque borda-primaria-03 icone atencao">
+              <p>Dependendo da data de criação da sua conta no GitHub, é possível que o seu usuário esteja configurado para usar a ramificação <b>main</b> como <i>branch</i> principal.</p>
+              <p>Para confirmar essa informação, você pode acessar, no <i>site</i> do GitHub, a opção <b>Settings</b> &gt; <b>Repositores</b> e verificar o nome definido em <b>Repository default branch</b>. </p>
+            </div>
+            
+            <img src="imgs/16.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/16.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/16.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 16 – Configurações de usuário no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Página de configurações do perfil no GitHub com a opção <b>Repositories</b> no menu lateral, selecionada. No corpo da página, título “Repository default Branch” e destaque para o campo onde está escrito “master”.</p>
+            <p>Se este for o caso, você pode executar o comando anteriormente apontado para essa ramificação. Ele ficará: <b>git branch -m main</b>.</p>
+            <h4>Enviando para o repositório remoto</h4>
+            <p>Agora, você tem tudo pronto para, de fato, enviar tudo que está no repositório local para o repositório remoto. Para isso, use o comando <b>git push</b>. O termo <i>push</i> vem do inglês e significa “empurrar”. Essa é uma analogia para o ato de mover algo de um local para outro, sendo, então, os arquivos do repositório local para o repositório remoto.</p>
+            <p>O processo de <i>pushing</i> fará o <i>upload</i> não apenas dos seus arquivos e pastas, mas também de todo o histórico de versionamento (no caso, os registros de <b>commit</b>). Para executar esse comando, é preciso dizer para qual local e <i>branch</i> “empurrará” os dados. Como você já executou os comandos <b>git remote</b> e <b>git branch</b> para definir o repositório remoto e a ramificação principal, basta apontar para esses locais respectivamente (para essa definição, usa-se o argumento <b>-u</b>). Logo, o comando terá a seguinte sintaxe:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>git push -u origin máster</b>
+            </div>
+            <img src="imgs/17.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/17.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/17.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 17 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">Terminal do GitBash executando o comando <b>git push -u origin master</b> e retornando textos informando contagem de itens atualizados, compressão e progresso da operação.</p>
+            <p>Assim que o comando for processado, você pode voltar à página do repositório lá no GitHub e atualizá-la. Você verá que agora todos os arquivos do projeto estarão lá, incluindo os registros de <b>commit</b> (para acessá-los, basta clicar no <i>link</i> de contagem dos <b>commits</b> abaixo do botão verde <b>Code</b>).</p>
+            <img src="imgs/18.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/18.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/18.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 18 – Página do repositório remoto no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Página do repositório no GitHub mostrando o item <b>commits</b> acima da listagem dos arquivos do projeto.</p>
+            <p>Você recorda que já foi comentado para não se esquecer do segundo <b>commit</b>? Se você acessar os registros de <b>commits</b> e selecionar o segundo, encontrará o histórico de absolutamente tudo que foi alterado no projeto desde o primeiro <b>commit</b>.</p>
+            <p>A seguir, em destaque vermelho, veja o que foi removido e, em destaque verde, o que foi alterado.</p>
+            <img src="imgs/19.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/19.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/19.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 19 – Detalhes sobre o <b>commit</b> no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Página de <b>commit</b> do arquivo <b>GitExemplo.Java</b> mostrando trechos do código com fundo em vermelho e outros em verde.</p>
+            <p>E é por meio desse histórico sobre o que foi alterado em cada arquivo que o Git permite desfazer alguma mudança que tenha comprometido o funcionamento do <i>software</i>. Além disso, vale destacar que o GitHub não informa o horário em que os <b>commits</b> chegaram no repositório remoto, mas, sim, o horário em que eles foram feitos localmente. Portanto, caso você fique sem conexão com a Internet, pode realizar os <b>commits</b> no seu computador e enviar para o GitHub mais tarde sem medo de causar a impressão que você fez as coisas de última hora.</p>
+          </div>
+
+          <!--PÁGINA 4-->
+          <div class="pagina">
+            <h3>Sincronizando repositório local com o repositório remoto</h3>
+            <p>Quando se trabalha com o versionamento de projetos em equipes, é comum que o repositório remoto tenha informações que não estão sincronizadas com o repositório local. Isso pode ocorrer por causa de um <b>git push</b> realizado por outro programador que realizou alguma mudança no código-fonte. Nesses casos, é preciso trazer essas mudanças do repositório remoto para o repositório local.</p>
+            <p>Seguindo a analogia de “empurrar” os dados, quando se quer trazer dados remotos para o ambiente local, você está “puxando” essas informações. Daí o termo <i>pull</i> (em português, “puxar”) no comando <b>git pull</b>, que se refere ao processo de baixar o registro de versionamento ausente no repositório local.</p>
+            <p>Para ver, na prática, como esse comando funciona, crie um arquivo diretamente no repositório remoto por meio da página do GitHub. O processo aqui será bem simples: na página do repositório, clique no botão <b>Add a readme</b> para adicionar um arquivo <b>README.md</b>.</p>
+            <img src="imgs/20.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/20.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/20.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 20 – Página do repositório remoto no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Página do projeto no GitHub destacando um botão no corpo da página abaixo da listagem de arquivos do projeto com a frase “Add a README”.</p>
+            <div class="caixa-destaque borda-primaria-03 icone importante">
+              <p>Arquivos <b>README.md</b> são a apresentação do repositório no GitHub. Ele é escrito em <b>Markdown</b>, uma linguagem de marcação utilizada para converter o texto em um HTML (sigla para <i>hypertext markup language</i>, que significa linguagem de marcação de hipertexto) válido. Você pode usar a linguagem de Markdown ou o próprio HTML para escrever esses arquivos. Como estes funcionam como uma “carta de apresentação” sobre o projeto, é importante que esses arquivos contenham informações como:</p>
+              <ul class="cor01">
+                <li>Descrição do projeto</li>
+                <li>Funcionalidades</li>
+                <li>Instalação (caso necessário) e como utilizá-lo</li>
+                <li>Tecnologias utilizadas</li>
+                <li>Autores do projeto</li>
+              </ul>
+            </div>
+            <p>Ao clicar no botão, você será redirecionado a uma página com um modelo de <b>README.md</b> pré-construído baseado no nome e na descrição do repositório. Por enquanto, aproveite a estrutura montada e crie o arquivo do jeito que está para não perder o foco dessa prática. Para concluir a criação, desça a página e clique no botão <b>Commit new file</b>. Você perceberá que o próprio GitHub já preenche automaticamente a mensagem do novo <b>commit</b> como “Create README.md”. Caso você queira, você pode alterá-la.</p>
+            <img src="imgs/21.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/21.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/21.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 21 – <b>Commit</b> de novo arquivo no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Seção de <b>commit</b> do Github, mostrando o título “Commit new file”, um campo com o texto “Create README.md”, outro abaixo com o texto “Add na optional extended desciption” e a opção “Commit directly to the master branch” marcada. Abaixo, botões <b>Commit new file</b>” e <b>Cancel</b>.</p>
+            <p>Agora o repositório remoto tem um <b>commit</b> a mais em relação ao repositório remoto. Enquanto essas informações não forem sincronizadas, você não será capaz de fazer envios do repositório local para o repositório remoto. Então, é uma boa prática sempre começar rodando o comando <b>git pull</b> antes de fazer qualquer alteração no projeto, quando estiver trabalhando em equipe, para receber todas as atualizações.</p>
+            <p>Agora, volte ao terminal do GitBash e execute o seguinte comando:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>git pull origin master</b>
+            </div>
+            <p>Perceba que, assim como no comando <b>git push</b>, é preciso informar de qual repositório e ramificação você baixará as mudanças.</p>
+            <img src="imgs/22.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/22.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/22.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 22 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">Terminal do GitBash mostrando o comando <b>git pull origin master</b> executado. Na resposta, várias indicações de <i>status</i> informando o andamento da operação e o <i>download</i> do arquivo <b>readme.md</b>.</p>
+            <p>Após isso, o arquivo <b>README.md</b> que você acabou de criar aparecerá no diretório de arquivos do projeto.</p>
+            <h4>Desfazendo alterações</h4>
+            <p>Existem várias formas diferentes para desfazer as alterações no projeto com o versionamento. Por questões didáticas, aborde a estratégia mais simples, que é reverter um <b>commit</b> anterior.</p>
+            <p>Para isso, tudo o que você precisa fazer é digitar o seguinte comando:</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <b>git revert HEAD</b>
+            </div>
+            <p>O <i>HEAD</i> é um ponteiro na sua ramificação. Por padrão, ele sempre apontará para o último <b>commit</b>. Nesse caso, <b>commit Create README.md</b> está sendo revertido.</p>
+            <p>Quando você executa o comando, será aberto um arquivo no editor de texto que você selecionou como padrão durante o processo de instalação do GitBash. Você não precisa fazer nenhuma mudança aqui. Apenas feche o arquivo, assim o terminal do GitBash retornará a seguinte mensagem:</p>
+            <img src="imgs/23.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/23.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/23.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 23 – Terminal do GitBash <br>
+              Fonte: GitBash (2023)
+            </p>
+            <p class="acessivel no-print">Terminal do GitBash executando o comando <b>git revert HEAD</b> e mostrando, como resposta, dados de <i>status</i>, informando uma alteração e duas exclusões de arquivo.</p>
+            <p>Agora que tudo o que foi feito no repositório local foi revertido, é preciso sincronizar essas informações com o repositório remoto. Digite o comando <b>gitpush -u origin master</b> e você verá no histórico de <b>commits</b> do repositório remoto um novo <b>commit</b> referente à “reversão” que acabou de fazer. </p>
+            <img src="imgs/24.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/24.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/24.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 24 – Histórico de <b>commits</b> no GitHub <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Página do GitHub mostrando uma lista dos <b>commits</b> realizados no projeto, um abaixo do outro, mostrando a data e a descrição informada para cada <b>commit</b>.</p>
+            <div class="caixa-destaque borda-primaria-03 icone saiba-mais">
+              <p>Caso você quisesse reverter um <b>commit</b> mais antigo, por exemplo, o penúltimo, usaria o comando:</p>
+              <p><b>git revert HEAD~1</b></p>
+              <p>Se você quisesse o antepenúltimo <b>commit</b>, o comando ficaria:</p>
+              <p><b>git revert HEAD~2</b></p>
+              <p>Perceba que aqui há um cálculo sendo feito, em que o <i>HEAD</i> representa o último <b>commit</b> feito, o caractere <b>~</b> representa uma subtração e os números <b>1</b> e <b>2</b> apontam a contagem de <b>commits</b> que se quer voltar em relação ao último <b>commit</b> feito. Por isso essa visualização do histórico de <b>commits</b> no GitHub é tão importante, pois, por meio dela, é possível identificar facilmente qual registro de <b>commit</b> você deseja reverter.</p>
+            </div>
+            <h4>Clonando o repositório remoto</h4>
+            <p>Imagine que você tenha feito todo o processo de versionamento no seu computador e agora precisar dar continuidade ao seu trabalho em outro computador. Se você sincronizou o seu repositório local com o repositório remoto, então tudo o que você precisa é dar continuidade ao seu trabalho que está lá no GitHub. Para isso, o primeiro passo é baixar o repositório remoto no outro computador. Para fazer isso, você pode usar a seguinte sequência de passos:</p>
+            <div class="caixa-destaque borda-primaria-03 bg-auxiliar-claro-03">
+              <ol type="1">
+                <li>Criar uma pasta no computador.</li>
+                <li>Iniciar o versionamento com <b>git init</b>.</li>
+                <li>Apontar para o repositório remoto com o comando <b>git remote add origin &lt;url&gt;</b>.</li>
+                <li>“Puxar” o repositório completo com o commando <b>git pull origin master</b>.</li>
+              </ol>
+            </div>
+            <p>Entretanto, nem sempre você desejará baixar o seu projeto para dar sequência à programação de um projeto. Às vezes, você pode querer apenas baixar o seu projeto em outro computador ou baixar o projeto de outro desenvolvedor disponível para uso livre do GitHub. Nesses casos, é possível fazer o <i>download</i> diretamente da página oficial do repositório remoto ou utilizar o comando <b>git clone</b>, que, literalmente, clonará o repositório.</p>
+          </div>
+
+          <!--PÁGINA 5-->
+          <div class="pagina">
+            <h3>GitHub Desktop</h3>
+            <p>O GitHub Desktop é um aplicativo de código aberto que tem uma interface visual criada para simplificar e tornar o processo de versionamento mais produtivo. Apesar de a ferramenta tornar você independente da interface de linha de comando, pois não precisa mais digitar comandos para realizar o versionamento, ainda é necessário ter conhecimento sobre cada passo no ciclo de versionamento. </p>
+            <div class="caixa-destaque borda-primaria-03 icone atencao">
+              <p>O GitHub Desktop, como o próprio nome sugere, só permite interagir com repositórios remotos do GitHub. Sendo assim, caso você se encontre trabalhando com um repositório remoto de outro local (como GitLab, Bitbucket etc.), a ferramenta não conseguirá realizar as tarefas de versionamento. Como alternativa, você pode utilizar a própria interface de linha de comando ou buscar um <i>software</i> que tenha compatibilidade com o repositório remoto em questão.</p>
+            </div>
+            <h4>Configurando o GitHub Desktop</h4>
+            <p>Na primeira vez que você abre o GitHub Desktop, é recebido com uma tela de boas-vindas e algumas opções para continuar. Para seguir, é recomendado já vincular a sua conta do GitHub ao aplicativo. Portanto, nessa primeira tela, selecione a opção <b>Sign in to GitHub.com</b> e conclua o processo de autenticação na janela que será aberta no seu navegador de Internet.</p>
+            <img src="imgs/25.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/25.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/25.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 25 – Tela inicial do GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela inicial do GitHub Desktop com título “Welcome to GitHub Desktop” e botões <b>Sign in to GitHub.com</b> (azul) e <b>Sign in yo GitHub Enterprise</b> (cinza).</p>
+            <p>Após isso, abrirá a tela de configuração do Git. Você se lembra quando configurou o nome e o <i>e-mail</i> do usuário autenticado no GitBash? Para isso, você utilizou o comando <b>git config</b>. Aqui, será o mesmo processo. Porém, por meio dos dados do GitHub, o aplicativo do GitHub Desktop já preencherá automaticamente o nome e o <i>e-mail</i> com base nos dados que você informou ao criar a sua conta na plataforma. Caso deseje alterar alguma informação, você pode selecionar a opção <b>Configure manually</b>. Caso esteja tudo certo, mantenha a opção <b>Use my GitHub account name and e-mail address</b> selecionada e clique no botão <b>Finish</b>.</p>
+            <img src="imgs/26.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/26.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/26.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 26 – Tela de configuração do GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela de configuração do GitHub Desktop mostrando campos preenchidos.</p>
+            <h4>Iniciando um repositório local</h4>
+            <p>Após concluir as configurações, você será levado à tela principal do GitHub Desktop. </p>
+            <img src="imgs/27.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/27.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/27.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 27 – Tela principal do GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela com título “Let’s get started” e botões <b>Create a tutorial repositor</b>, <b>Create a repository from the internet</b>, <b>Create a New Repository on your hard drive</b> e <b>Add an existing repository from your hard drive</b>. À direita, há uma lista de repositórios.</p>
+            <p>Nessa nova tela, haverá uma listagem dos repositórios que existem no GitHub e quatro opções para escolher:</p>
+            <div class="caixa-destaque borda-primaria-03 bg-auxiliar-claro-03">
+              <ul class="marcador-seta">
+                <li><b>Create a tutorial repository</b></li>
+                <li><b>Clone a repository from the Internet</b></li>
+                <li><b>Create a New Repository on your hard drive</b></li>
+                <li><b>Add an existing repository from your hard drive</b></li>
+              </ul>
+            </div>
+            <p>Para realizar uma prática paralela à que você realizou com o GitBash, comece tudo do zero. Então, selecione a opção <b>Create a New Repository on your hard drive</b>.</p>
+            <p>Na nova janela que será aberta, haverá um formulário similar ao de criação de repositório remoto do GitHub. Aqui, preencha o nome do repositório como “GitHub Desktop Exemplo”, a descrição como “Um repositório para exemplificar o uso do GitHub Desktop”, selecione uma pasta onde fará o versionamento do projeto (para isso, crie uma nova pasta onde você gostaria de realizar essa prática e lembre-se bem dela, pois voltará nesse ponto depois) e deixe desmarcada a opção de iniciar o repositório com um arquivo <b>README</b>.</p>
+            <img src="imgs/28.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/28.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/28.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 28 – Tela de criação de repositório do GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Janela <i>pop-up</i> “Create a new repository” no GitHub Desktop, com campos <b>Name</b>, <b>Description</b>, <b>Local path</b>, <b>Git ignore</b> e <b>License</b> e botões <b>Create repository</b> e <b>Cancel</b>.</p>
+            <p>Após preencher tudo, clique no botão <b>Create repository</b>. Agora, você terá uma pasta com o versionamento funcionando (esse passo é equivalente à execução do comando <b>git init</b>). Uma nova tela será apresentada informando que ainda não há nenhuma mudança no repositório local.</p>
+            <img src="imgs/29.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/29.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/29.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 29 – Tela do repositório no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela principal do repositório no GitHub Desktop com título “No local changes” e algumas opções abaixo.</p>
+            <h4>Criando projeto no repositório local</h4>
+            <p>Agora, você criará um novo projeto no Apache NetBeans IDE dentro da pasta que está sendo versionada. Volte ao Apache NetBeans IDE e crie um novo projeto chamado “GitHub Desktop Exemplo” (se desejar, você pode usar outro nome; o importante é ter um novo projeto Java). Antes de concluir a criação do projeto, certifique-se de alterar o local de criação para o diretório que acabou de criar com o GitHub Desktop.</p>
+            <img src="imgs/30.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/30.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/30.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 30 – Criação do projeto "GitHub Desktop Exemplo" no NetBeans <br>
+              Fonte: Apache NetBeans IDE (2023)
+            </p>
+            <p class="acessivel no-print">Tela de criação de projeto Java no NetBeans, com campo <b>Project Name</b> preenchido com “GitHub Desktop Exemplo”.</p>
+            <p>Após o projeto ser criado com sucesso, volte ao GitHub Desktop e perceba algumas mudanças em relação à tela que você tinha anteriormente. Agora, os arquivos criados dentro da pasta versionada estão sendo listados como arquivos novos (pode-se associar isso ao comando <b>git status</b>).</p>
+            <img src="imgs/31.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/31.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/31.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 31 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">À esquerda, uma área <b>Changes</b>, na qual estão listados os arquivos do projeto seguidos de sinal de + à direita de cada um. Na área direita da tela, há o conteúdo do arquivo <b>GitHubDesktopExemplo.java</b>, selecionado à esquerda, com fundo verde.</p>
+            <h4>Registrando commit</h4>
+            <p>Logo abaixo da listagem dos arquivos, há uma área para preencher os dados de registro do <b>commit</b>. Para este exemplo, o <b>commit</b> será chamado de “Criação do projeto”. Após preencher o campo, clique no botão <b>Commit to main</b> para concluir o <b>commit</b> (essa etapa é equivalente aos comandos <b>git add .</b> e <b>git commit</b>).</p>
+            <p>Após isso, a tela apresentará a mensagem de “No local changes” mais uma vez. </p>
+            <h4>Enviando para o repositório remoto</h4>
+            <p>Como você já tem o projeto versionado localmente, é a hora perfeita para enviar todas as informações para o repositório remoto. Para isso, clique no botão <b>Publish repository</b>.</p>
+            <img src="imgs/29.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/29.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/29.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 32 – Tela do repositório no GitHub Desktop <br>
+              Fonte: GitHub (2023)
+            </p>
+            <p class="acessivel no-print">Tela principal do repositório no GitHub Desktop com o título “No local changes” e o botão <b>Publish repository</b> destacado abaixo.</p>
+            <p>Essa ação criará automaticamente um repositório remoto no GitHub, usando todas as informações passadas na criação do repositório local. Porém, antes, há uma tela de confirmação para o GitHub Desktop saber se ele deve usar essas informações ou não. Caso queira alterar alguma informação, você pode fazer isso agora. Antes de continuar, apenas se certifique de que a opção <b>Keep this code private</b> está desmarcada, para criar o repositório remoto com visibilidade pública. Caso deseje mantê-lo privado, você pode deixar a opção marcada.</p>
+            <img src="imgs/33.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/33.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/33.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 33 – Tela de publicação de repositório no GitHub do GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Janela <i>pop-up</i> com título “Publich repository” e campos <b>Name</b> com valor “GitHub-Desktop-Exemplo” e <b>Description</b> com valor “Um repositório para exemplificar o uso de GitHub Desktop”, opção <b>Keep this code private</b> desmarcada e botões <b>Publish repository</b> e <b>Cancel</b>.</p>
+            <p>Quando concluir o envio, o botão antes conhecido como <b>Publish repository</b> passará a se chamar <b>Fetch origin</b> e terá a data e a hora da última vez que houve alguma interação com o repositório remoto. E se você acessar a aba <b>History</b>, terá o histórico completo de cada <b>commit</b> realizado nesse projeto em uma interface parecida com a do site do GitHub. Se você acessar a página do seu novo repositório, perceberá que as informações estão exatamente iguais.</p>
+            <img src="imgs/34.png" class="img-responsive center-block hidden-xs mt-40 print" title="À esquerda, a aba History está acionada, mostrando Criação do projeto e Initial commit. À direita, mostra-se a lista de arquivos e detalhes do arquivo selecionado. ">
+            <a href="imgs/34.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/34.png" class="img-responsive center-block" title="À esquerda, a aba History está acionada, mostrando Criação do projeto e Initial commit. À direita, mostra-se a lista de arquivos e detalhes do arquivo selecionado. ">
+            </a>
+            <p class="legenda-imagem">
+              Figura 34 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">À direita, a aba <b>History</b> está acionada, mostrando <b>Criação do projeto</b> e <b>Initial commit</b>. À direita, mostra-se a lista de arquivos e detalhes do arquivo selecionado.</p>
+            <h4>Sincronizando repositórios local e remoto</h4>
+            <p>Agora, volte ao Apache NetBeans IDE e, mais uma vez, altere a sua classe principal, limpe os comentários e escreva um “Hello World”. O código será o mesmo utilizado no projeto anterior. Após essas mudanças, na aba <b>Changes</b>, você verá um contador <b>1</b> sinalizando que um arquivo sofreu alteração desde o último <b>commit</b>. Se você clicar no arquivo na listagem, conseguirá visualizar todas as mudanças que ocorreram nesse arquivo.</p>
+            <img src="imgs/35.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/35.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/35.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 35 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Na tela, à esquerda, a aba <b>Changes(1)</b> está ativa, mostrando na listagem o nome do arquivo <b>GitHubDesktopExemplo.java</b> e um ponto laranja à direita do nome.</p>
+            <p>O processo de <b>commit</b> será repetido e chamado de “Hello World”.</p>
+            <img src="imgs/36.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/36.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/36.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 36 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela da figura anterior, mas com o campo na parte inferior da aba <b>Changes</b> preenchido com valor “Hello World”; abaixo disso, botão <b>Commit to main</b> ativado.</p>
+            <p>Após concluir o registro de <b>commit</b>, acessando a aba de <b>History</b>, você verá que, além de o novo <b>commit</b> já estar sendo listado, há um ícone de uma seta apontando para cima. Isso significa que há registros no repositório local que ainda não foram sincronizados com o repositório remoto (o mesmo contador aparecerá no botão <b>Push origin</b>). Pressione esse botão e, mais uma vez, terá o processo de <b>git push</b> acontecendo e enviando as informações para o repositório remoto.</p>
+            <img src="imgs/37.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/37.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/37.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 37 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Aba <b>History</b> ativada destacando o <b>commit</b> “Hello World” com uma seta para cima. À direita, a listagem de arquivos presentes no <b>commit</b>.</p>
+            <p>Agora, você fará o processo inverso. Em vez de fazer uma mudança no repositório local, você fará no repositório remoto e depois sincronizará ambos. Para isso, é possível repetir o mesmo procedimento de criação do arquivo <b>README.md</b> que você fez na prática com o GitBash.</p>
+            <div class="caixa-destaque borda-primaria-03 bg-auxiliar-claro-03">
+              <ol type="1">
+                <li>Acesse a página do repositório no GitHub.</li>
+                <li>Clique no botão <b>Add a README</b>.</li>
+                <li>Caso desejar, atualize o arquivo.</li>
+                <li>Conclua clicando no botão <b>Commit new file</b>.</li>
+              </ol>
+            </div>
+            <p>Depois, retorne ao GitHub Desktop e clique no botão <b>Fetch origin</b> para revelar uma nova ação. Como agora há mudanças no repositório remoto em comparação ao repositório local, é preciso “puxar” essas informações. Você verá que a opção <b>Pull origin</b> e um contador de <b>commits</b> aparecerão no topo da tela. </p>
+            <img src="imgs/38.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/38.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/38.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 38 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Aba <b>History</b> ativada destacando no topo o botão <b>Pull origin</b> seguido do número 1.</p>
+            <p>O GitHub Desktop iniciará o processo de <b>git pull</b> assim que você clicar nessa ação. Após concluí-lo, você poderá conferir na tela de <b>History</b> o novo <b>commit</b> adicionado e o arquivo <b>README.md</b> na pasta do diretório.</p>
+            <img src="imgs/39.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/39.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/39.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 39 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela mostrando a aba <b>History</b> ativada e um novo <b>commit Create README.md</b> na lista.</p>
+
+            <h3>Revertendo um commit</h3>
+            <p>Você deve se lembrar que, para reverter o último <b>commit</b> no GitBash, utilizou o comando <b>git revert HEAD</b>. Se quisesse reverter um <b>commit</b> mais antigo, precisaria fazer uma contagem do <b>commit</b> em questão em relação ao último. Bom, aqui no GitHub Desktop, o processo ficou muito mais fácil graças à interface visual do aplicativo. Em <b>History</b>, basta você pressionar o botão direito do <i>mouse</i> sobre o <b>commit</b> que deseja reverter para revelar um menu de opções. Nele, a primeira opção será <b>Revert changes in commit</b>. Nesse exemplo, selecione o <b>commit</b> “Hello World” para reverter.</p>
+            <img src="imgs/40.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/40.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/40.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 40 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela do repositório no GitHub Desktop com aba <b>History</b> ativada mostrando o menu suspenso sobre o <b>commit</b> “Hello World” destacando a opção <b>Revert changes in commit</b>.</p>
+            <p>Após isso, um novo <b>commit</b> será adicionado com a mensagem “Revert Hello World”. Isso significa que as mudanças registradas no <b>commit</b> “Hello World” já foram desfeitas. Agora, tudo o que você precisa é sincronizar isso com o repositório remoto. Então, mais uma vez, clique na ação <b>Push origin</b>.</p>
+            <img src="imgs/41.png" class="img-responsive center-block hidden-xs mt-40 print">
+            <a href="imgs/41.png" target="_blank" class="visible-xs no-print">
+              <p>Clique ou toque para ampliar.</p>
+              <img src="imgs/41.png" class="img-responsive center-block">
+            </a>
+            <p class="legenda-imagem">
+              Figura 41 – Tela de histórico no GitHub Desktop <br>
+              Fonte: GitHub Desktop (2023)
+            </p>
+            <p class="acessivel no-print">Tela mostrando a aba <b>History</b> ativada e um novo <b>commit Revert Hello World</b> na lista.</p>
+            <div class="caixa-destaque borda-primaria-03 icone desafio">
+              <p>Agora que você já aprendeu os principais comandos e processos de versionamento, utilize o GitHub Desktop para clonar o repositório “Git Exemplo”, criado na prática anterior.</p>
+            </div>
+
+            <h3>Encerramento</h3>
+            <p>Este conteúdo começou tratando dos principais comandos utilizados no processo de versionamento de <i>software</i> com Git. Essa base servirá a você de curinga para lidar com qualquer tipo de repositório versionado em Git e em qualquer sistema operacional que você esteja operando, seja Windows, seja Linux, seja Mac.</p>
+            <p>É importante manter o registro de versionamento frequente para evitar problemas no desenvolvimento de projetos de <i>software</i>. Então, sempre que implementar alguma funcionalidade nova, após fazer os devidos testes, procure executar, logo em seguida, os comandos <b>git add .</b> e <b>git commit -m “Resumo sobre o que foi implementado”</b>. </p>
+            <p>Você usará muitos esses comandos no dia a dia como programador. Então, para criar esse hábito, procure anotar os principais comandos em um local onde você tenha fácil acesso para consultá-los sempre que necessário e faça o versionamento de todos os seus projetos.</p>
+            <p>A ideia é criar o hábito para que o uso dos comandos se torne mais natural no seu dia a dia. Uma dica é que essas anotações estejam sempre por perto. Para isso, você pode usar <i>post-its</i>, blocos de notas ou mesmo o <i>software</i> de notas adesivas do Windows. Com o tempo, você deve tornar-se mais independente dessas ferramentas, mas tudo dependerá da sua dedicação e das práticas no dia a dia.</p>
+            <p>Após finalizar um longo dia de trabalho, não esqueça de garantir que as informações tenham sido copiadas para o repositório remoto com o comando <b>git push -u origin master</b>. Caso esteja lidando com repositórios remotos do GitHub, você ainda pode recorrer ao uso de ferramentas com interfaces gráficas, como o GitHub Desktop para realizar o processo com alguns cliques. </p>
+            <div class="caixa-destaque borda-primaria-03 icone dica">
+              <p>Para finalizar este conteúdo, veja uma última dica: aproveite os projetos de <i>software</i> que você desenvolveu até aqui e faça o versionamento deles com o GitHub. Assim, você começará a construir o seu portfólio como desenvolvedor e terá guardado todos os seus projetos em um local seguro, caso precise algum dia. Como bônus, você já pode ir praticando tudo o que aprendeu neste conteúdo.</p>
+            </div>
+            <p>Em caso de dúvidas, consulte seu tutor! </p>
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          
+          <ul class="pagination">
+
+          </ul>
+          
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+    <div class="modal fade" id="modal-fluxo01" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Inicialmente, um novo repositório é criado (comando <b>init</b>), o qual servirá de ponto central para o armazenamento dos arquivos do projeto.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo02" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Em seguida, cada membro da equipe deve fazer uma cópia desse repositório para seu dispositivo local (comando <b>clone</b>). A partir desse momento, as alterações são feitas de forma local até serem enviadas para o servidor central (comando <b>push</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo03" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Quando um desenvolvedor conclui uma tarefa, uma nova <i>branch</i> (ramificação) deve ser criada no seu repositório local.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo04" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Sempre que necessário, o desenvolvedor deve guardar as modificações com uma mensagem de alteração, salvando esse histórico em seu repositório local (comando <b>commit</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo05" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Antes do início de cada nova tarefa, realização dos <b>commits</b> necessários, o desenvolvedor deve atualizar o repositório local, com os arquivos mais recentes (comando <b>pull</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-fluxo06" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Na etapa final do processo, após concluir uma determinada tarefa, o desenvolvedor deve enviar as alterações realizadas para o servidor central (comando <b>push</b>).</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modais 100% -->
+
+    
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

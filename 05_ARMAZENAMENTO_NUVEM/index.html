@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Armazenamento em nuvem: serviços disponíveis, utilização, vantagens e desvantagens</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <!--Extras - novas classes para facilitar-->
+    <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <link href="../template/css/atividades_interativas.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Bruna Flores de Oliveira</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46085400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Bruna Flores de Oliveira</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+          <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+          <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="fundo-tecnicos">
+
+        <div class="acessivel no-print">
+          <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção <b>Grau de pontuação/símbolos</b>, acesse <b>Preferências</b> – <b>Configurações</b> – <b>Fala</b>. Altere o padrão <b>Pouco</b> para <b>Tudo</b>. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade.</p>
+        </div>
+        
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <div class="bloco">
+              <div class="container">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <header class="no-print">
+                    <!-- BTO IMPRIMIR -->
+                    <div class="grupo-imprimir no-print">
+                      <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                        <span class="fa fa-print"></span> <span>Imprimir</span>
+                      </button>
+                    </div>
+                    <!-- /BTO IMPRIMIR -->
+                  </header>
+                  <h2>Armazenamento em nuvem: serviços disponíveis, utilização, vantagens e desvantagens</h2>
+                  <h3>Introdução</h3>
+                  <p>Quando se pensa em controle de código e versionamento, sabe-se que um projeto, caso se esteja trabalhando sozinho nele, pode estar apenas no repositório local, armazenado na própria máquina do desenvolvedor. No entanto, quando se trabalha com uma equipe de desenvolvedores, torna-se necessário o uso de um repositório remoto que possa ser acessado por toda a equipe e que centralize todos os <i>branches</i>, <i>commits</i>, <i>logs</i> etc.</p>
+                  <p>Veja algumas características de repositórios locais e remotos:</p>
+
+                  <div class="no-print" aria-hidden="true">
+                    <p>Clique ou toque para visualizar o conteúdo.</p>
+                    <div class='panel-group gaitinha' id='accordion01' role='tablist' aria-multiselectable='true'>
+                      <div class='panel panel-default'>
+                        <div class='panel-heading' role='tab' id='heading01'>
+                          <h3 class='panel-title'>
+                            <a role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse01' aria-expanded='false' aria-controls='collapse01'>
+                              Localização
+                            </a>
+                          </h3>
+                        </div>
+                        <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
+                          <div class='panel-body'>
+                            <p>Quanto à localização, os repositórios locais podem estar armazenados nos computadores dos membros da equipe de desenvolvimento. Já os repositórios remotos estarão armazenados em computadores que são acessados remotamente por toda a equipe, podendo ser hospedados tanto na Internet quanto na própria rede interna da equipe.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='panel panel-default'>
+                        <div class='panel-heading' role='tab' id='heading02'>
+                          <h3 class='panel-title'>
+                            <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse02' aria-expanded='false' aria-controls='collapse02'>
+                              Funcionalidades
+                            </a>
+                          </h3>
+                        </div>
+                        <div id='collapse02' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading02'>
+                          <div class='panel-body'>
+                            <p>Quanto às funcionalidades de cada um, falando tecnicamente para a equipe, os repositórios local e remoto funcionam da mesma maneira, com os mesmos comandos e os os mesmos <i>branches</i>, <i>commits</i> e <i>logs</i> (descritos no decorrer deste conteúdo). No entanto, em um repositório local, haverá uma cópia de todo o trabalho e todas as versões do projeto que podem ser usadas. Já no repositório remoto não há essa pasta com todos os arquivos, há apenas a pasta <b>.git</b> do projeto.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='panel panel-default'>
+                        <div class='panel-heading' role='tab' id='heading03'>
+                          <h3 class='panel-title'>
+                            <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse03' aria-expanded='false' aria-controls='collapse03'>
+                              Repositórios
+                            </a>
+                          </h3>
+                        </div>
+                        <div id='collapse03' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading03'>
+                          <div class='panel-body'>
+                            <p>Quanto ao uso de repositórios, é importante sempre lembrar que os trabalhos nos projetos sempre ocorrem na máquina local; todas as modificações no código e seus <b>commits</b> são feitos localmente. Com isso, e após isso, as modificações podem ser “subidas” para um repositório remoto com o intuito de compartilhar com todo o time de desenvolvimento. Nunca se deve esquecer de que repositórios remotos são uma maneira de compartilhar e dividir código entre desenvolvedores, e não uma maneira de armazenar e trabalhar com arquivos.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='panel panel-default'>
+                        <div class='panel-heading' role='tab' id='heading04'>
+                          <h3 class='panel-title'>
+                            <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse04' aria-expanded='false' aria-controls='collapse04'>
+                              Criação de repositórios
+                            </a>
+                          </h3>
+                        </div>
+                        <div id='collapse04' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading04'>
+                          <div class='panel-body'>
+                            <p>Quanto à criação de repositórios, há duas opções: usar um repositório local, que pode ser criado do zero ou clonado de um repositório local existente, ou então criar um repositório remoto, que pode ser feito de duas maneiras (caso você já tenha um repositório local, basta você cloná-lo com a <i>tag</i> <b>-- bare</b>; e em caso de criar um novo repositório remoto em branco, basta usar o comando <b>git init</b> também com a <i>tag</i> <b>--bare</b>).</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class='panel panel-default'>
+                        <div class='panel-heading' role='tab' id='heading05'>
+                          <h3 class='panel-title'>
+                            <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse05' aria-expanded='false' aria-controls='collapse05'>
+                              Fluxo de trabalho
+                            </a>
+                          </h3>
+                        </div>
+                        <div id='collapse05' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading05'>
+                          <div class='panel-body'>
+                            <p>Quanto ao fluxo de trabalho em repositórios remotos e locais, ao usar o Git para controle de seu repositório, há apenas alguns comandos para interagir com repositórios remotos, pois a grande maioria das operações que são executadas se dão no repositório local. A menos que você tenha clonado um projeto remoto, estará trabalhando exclusivamente em um repositório local que nunca deixará a própria máquina. Com isso, para trabalhar com um repositório Git local, nem mesmo a Internet é necessária, pois todo o trabalho pode ser feito de maneira <i>off-line</i>.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="acessivel print">
+                    <p><b>Localização</b></p>
+                    <p>Quanto à localização, os repositórios locais podem estar armazenados nos computadores dos membros da equipe de desenvolvimento. Já os repositórios remotos estarão armazenados em computadores que são acessados remotamente por toda a equipe, podendo ser hospedados tanto na Internet quanto na própria rede interna da equipe.</p>
+                    <p><b>Funcionalidades</b></p>
+                    <p>Quanto às funcionalidades de cada um, falando tecnicamente para a equipe, os repositórios local e remoto funcionam da mesma maneira, com os mesmos comandos e os os mesmos <i>branches</i>, <i>commits</i> e <i>logs</i> (descritos no decorrer deste conteúdo). No entanto, em um repositório local, haverá uma cópia de todo o trabalho e todas as versões do projeto que podem ser usadas. Já no repositório remoto não há essa pasta com todos os arquivos, há apenas a pasta <b>.git</b> do projeto.</p>
+                    <p><b>Repositórios</b></p>
+                    <p>Quanto ao uso de repositórios, é importante sempre lembrar que os trabalhos nos projetos sempre ocorrem na máquina local; todas as modificações no código e seus <b>commits</b> são feitos localmente. Com isso, e após isso, as modificações podem ser “subidas” para um repositório remoto com o intuito de compartilhar com todo o time de desenvolvimento. Nunca se deve esquecer de que repositórios remotos são uma maneira de compartilhar e dividir código entre desenvolvedores, e não uma maneira de armazenar e trabalhar com arquivos.</p>
+                    <p><b>Criação de repositórios</b></p>
+                    <p>Quanto à criação de repositórios, há duas opções: usar um repositório local, que pode ser criado do zero ou clonado de um repositório local existente, ou então criar um repositório remoto, que pode ser feito de duas maneiras (caso você já tenha um repositório local, basta você cloná-lo com a <i>tag</i> <b>-- bare</b>; e em caso de criar um novo repositório remoto em branco, basta usar o comando <b>git init</b> também com a <i>tag</i> <b>--bare</b>).</p>
+                    <p><b>Fluxo de trabalho</b></p>
+                    <p>Quanto ao fluxo de trabalho em repositórios remotos e locais, ao usar o Git para controle de seu repositório, há apenas alguns comandos para interagir com repositórios remotos, pois a grande maioria das operações que são executadas se dão no repositório local. A menos que você tenha clonado um projeto remoto, estará trabalhando exclusivamente em um repositório local que nunca deixará a própria máquina. Com isso, para trabalhar com um repositório Git local, nem mesmo a Internet é necessária, pois todo o trabalho pode ser feito de maneira <i>off-line</i>.</p>
+                  </div>
+
+                  <p>A seguir, veja uma figura que representa o fluxo de trabalho de um repositório Git que é tanto local quanto remoto.</p>
+                  <img src="imgs/01.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/01.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/01.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 1 – Visualizando como funciona um repositório local e remoto <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Na imagem, é possível ver, separados entre esquerda e direita, no topo, repositórios local e remoto. Logo abaixo, na coluna do repositório local, há três linhas: a primeira chamada <i>working directory</i>, a segunda chamada <i>staging area</i> e a terceira chamada “localrepo”. A primeira delas tem uma seta que a liga à linha <i>staging area</i>, na qual está escrito o comando <b>git add</b>. A linha <i>staging area</i> tem uma flecha ligando-a à linha “localrepo”, na qual está escrito o comando <b>git commit</b>. Já a linha “localrepo” está ligada à coluna <i>remote</i> com uma seta que tem o comando <b>git push</b>. Agora, voltando do remoto até a primeira linha, há uma seta da linha <i>remote repo</i> da coluna <i>remote</i> ligando para a esquerda na linha “localrepo” com o comando <b>git pull</b> e duas setas ligando a linha “localrepo” ao <i>working directory</i> com os comandos <b>git</b> <b>checkout</b> e <b>git merge</b>.</p>
+
+                </div>
+                <!--
+                <div class="col-md-5 col-sm-5 hidden-xs">
+                  <img src="imgs/img1.png" class="no-print" aria-hidden="true">
+                </div>
+                -->
+              </div>
+            </div>
+
+            <img src="imgs/separador1.png" class="img-responsive center-block visible-sm visible-xs no-print" aria-hidden="true">
+            <div class="separador1 center-block no-print hidden-sm hidden-xs" aria-hidden="true"></div>
+
+            <div class="bloco azul">
+              <div class="container">
+                <h3>Armazenamento em nuvem</h3>
+                <p>O armazenamento em nuvem refere-se a algo armazenado em um computador que não está localmente com o usuário, e sim em algum lugar remoto.</p>
+                <p>Pode-se pensar em diversos serviços de armazenamento na nuvem disponíveis: iCloud, OneDrive, Google Drive etc. No entanto, para versionamento de código, não basta ter um lugar na nuvem para armazenamento, pois, assim, haverá apenas os seus arquivos <i>on-line</i>, sem uma organização específica ou um controle de envios e atualizações.</p>
+                <p>Apenas armazenar arquivos em nuvem não difere muito (nem deve diferir) de guardar arquivos em uma pasta local do computador. Assim, caso sejam feitas alterações localmente nos arquivos, tornaria-se muito inconveniente manter a nuvem e o armazenamento local sincronizados. O problema ficaria ainda maior caso houvesse uma equipe de desenvolvimento, pois várias pessoas mantendo vários arquivos em um armazenamento <i>on-line</i> seria muito caótico e antiprodutivo.</p>
+                <p>Armazenar códigos na nuvem refere-se a serviços <i>on-line</i> que têm um servidor Git rodando e ao qual se tem acesso para fazer a manutenção dos códigos.</p>
+                <p>Em meados de 2005, o criador do Kernel Linux, Linus Torvalds, já não conseguia manter um código tão grande e complexo e contava com a participação de milhares de colaboradores do projeto Linux. Ele então pensou em como criar uma ferramenta que pudesse ter velocidade, fosse simples, pudesse manter milhares de ramificações de código, fosse completamente distribuída e <i>on-line</i> e conseguisse lidar com grandes projetos com eficiência. Ele criou então, no ano de 2005 o Git, um sistema de gerenciamento de configuração que ajuda você a acompanhar todas as alterações feitas no código do seu projeto. Você pode salvar cópias de seus trabalhos em momentos diferentes, para que possa voltar e ver o que escreveu anteriormente, por exemplo. Você também pode compartilhar seus códigos com outras pessoas e trabalhar neles juntos.</p>
+                <p>O Git funciona criando uma pasta especial em seu computador (repositório local), na qual você guarda todos os seus arquivos e códigos. Quando você quiser fazer uma alteração em um arquivo, você executa um comando <b>git</b> (no caso, o comando <b>commit</b>) para salvar uma cópia do código. Você também pode adicionar uma mensagem para explicar o que mudou.</p>
+                <p>O Git controla todas as cópias de seus arquivos e as mensagens que você adicionou. Dessa forma, você pode ver um histórico de todas as alterações feitas e o que estava pensando quando as fez.</p>
+                <p>Para usar o Git, você precisará instalá-lo em seu computador. Depois de instalado, você pode criar um novo projeto Git criando uma nova pasta e aplicar alguns comandos, como <b>git init</b>, para inicializar o repositório, <b>git add</b>, para informar alterações em um arquivo para o controle de versão, e <b>git commit</b>, para salvar a cópia atualizada do arquivo no controle de versão, informando uma observação que explica o que foi alterado. </p>
+                <p>Você também pode usar o Git para compartilhar seus arquivos com outras pessoas. Para fazer isso, você pode usar um serviço de nuvem como o GitHub (você verá como fazer uso do GitHub na sequência do conteúdo), que é um <i>site</i> que permite armazenar seus repositórios Git <i>on-line</i>. Você pode usar o Git para enviar suas alterações para o repositório no GitHub, e outras pessoas podem usar o Git para enviar essas alterações para os próprios computadores.</p>
+                <p>Há muito mais coisas que você pode fazer com o Git, mas essas são as etapas básicas para começar.</p>
+                <p>Veja, a seguir, alguns comandos Git comuns e uma breve explicação do que eles fazem.</p>
+                
+                <div class="no-print" aria-hidden="true">
+                  <p>Clique ou toque para visualizar o conteúdo.</p>
+                  <div class='panel-group gaitinha' id='accordion02' role='tablist' aria-multiselectable='true'>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading06'>
+                        <h3 class='panel-title'>
+                          <a role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse06' aria-expanded='false' aria-controls='collapse06'>
+                            git init 
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse06' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading06'>
+                        <div class='panel-body'>
+                          <p>Inicializa um novo repositório Git.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading07'>
+                        <h3 class='panel-title'>
+                          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse07' aria-expanded='false' aria-controls='collapse07'>
+                            git clone
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse07' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading07'>
+                        <div class='panel-body'>
+                          <p>Faz uma cópia de um repositório Git existente.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading08'>
+                        <h3 class='panel-title'>
+                          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse08' aria-expanded='false' aria-controls='collapse08'>
+                            git add
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse08' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading08'>
+                        <div class='panel-body'>
+                          <p>Adiciona um arquivo à área de alterações de arquivos, que é uma lista de alterações que serão incluídas no próximo <b>commit</b>.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading09'>
+                        <h3 class='panel-title'>
+                          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse09' aria-expanded='false' aria-controls='collapse09'>
+                            git commit
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse09' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading09'>
+                        <div class='panel-body'>
+                          <p>Salva um “retrato atual” das alterações na área de alterações de arquivos e adiciona uma mensagem descrevendo-as.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading10'>
+                        <h3 class='panel-title'>
+                          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse10' aria-expanded='false' aria-controls='collapse10'>
+                            git push
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse10' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading10'>
+                        <div class='panel-body'>
+                          <p>Envia as alterações confirmadas para um repositório remoto, como um repositório no GitHub.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading11'>
+                        <h3 class='panel-title'>
+                          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse11' aria-expanded='false' aria-controls='collapse11'>
+                            git pull
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse11' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading11'>
+                        <div class='panel-body'>
+                          <p>Baixa as alterações de um repositório remoto, mesclando-as no repositório local.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading12'>
+                        <h3 class='panel-title'>
+                          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse12' aria-expanded='false' aria-controls='collapse12'>
+                            git diff
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse12' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading12'>
+                        <div class='panel-body'>
+                          <p>Mostra as diferenças entre duas versões de um arquivo.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='panel panel-default'>
+                      <div class='panel-heading' role='tab' id='heading13'>
+                        <h3 class='panel-title'>
+                          <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse13' aria-expanded='false' aria-controls='collapse13'>
+                            git log
+                          </a>
+                        </h3>
+                      </div>
+                      <div id='collapse13' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading13'>
+                        <div class='panel-body'>
+                          <p>Mostra um histórico de <b>commits</b> para um repositório.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="acessivel print">
+                  <b>git init </b> <br>
+                  Inicializa um novo repositório Git. <br>
+                  <b>git clone</b> <br>
+                  Faz uma cópia de um repositório Git existente. <br>
+                  <b>git add</b> <br>
+                  Adiciona um arquivo à área de alterações de arquivos, que é uma lista de alterações que serão incluídas no próximo <b>commit</b>. <br>
+                  <b>git commit</b> <br>
+                  Salva um “retrato atual” das alterações na área de alterações de arquivos e adiciona uma mensagem descrevendo-as. <br>
+                  <b>git push</b> <br>
+                  Envia as alterações confirmadas para um repositório remoto, como um repositório no GitHub. <br>
+                  <b>git pull</b> <br>
+                  Baixa as alterações de um repositório remoto, mesclando-as no repositório local. <br>
+                  <b>git diff</b> <br>
+                  Mostra as diferenças entre duas versões de um arquivo. <br>
+                  <b>git log</b> <br>
+                  Mostra um histórico de <b>commits</b> para um repositório.
+                </div>
+
+                <p>Veja, a seguir, um exemplo de como você pode usar alguns desses comandos.</p>
+                <div class="caixa-destaque bg-auxiliar-claro-03 borda-primaria-03">
+                  <ul class="marcador-seta">
+                    <li>Crie uma nova pasta e navegue até ela no terminal.</li>
+                    <li>Execute <b>git init</b> para inicializar a pasta como um repositório Git.</li>
+                    <li>Crie alguns novos arquivos ou faça alterações nos arquivos existentes no repositório.</li>
+                    <li>Execute <b>git add</b> seguido pelos nomes dos arquivos que você deseja adicionar à área de teste. Por exemplo, <b>git add arquivo1.txt arquivo2.txt</b>.</li>
+                    <li>Execute <b>git commit</b> para salvar um instantâneo das alterações na área de preparação e adicione uma mensagem descrevendo as alterações.</li>
+                    <li>Se você deseja compartilhar suas alterações com outras pessoas, pode executar <b>git push</b> para enviar as alterações confirmadas para um repositório remoto.</li>
+                  </ul>
+                </div>
+                <p>Pensando nesse modelo de colaboração em códigos de programação, há vários serviços gratuitos de armazenamento de códigos, por exemplo, GitHub, GitLab, BitBucket, entre outros. Porém não se pode esquecer de que é possível criar o próprio servidor na nuvem e, com ele, configurar e instalar um servidor Git para que seja utilizado, então, para o armazenamento de seus códigos.</p>
+                <p>Esse tipo de serviço é muito utilizado por empresas de desenvolvimento que não têm um servidor local. Então, algumas utilizam um servidor privado virtual (VPS) para fazer a manutenção de seus códigos na nuvem. Algumas empresas que alugam servidores virtuais privados são: Vultr, Digital Ocean, Amazon Aws, Google Cloud, entre outras.</p>
+                
+              </div>
+            </div>
+
+            <img src="imgs/separador2.png" class="img-responsive center-block visible-sm visible-xs no-print" aria-hidden="true">
+            <div class="separador2 center-block no-print hidden-sm hidden-xs" aria-hidden="true"></div>
+
+            <div class="bloco">
+              <div class="container">
+                <h3>Serviços disponíveis</h3>
+                <p>Para armazenar seus códigos, hoje, existem diversos serviços gratuitos e <i>on-line</i>, que servem inclusive para usar como portfólio. Afinal de contas, as empresas, na hora de contratar um novo desenvolvedor, sempre dão uma conferida no seu GitHub, GitLab ou semelhante. Inclusive, é sempre bom colocar em seu currículo o <i>link</i> para os seus códigos armazenados nesses serviços <i>on-line</i>.</p>
+                <p>Aqui neste conteúdo, você verá como utilizar o GitHub, por ser o mais popular entre esses serviços. Contudo, tenha em mente que, em sua maioria, eles funcionam de maneira muito semelhante (e com pequenas alterações você será capaz de utilizar o que melhor lhe servir).</p>
+                <p>Para criar uma conta no GitHub, siga as etapas a seguir.</p>
+                <img src="imgs/infografico.png" class="img-responsive center-block hidden-xs  print" aria-hidden="true">
+                <a href="imgs/infografico.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar</p>
+                  <img src="imgs/infografico.png" class="img-responsive center-block no-print" aria-hidden="true">
+                </a>
+                <div class="acessivel no-print">
+                  <ol type="1">
+                    <li>Acesse o <i>site</i> do GitHub.</li>
+                    <li>Clique no botão <b>Inscreva-se</b> (ou <b>Sign up</b>) no canto superior direito da página.</li>
+                    <li>Digite seu endereço de <i>e-mail</i>, escolha um nome de usuário e crie uma senha.</li>
+                    <li>Clique no botão <b>Continuar</b>.</li>
+                    <li>Siga as instruções para concluir o processo de inscrição. Isso pode incluir a verificação do seu endereço de <i>e-mail</i> ou o preenchimento de um <i>captcha</i>.</li>
+                    <li>Ao final, você pode escolher quantas pessoas podem colaborar em seu time e de quais ferramentas você necessita (marque ao menos <b>código colaborativo</b>).</li>
+                  </ol>
+                </div>
+                <p>Depois de criar sua conta, você pode usar o GitHub para armazenar e gerenciar seus repositórios Git <i>on-line</i>. Você pode usar o Git para enviar suas alterações para o repositório no GitHub, e outras pessoas podem usar o Git para enviar essas alterações para os próprios computadores.</p>
+                <h4>Utilização</h4>
+                <p>Um repositório tem a sua URL (<i>uniform resource locator</i>, ou localizador uniforme de recursos) remota, que nada mais é do que uma maneira “bonitinha” de dizer “o local onde o seu código está”. Nessa URL está a localização do seu código. No caso do GitHub, existem duas maneiras de subir o seu código utilizando essa URL remota, quais sejam:</p>
+                <div class="caixa-destaque borda-primaria-03">
+                  <ul class="cor01">
+                    <li>Uma URL remota de acesso via HTTPS (<i>hyper text transfer protocol secure</i>, ou protocolo de transferência de hipertexto seguro) – https://github.com/user/repo.git.</li>
+                    <li>Uma URL remota de acesso via SSH (<i>secure schell</i>) – git@github.com:user/repo.git.</li>
+                  </ul>
+                </div>
+                <p>Para criar um repositório remoto, utiliza-se o comando <b>git remote add</b>.</p>
+                <pre>
+                  <code>
+git remote add origin &lt;REMOTE_URL&gt;
+                  </code>
+                </pre>
+                <p>O GitHub associa a URL remota a um nome, e, por padrão, usa-se o nome “origin”.</p>
+                <p>Caso seja necessário alterar essa URL, é possível usar o comando <b>git remote set-url</b> para fazer tal alteração.</p>
+                <p>Você saberá mais sobre esse tipo de operação na próxima parte do conteúdo, a qual abordará os programas utilizados para a configuração e a manutenção desses repositórios.</p>
+                <p>As URLs “https://” do GitHub estão disponíveis para todos os repositórios da plataforma. No entanto, quando você for executar um comando <b>git clone</b>, <b>git fetch</b>, <b>git pull</b> ou <b>git push</b>, será pedida uma senha de acesso e serão exibidas novas políticas de segurança da plataforma. Não se pode usar uma simples senha para executar esses comandos. Contudo, em vez da senha, você usará um <i>token</i> pessoal de acesso ao repositório.</p>
+                <p><i>Tokens</i> de acesso pessoal aos repositórios são uma alternativa às senhas e devem ser usados para o acesso remoto a repositórios armazenados na plataforma GitHub.</p>
+                <p>Existem dois tipos de <i>token</i> de acesso aos repositórios, os <i>fine-grained personal access tokens</i> e os <i>personal access tokens (classic)</i>. A plataforma sugere que seja utilizado o primeiro deles, em razão das vantagens que ele apresenta. Inclusive, com o <i>fine-grained</i>, as organizações podem liberar ou restringir acesso a certos repositórios, o que é interessante para empresas com um grande número de desenvolvedores.</p>
+                <p>As vantagens do <i>fine-grained personal access token</i> são:</p>
+                <div class="caixa-destaque bg-auxiliar-claro-03 borda-primaria-03">
+                  <ul class="marcador-seta">
+                    <li>Cada <i>token</i> só pode acessar recursos pertencentes a um único usuário ou uma única organização.</li>
+                    <li>Cada <i>token</i> só pode acessar repositórios específicos.</li>
+                    <li>Cada <i>token</i> recebe permissões específicas, que oferecem mais controle do que os escopos concedidos aos <i>tokens</i> de acesso pessoal (clássico).</li>
+                    <li>Cada <i>token</i> deve ter uma data de expiração.</li>
+                    <li>Os proprietários da organização podem exigir aprovação para qualquer <i>token</i> de acesso pessoal refinado que possa acessar recursos na organização.</li>
+                  </ul>
+                </div>
+                <p>Para efeito de estudo, neste conteúdo, será usado o <i>token</i> clássico, pois você trabalhará com repositórios pessoais de projetos de estudo.</p>
+                <p>Para criar esse <i>token</i> pessoal de acesso clássico, siga os seguintes passos:</p>
+                <ol type="1">
+                  <li>Verifique seu endereço de <i>e-mail</i>, caso ainda não tenha sido verificado.</li>
+                  <li>No canto superior direito de qualquer página dentro do GitHub, clique na foto do seu perfil e clique em <b>Settings</b> (configurações).</li>
+                  <img src="imgs/02.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/02.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/02.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 2 – Clicando no ícone de conta do usuário <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Na imagem, percebe-se que o ícone de conta do usuário foi clicado, o menu suspenso da conta em questão está aberto e a opção <b>Settings</b> está grifada.</p>
+                  <li>Na barra lateral esquerda, clique em <b>Developer Settings</b> (configurações do desenvolvedor), último item do menu à esquerda.</li>
+                  <img src="imgs/03.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/03.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/03.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 3 – Item <b>Developer Settings</b> na página de configurações da conta <br>
+                    Fonte: GitHub (2023)
+                  </p>
+                  <p class="acessivel no-print">Página de configurações de perfil do GitHub mostrando, à esquerda, menu de opções, sendo a última delas <b>Developer Settings</b>.</p>
+                  <li>Na barra lateral esquerda, em <b>Personal Access Tokens</b> (<i>tokens</i> de acesso pessoal), clique em <b>Tokens (classic)</b>.</li>
+                  <li>Selecione <b>Generate new token</b> (gerar novo <i>token</i>) e clique em <b>Generate new token (classic)</b>.</li>
+                  <img src="imgs/04.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/04.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/04.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 4 – Opção <b>Generate new token (classic)</b> <br>
+                    Fonte: GitHub (2023)
+                  </p>
+                  <p class="acessivel no-print">Página <b>Developer Settings</b> do GitHub, destacando o item de menu lateral <b>Personal access tokens</b> expandido e subitem <b>Token (classic)</b> selecionado. Na área principal da tela, um título <b>Personal access tokens (classic)</b> e, à direita, um botão expansível <b>Generate new token</b> expandido, revelando as opções <b>Generate new token</b> e <b>Generate new token (classic)</b>, que está selecionada.</p>
+                  <li>No campo <b>Note</b>, dê um nome descritivo ao seu <i>token</i>.</li>
+                  <img src="imgs/05.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/05.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/05.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 5 – Nomeando o <i>token</i> a ser gerado <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Na figura, há uma caixa de texto aguardando a entrada do nome descritivo do <i>token</i> a ser criado.</p>
+                  <li>Para dar uma data de expiração ao seu <i>token</i>, selecione o menu suspenso <b>Expiration</b> e clique em um padrão (semanas ou meses) ou então use o seletor de calendário.</li>
+                  <img src="imgs/06.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/06.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/06.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 6 – Campo de data de expiração do <i>token</i> <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Na imagem, há o menu de seleção do tempo de expiração do <i>token</i> a ser criado. No caso, está selecionada a opção <b>7 days</b>.</p>
+                  <li>Selecione os escopos que você gostaria de conceder a esse <i>token</i>. Para usar seu <i>token</i> para acesso a repositórios por meio da linha de comando, selecione <b>repo</b> (veja no <i>gif</i> a seguir). Um <i>token</i> sem escopos atribuídos só pode acessar informações públicas. </li>
+                  <img src="imgs/gif-01.gif" class="img-responsive center-block hidden-xs mt-40">
+                  <a href="imgs/gif-01.gif" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/gif-01.gif" class="img-responsive center-block">
+                  </a>
+                  <p class="acessivel no-print">No <i>gif</i> animado, há uma lista de seleção na qual o <i>mouse</i> seleciona algumas opções de permissão de escrita e de <i>delete</i> do <i>token</i> a ser gerado.</p>
+                  <li class="mt-40">Clique em <b>Generate token</b> (gerar <i>token</i>).</li>
+                  <img src="imgs/07.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/07.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/07.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 7 – Botão <b>Generate token</b> <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Na imagem, está grifado o botão verde de <b>Generate token</b>.</p>
+                </ol>
+                <p>O <i>token</i>, então, é gerado e pode ser usado como senha quando for questionado para executar as ações via linha de comando no repositório. É importante certificar-se de copiar e salvar esse <i>token</i> em algum arquivo, pois ele será exibido apenas uma vez pelo GitHub.</p>
+                <img src="imgs/08.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/08.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/08.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 8 – <i>Token</i> gerado e pronto para ser copiado e usado <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, percebe-se que o <i>token</i> foi gerado com sucesso. Grifado em destaque, há o botão de copiar o <i>token</i> para que possa ser colado na hora do <i>login</i>.</p>
+                <p>No Git, quando for necessário utilizar o <i>token</i>, é necessário informá-lo via linha de comando ou por meio da interface gráfica sendo utilizada. A seguir, veja um exemplo de como seria o uso do <i>token</i> em uma linha de comando.</p>
+                <pre>
+                  <code>
+$ git clone https://GitHub.com/USERNAME/REPO.git
+Username: YOUR_USERNAME
+Password: YOUR_TOKEN
+                  </code>
+                </pre>
+                <p>Então, utilizam-se o seu nome de usuário do GitHub e, no campo de <i>password</i>, o <i>token</i> gerado para acesso ao repositório.</p>
+                
+              </div>
+            </div>
+
+            <img src="imgs/separador1.png" class="img-responsive center-block visible-sm visible-xs no-print" aria-hidden="true">
+            <div class="separador1 center-block no-print hidden-sm hidden-xs" aria-hidden="true"></div>
+
+            <div class="bloco azul">
+              <div class="container">
+                <h3>Sistema de gerenciamento de configuração</h3>
+                <p>É claro que nem sempre será preciso recorrer a todos os comandos Git para executar seu trabalho diário em códigos e projetos. Para facilitar todas essas operações, existem diversos clientes Git que podem ser instalados, e suas ferramentas podem ser utilizadas para controlar e configurar seus repositórios.</p>
+                <p>Os mais populares entre esses clientes Git são:</p>
+                <img src="imgs/painel.png" title="GitHub Desktop, GitKraken, Sourcetree, Tortoise Git, SmartGit, GitForce, Git Cola, Aurees, Magit, Fork." class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/painel.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/painel.png" class="img-responsive center-block">
+                  </a>
+                <!-- <div class="row">
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_github.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_gitkraken.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_sourcetree.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_tortoise.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_smartgit.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_gitforce.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_gitcola.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_aurees.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_magit.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <img src="imgs/logo_fork.png" class="img-responsive center-block hidden-xs mt-40">
+                  </div>
+                </div> -->
+                <p>Neste conteúdo, você verá como usar o GitHub Desktop, por ser o mais popular entre os clientes Git do mercado. Lembre-se de que qualquer um deles tem similaridades com o GitHub Desktop.</p>
+                <h4>Instalação</h4>
+                <p>Ao acessar a página do GitHub Desktop (busque por “<i>desktop</i> GitHub” na Internet), você verá o botão, ao centro, com o <i>link</i> para o <i>download</i> do instalador para a versão Windows. Caso você seja usuário de macOS, logo abaixo, à direita, há o <i>link</i> para a versão do instalador.</p>
+                <img src="imgs/09.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/09.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/09.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 9 – Página inicial para o <i>download</i> do <i>app</i> do GitHub Desktop <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a página desktop.github.com e, ao centro, o botão na cor roxa com o conteúdo <b>Download for Windows</b>.</p>
+                <h4>Configuração</h4>
+                <p>Ao executar o instalador, você é levado à primeira tela, que faz a sugestão de logaritmos com sua conta do GitHub, o que facilitará muito o processo de configuração. Faça, então, o <i>login</i> com o seu usuário e a sua senha do GitHub.</p>
+                <img src="imgs/10.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/10.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/10.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 10 – Tela inicial de instalação do GitHub Desktop <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, é possível ver a tela inicial de instalação do aplicativo baixado. À esquerda, no centro, há o botão azul <b>Sign in to GitHub.com</b></p>
+                <p>Ao clicar em <b>Sign in to GitHub.com</b> (botão azul), você é levado à página de <i>login</i> do <i>site</i> do GitHub.</p>
+                <img src="imgs/11.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/11.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/11.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 11 – Entrando com usuário e senha para logar no GitHub <br>
+                  Fonte: GitHub (2023)
+                </p>
+                <p class="acessivel no-print">Tela de <i>login</i> do GitHub com os campos <b>Username</b> e <b>Password</b> e o botão em verde <b>Sign in</b>.</p>
+                <img src="imgs/12.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/12.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/12.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 12 – Tela de configuração inicial do GitHub Desktop <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Tela de configuração inicial do GitHub Desktop, na qual se pode ver a seleção radial escolhida para utilizar a conta GitHub de <i>login on-line</i> e, em azul, o botão <b>Finish</b>. Abaixo, percebe-se que a conta está logada e funcionando.</p>
+                <p>É possível perceber que, agora, os dados da sua conta já foram “puxados” e você está pronto para concluir a instalação, clicando no botão azul <b>Finish</b>.</p>
+                <p>Após essa etapa, você já é levado à tela inicial do aplicativo, onde pode escolher a opção <b>Create a tutorial repositlory</b> (criar um repositório de tutorial) para aprender como criar um novo repositório no GitHub por meio do <i>app</i>.</p>
+                <img src="imgs/13.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/13.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/13.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 13 – Tela inicial do GitHub Desktop (criando um repositório de tutorial) <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a tela inicial do GitHub Desktop (criando um repositório de tutorial). Está grifado o botão azul de criação de um repositório de tutorial.</p>
+                <p>A seguir, veja o botão azul que inicia a criação de um repositório e faz um tutorial de como criá-lo. É possível ver que, na lista à direita, em destaque amarelo, estão os repositórios que você já tem em sua conta do GitHub.</p>
+                <img src="imgs/14.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/14.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/14.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 14 – Repositórios remotos encontrados na conta logada em questão <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Igual à figura anterior, porém agora estão grifados, à direita, os repositórios remotos da conta logada em questão.</p>
+                <h4>Fazendo o tutorial de criação de repositório</h4>
+                <p>Ao clicar no botão de criação de repositório, tutorial, você receberá um alerta:</p>
+                <img src="imgs/15.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/15.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/15.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 15 – Caixa de alerta de início do tutorial <br>
+                  Fonte: GitHub (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a caixa de diálogo de início do tutorial com os botões <b>Continue</b>, em azul, e <b>Cancel</b>, em cinza.</p>
+                <p>Nesse aviso, está escrito que o tutorial criará um repositório na sua máquina local com o nome da sua conta no GitHub e que esse repositório será visível apenas para você que o criou. É possível clicar, então, no botão azul <b>Continue</b>.</p>
+                <p>A criação do repositório começará com a barra de progresso em branco sendo preenchida. Assim que o GitHub Desktop for fazer o <i>upload</i> do repositório para o <i>site</i> do GitHub, você será questionado sobre o <i>token</i> de conexão que criou anteriormente, mas, como você está no ambiente <i>desktop</i>, pode fazer novamente o <i>login</i> pelo <i>site</i>, clicando no botão azul <b>Sign in with your Browser</b>. Caso queira logar com o <i>token</i> criado, basta clicar no botão cinza <b>Sign in with a code</b>.</p>
+                <img src="imgs/16.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/16.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/16.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 16 – Logando com o navegador ou com o <i>token</i> <br>
+                  Fonte: GitHub (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há o alerta da figura anterior e também a janela de <i>login</i> com as opções de logar com o navegador ou com o <i>token</i> criado.</p>
+                <p>Clicando em <b>Sign in with your Browser</b>, você será redirecionado mais uma vez ao navegador, mas, como já fez o <i>login</i> antes, desta vez será apenas direcionado ao aplicativo e receberá no navegador a tela de conexão bem-sucedida.</p>
+                <img src="imgs/17.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/17.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/17.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 17 – Alerta de <i>login</i> com sucesso <br>
+                  Fonte: GitHub (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há o alerta de autenticação efetuada com sucesso.</p>
+                <p>Feito isso, a configuração do seu primeiro repositório local e remoto está pronta.</p>
+                <p>O repositório local será criado em uma pasta semelhante a esta: <b>C:\Users\usuario\Documents\GitHub\desktop-tutorial</b>. Assim, você estará pronto para fazer seus <b>commits</b> e <b>pushes</b> à vontade.</p>
+                <img src="imgs/18.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/18.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/18.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 18 – Repositório de tutorial criado com sucesso <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a tela principal do GitHub Desktop e, à direita, a lista de tarefas do tutorial criado.</p>
+                <h4>Gerenciamento</h4>
+                <p>Após a criação do repositório, você pode, então, começar propriamente o tutorial à direita, onde é possível ver uma lista com alguns passos a serem seguidos para aprender o básico sobre o gerenciamento do repositório criado.</p>
+                <img src="imgs/19.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/19.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/19.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 19 – Barra com o passo a passo do tutorial <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a tela principal do GitHub Desktop e, grifado à direita, a lista de tarefas do tutorial criado.</p>
+                <p>Pode-se ver, neste caso, que o primeiro passo, <b>Install a text editor</b> (instalar um editor de texto), já está cumprido, pois, na máquina, você já tem um editor de texto instalado. Na sua máquina, você pode utilizar o editor de código ou texto de sua preferência, NetBeans, VsCode, Sublime etc.</p>
+                <p>O passo número dois do tutorial nos ensina a como criar uma nova <i>branch</i> (ramificação) para o nosso repositório. Essas ramificações podem sofrer alterações sem prejudicar nem alterar o código da <i>branch</i> principal. Esse novo ramo criado só entrará para o ramo principal caso ele seja <i>merged</i> (mesclado) com o principal do projeto.</p>
+                <p>Há duas maneiras de fazer isso: clicando no seletor de <i>branches</i>, que, no momento, está em <b>branch main</b>, como aponta a seta azul, ou então apertando as teclas <b>Ctrl + Shift + N</b>.</p>
+                <p>Ao apertar o atalho <b>Ctrl + Shift + N</b>, a janela de criação de nova <i>branch</i> se abre e pede que você escolha um nome para ela. Neste caso, será criada a <i>branch</i> “teste”.</p>
+                <img src="imgs/20.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/20.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/20.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 20 – Criando uma nova <i>branch</i> no projeto do tutorial <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a janela de criação de uma nova <i>branch</i> e, na caixa de texto do nome da nova <i>branch</i>, há a palavra “teste”.</p>
+                <p>Após clicar no botão <b>Create branch</b>, você verá que a <i>branch</i> foi criada e que é atualmente a selecionada.</p>
+                <img src="imgs/21.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/21.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/21.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 21 – <i>Branch</i> criada e em uso com sucesso <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a tela inicial do GitHub Desktop e, grifado ao centro, no topo, há a confirmação de que a <i>branch</i> está criada e selecionada como ativa.</p>
+                <p>O próximo passo é editar o arquivo <b>README.md</b>.</p>
+
+              </div>
+            </div>
+
+            <img src="imgs/separador2.png" class="img-responsive center-block visible-sm visible-xs no-print" aria-hidden="true">
+            <div class="separador2 center-block no-print hidden-sm hidden-xs" aria-hidden="true"></div>
+
+            <div class="bloco">
+              <div class="container">
+                <h3>A importância do README.md</h3>
+                <p>O <b>README.md</b> é a “pagina” principal do seu repositório e deve conter informações sobre o repositório para auxiliar quem for usar o código ou contribuir com ele. Principalmente se o código for compartilhado com uma equipe, é no <b>README.md</b> que você colocará as instruções para a equipe.</p>
+                <p>É preciso levar em consideração alguns fatores ao criar o <b>README.md</b>.</p>
+                <p>O nome do arquivo deve sempre ser <b>README.md</b>, e esse arquivo contém (não obrigatoriamente) o seguinte:</p>
+                <div class="caixa-destaque borda-primaria-03">
+                  <ol type="1">
+                    <li>O que é esse <i>software</i> e para que serve</li>
+                    <li>Quem é o responsável pelo código</li>
+                    <li>O <i>status</i> atual do projeto (se é livre, deprecado, ainda não lançado etc.)</li>
+                    <li>Mais informações sobre o projeto</li>
+                  </ol>
+                </div>
+                <p>Exemplo de um <b>README.md</b>:</p>
+                <pre>
+                  <code>
+# Repositório de teste para conteúdo do curdo TDS EAD Senac - Criado por...
+
+Este é apenas um repositório de teste para configuração e funcionalidades do aplicativo para desktop GitHub Desktop
+
+Livre para uso pessoal irrestrito.
+                  </code>
+                </pre>
+                <p>Voltando ao tutorial, siga com o próximo passo.</p>
+                <p>Usando o atalho <b>Ctrl + Shift + A</b>, o seu editor configurado como padrão em sua máquina já abrirá o arquivo <b>README.md</b> do seu repositório local.</p>
+                <img src="imgs/22.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/22.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/22.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 22 – Tela do editor de texto criando uma alteração no <b>README.md</b> <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a tela do editor de texto com a alteração do texto inicial do <b>README.md</b> padrão.</p>
+                <p>Após inserir o texto do <b>README.md</b>, é possível salvar o arquivo e voltar para o GitHub Desktop.</p>
+                <p>Ao voltar, você verá que as alterações feitas no <b>README.md</b> já foram apontadas e as diferenças já foram mostradas.</p>
+                <img src="imgs/23.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/23.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/23.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 23 – Diferenças a serem aplicadas com o <b>commit</b>, mostrando as linhas que foram apagadas, em vermelho, e as que serão adicionadas, em verde <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a tela do GitHub Desktop. Ao centro, as diferenças a serem aplicadas com o <b>commit</b>, mostrando as linhas que foram apagadas, em vermelho, e as que serão adicionadas, em verde.</p>
+                <p>Como indicado, à esquerda, veja o arquivo que foi alterado, no caso o <b>README.md</b>. No centro, as linhas de código foram alteradas, no caso, foi apagado o <b>readme</b> padrão e o texto novo foi inserido.</p>
+                <p>Você está pronto para fazer o seu primeiro <b>commit</b>.</p>
+                <p>Para efetuar o <b>commit</b>, você deve escrever um resumo (<i>summary</i>) do que foi feito de alterações, incluir uma descrição e, daí sim, clicar em <b>Commit to teste</b>, em que “teste” é a <i>branch</i> que você criou e está selecionada.</p>
+                <img src="imgs/24.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/24.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/24.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 24 – Primeiro <b>commit</b> <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há em detalhes o canto inferior esquerdo do GitHub Desktop, onde se tem, ao topo, o nome do <b>commit</b> a ser criado e, abaixo, a descrição dele. No final da imagem, há o botão de aceitar o <b>commit</b> à <i>branch</i> teste.</p>
+                <p>Após isso, o primeiro <b>commit</b> foi feito e falta apenas o <b>push</b> para que seja publicado (<i>upload</i>) para a <i>branch</i> teste no repositório remoto do GitHub.</p>
+                <p>Para fazer o <b>push</b>, é possível usar o atalho <b>Ctrl + P</b> ou clicar onde indica a seta azul.</p>
+                <img src="imgs/25.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/25.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/25.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 25 – Fazendo o primeiro <b>push</b> <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a tela inicial do GitHub Desktop, mas, desta vez, vê-se que os passos do tutorial foram cumpridos e faltam apenas os passos 5, <b>Publish to GitHub</b>, e 6, <b>Open a pull request</b>.</p>
+                <p>Após isso, só resta solicitar um <i>pull request</i>, que significa que se está solicitando que a nossa <i>branch</i> seja mesclada com a <i>branch</i> principal.</p>
+                <p>Pode-se fazer isso clicando no botão <b>Open a pull request</b>, para abrir o <i>pull request</i> direto no <i>site</i> do GitHub.</p>
+                <img src="imgs/26.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/26.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/26.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 26 – Botão <b>Open a pull request</b> <br>
+                  Fonte: GitHub Desktop (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há o alerta de criação de um <i>pull request</i> com o botão abaixo de <b>Open a pull request</b>, bem como a dica de atalho de teclado <b>Ctrl + R</b>.</p>
+                <p>Clicando no botão, você é levado diretamente para a página de solicitação de <i>pull request</i>.</p>
+                <img src="imgs/27.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/27.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/27.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 27 – Página do GitHub de abertura de um <i>pull request</i> <br>
+                  Fonte: GitHub (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há o <i>site</i> do GitHub com a página de solicitação de um <i>pull request</i> com o <b>commit</b> criado nos passos anteriores. Abaixo, à direita, há o botão <b>Create pull request</b>.</p>
+                <p>Ao clicar no botão verde <b>Create pull request</b>, veja que você criou uma linha do tempo onde nosso <i>pull</i> foi solicitado.</p>
+                <img src="imgs/28.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/28.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/28.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 28 – Agora basta o responsável verificar e aceitar ou não a nossa <i>request</i> <br>
+                  Fonte: GitHub (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a página do GitHub com o <i>pull request</i> em estado de aprovação. Abaixo, há o botão de aceitar e mesclar com a <i>branch</i> principal o <b>commit</b> que foi criado nos passos anteriores.</p>
+                
+              </div>
+            </div>
+
+            <img src="imgs/separador1.png" class="img-responsive center-block visible-sm visible-xs no-print" aria-hidden="true">
+            <div class="separador1 center-block no-print hidden-sm hidden-xs" aria-hidden="true"></div>
+
+            <div class="bloco azul">
+              <div class="container">
+                <h3>Alternativa usando a linha de comando com o Git Bash</h3>
+                <p>O GitHub Desktop é um aplicativo de interface gráfica do usuário (GUI) para usar o Git em seu computador, enquanto o Git Bash é um aplicativo de interface de linha de comando (CLI) para usar o Git. Ambos permitem que você use o Git para gerenciar seus repositórios de código, mas funcionam de maneiras diferentes.</p>
+                <p>O GitHub Desktop foi projetado para ser mais amigável e fácil de usar, principalmente para pessoas que são novas no Git ou que não se sentem confortáveis com o uso da linha de comando. Ele fornece uma interface visual para trabalhar com repositórios, permitindo que você execute tarefas comuns do Git, como confirmar alterações, ramificar e mesclar sem precisar usar a linha de comando.</p>
+                <p>O Git Bash, por outro lado, é um aplicativo de linha de comando que fornece uma interface <i>shell</i> para trabalhar com o Git. Ele permite que você use comandos Git e trabalhe com seus repositórios usando comandos baseados em texto em vez de uma interface gráfica. Isso pode ser mais eficiente para usuários experientes que se sentem confortáveis com a linha de comando, mas pode ser menos intuitivo para quem é novo no Git ou prefere uma interface mais visual.</p>
+                <p>No geral, a escolha entre o GitHub Desktop e o Git Bash depende das suas preferências pessoais e do nível de conforto com o uso da linha de comando. Ambos podem ser ferramentas úteis para trabalhar com o Git, e você pode usar qualquer um deles, dependendo do que funcione melhor para você.</p>
+                <h4>Etapas para instalar o Git Bash</h4>
+                <p>Para instalar o Git Bash, siga estas etapas:</p>
+                <ol type="1">
+                  <li>Acesse o <i>site</i> do Git (https://git-scm.com/downloads) e clique no botão <b>Download</b>.</li>
+                  <img src="imgs/29.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/29.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/29.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 29 – Página de <i>downloads</i> do Git <br>
+                    Fonte: Git (2023)
+                  </p>
+                  <p class="acessivel no-print">Página com o título “git --local-branching-on-the-cheap”. Abaixo, à esquerda, um menu com opções de link <b>About</b>, <b>Documentation</b>, <b>Downloads</b> e <b>Community</b>”. À direita, um quadro com título <b>Downloads</b>, mostrando, abaixo, <i>links</i> para macOS, Windows, Linux/Unix. A página também mostra a figura de um monitor com o texto “Latest source Release 2.39.0”.</p>
+                  <li>Na página de <i>download</i>, clique no botão <b>Windows</b> para baixar a versão Windows do Git.</li>
+                  <li>Quando o <i>download</i> estiver concluído, abra o arquivo de instalação baixado e siga as instruções para instalar o Git Bash no seu computador. Nessa etapa, você pode escolher criar um atalho na área de trabalho após a instalação.</li>
+                  <img src="imgs/30.png" class="img-responsive center-block hidden-xs mt-40 print">
+                  <a href="imgs/30.png" target="_blank" class="visible-xs no-print">
+                    <p>Clique ou toque para ampliar.</p>
+                    <img src="imgs/30.png" class="img-responsive center-block">
+                  </a>
+                  <p class="legenda-imagem">
+                    Figura 30 – Instalando o Git Bash e selecionando (em destaque) a criação de ícone de atalho na área de trabalho <br>
+                    Fonte: Git Bash (2023)
+                  </p>
+                  <p class="acessivel no-print">Na imagem, há a tela de instalação do Git Bash. Algumas caixas de seleção estão à mostra no centro da janela. Entre elas está grifada e selecionada a opção de criar atalhos na área de trabalho.</p>
+                  <li>Nas próximas janelas, basta clicar em <b>Next</b> até a instalação ser concluída.</li>
+                </ol>
+                <p>Para usar o Git Bash, você precisará abrir o aplicativo após a instalação. No Windows, você pode fazer isso procurando por “Git Bash” no menu <b>Iniciar</b> ou clicando no ícone do Git Bash na área de trabalho (se você escolheu criar um durante a instalação).</p>
+                <p>Quando o Git Bash estiver aberto, você verá uma janela de terminal. É aqui que você pode inserir comandos do Git e trabalhar com seus repositórios. Para começar, você pode tentar alguns comandos básicos do Git, como <b>git clone</b> para clonar um repositório de um servidor remoto ou <b>git init</b> para criar um novo repositório. Você também pode usar o comando <b>git help</b> para obter uma lista de comandos disponíveis e consultar a documentação de ajuda para comandos específicos.</p>
+                <h4>Criando um repositório local usando o Git Bash</h4>
+                <p>Abra o Git Bash e navegue até o diretório onde deseja criar o repositório, usando o comando <b>cd</b>. Por exemplo, se você deseja criar o repositório em seu diretório de usuário, pode usar o comando <b>cd ~</b> para navegar até o seu diretório inicial.</p>
+                <p>Execute o comando <b>git init</b> para criar um novo repositório. Isso criará um novo diretório <b>.git</b> no diretório atual, que será usado para armazenar o histórico do repositório e outros metadados.</p>
+                <img src="imgs/31.png" class="img-responsive center-block hidden-xs mt-40 print">
+                <a href="imgs/31.png" target="_blank" class="visible-xs no-print">
+                  <p>Clique ou toque para ampliar.</p>
+                  <img src="imgs/31.png" class="img-responsive center-block">
+                </a>
+                <p class="legenda-imagem">
+                  Figura 31 – Criando um repositório local chamado de <b>repo-teste</b> <br>
+                  Fonte: Git Bash (2023)
+                </p>
+                <p class="acessivel no-print">Na imagem, há a linha de comando do Git Bash. O comando <b>git init repo-teste</b> foi executado e o aviso de repositório criado com sucesso está na tela.</p>
+                <p>Para criar um novo arquivo no repositório, use um editor de texto ou o comando <b>echo</b> (comando usado para escrever texto na tela) para criar um novo arquivo e salve-o no diretório do repositório. Por exemplo, você pode usar o comando <b>echo "Hello, world!" &gt; hello.txt</b>. Esse comando criará um novo arquivo chamado <b>hello.txt</b> com o texto "Hello, world!"</p>
+                <p>Para adicionar o arquivo ao repositório, use o comando <b>git add</b> seguido do nome do arquivo. Por exemplo, para adicionar o arquivo <b>hello.txt</b>, use o comando <b>git add hello.txt</b>. Isso preparará o arquivo, o que significa que ele estará pronto para ser enviado ao repositório.</p>
+                <p>Para confirmar o arquivo no repositório, use o comando <b>git commit</b>. Isso abrirá um editor de texto em que você pode inserir uma mensagem de confirmação explicando as alterações feitas. Quando terminar, salve a mensagem e saia do editor de texto. O arquivo será confirmado no repositório e adicionado ao histórico do repositório.</p>
+                <p>É isso! Você criou um novo repositório e adicionou um arquivo a ele usando o Git Bash.</p>
+                <p>Mais detalhes quanto ao uso do Git Bash você verá na sequência dos conteúdos desta unidade curricular.</p>
+                <h4>Vantagens e desvantagens</h4>
+                <p>Aqui estão alguns prós e alguns contras do uso do Git: </p>
+                <p>Clique ou toque para visualizar o conteúdo. </p>
+
+                <div class="no-print" aria-hidden="true">
+                  <div class="row">
+                    <div class="col-sm-6 col-xs-6">
+                      <button type="button" class="btn-pros" data-toggle="modal" data-target="#modal-pros"></button>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                      <button type="button" class="btn-contras" data-toggle="modal" data-target="#modal-contras"></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="acessivel print">
+                  <p><b>Prós</b></p>
+                  <ul class="marcador-seta">
+                    <li>O Git permite que você acompanhe as alterações em seus arquivos ao longo do tempo, para que você possa ver como o seu projeto evoluiu e reverter para versões anteriores, se necessário.</li>
+                    <li>O Git facilita a colaboração com outras pessoas no mesmo projeto. Você pode compartilhar seu repositório com outras pessoas e elas podem contribuir com suas próprias alterações e melhorias.</li>
+                    <li>O Git é amplamente usado e bem suportado, então você pode encontrar muitos recursos e documentação <i>on-line</i> para ajudá-lo a aprender e usá-lo de forma eficaz.</li>
+                  </ul>
+                </div>
+
+                <!-- <p>Aqui estão alguns contras do uso do Git:</p> -->
+
+                <!-- <div class="no-print" aria-hidden="true">
+                  <div class="row">
+                    <div class="col-sm-12 col-xs-12">
+                      <button type="button" class="btn-contras" data-toggle="modal" data-target="#modal-contras"></button>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="acessivel print">
+                  <p><b>Contras</b></p>
+                  <ul class="marcador-seta">
+                    <li>O Git pode ter uma curva de aprendizado íngreme, especialmente se você for novo no controle de versão. Pode levar algum tempo e precisar de prática para se tornar proficiente com o Git.</li>
+                    <li>O Git exige que você use a linha de comando ou o terminal, o que pode ser intimidador para alguns usuários.</li>
+                    <li>O Git pode ser complexo, com muitos comandos e opções diferentes. Pode ser fácil cometer erros ou fazer as coisas da maneira errada se você não estiver familiarizado com o funcionamento.</li>
+                  </ul>
+                </div>
+
+                <p>Em geral, o Git é uma ferramenta poderosa e útil para gerenciar e colaborar em projetos, mas pode não ser a melhor escolha para todos. É importante pesar os prós e os contras e decidir se é a ferramenta certa para as suas necessidades.</p>
+              </div>
+            </div>
+
+            <img src="imgs/separador2.png" class="img-responsive center-block visible-sm visible-xs no-print" aria-hidden="true">
+            <div class="separador2 center-block no-print hidden-sm hidden-xs" aria-hidden="true"></div>
+
+            <div class="bloco-final">
+              <div class="container">
+                <h3>Encerramento</h3>
+                <p>Com a utilização dessa ferramenta, é possível agilizar e controlar códigos enviados por diversas pessoas para um mesmo repositório remoto.</p>
+                <p>Você viu, neste conteúdo, que pode hospedar os seus repositórios de diversas maneiras, tanto local quanto remotamente.</p>
+                <p>Além disso, você também aprendeu como instalar, configurar e subir o seu primeiro repositório local para o repositório remoto no GitHub usando o aplicativo oficial GitHub Desktop.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <!--
+        <footer class="text-center no-print">
+          <ul class="pagination">
+
+          </ul>
+        </footer>
+        -->
+
+
+        <!-- Modais -->
+        <div class="modal fade" id="modal-pros" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">Prós</h4>
+              </div>
+              <div class="modal-body">
+                <ul class="marcador-seta">
+                  <li>O Git permite que você acompanhe as alterações em seus arquivos ao longo do tempo, para que você possa ver como o seu projeto evoluiu e reverter para versões anteriores, se necessário.</li>
+                  <li>O Git facilita a colaboração com outras pessoas no mesmo projeto. Você pode compartilhar seu repositório com outras pessoas e elas podem contribuir com suas próprias alterações e melhorias.</li>
+                  <li>O Git é amplamente usado e bem suportado, então você pode encontrar muitos recursos e documentação <i>on-line</i> para ajudá-lo a aprender e usá-lo de forma eficaz.</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="modal-contras" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">Contras</h4>
+              </div>
+              <div class="modal-body">
+                <ul class="marcador-seta">
+                  <li>O Git pode ter uma curva de aprendizado íngreme, especialmente se você for novo no controle de versão. Pode levar algum tempo e precisar de prática para se tornar proficiente com o Git.</li>
+                  <li>O Git exige que você use a linha de comando ou o terminal, o que pode ser intimidador para alguns usuários.</li>
+                  <li>O Git pode ser complexo, com muitos comandos e opções diferentes. Pode ser fácil cometer erros ou fazer as coisas da maneira errada se você não estiver familiarizado com o funcionamento.</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Modais 100% -->
+
+
+      </div>
+
+    </div>
+
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/interativos.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+
+<!-- Versao atual do handtalk -->
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+ document.body.appendChild(scriptElem);
+
+</script>
+
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+
+  $( ".panel-heading" ).click(function() {
+    $( this ).toggleClass( "ativo" );
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+</script>

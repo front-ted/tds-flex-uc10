@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Gerenciamento de configuração: conceitos, softwares e ferramentas</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção <b>Grau de pontuação/símbolos</b>, acesse <b>Preferências</b> – <b>Configurações</b> – <b>Fala</b>. Altere o padrão <b>Pouco</b> para <b>Tudo</b>. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade.</p>
+            
+            <h2><span class="titulo-geral">Gerenciamento de configuração:</span><br>conceitos, <i>softwares</i> e ferramentas</h2>
+            <h3>Introdução</h3>
+
+            <div class="row">
+              <div class="col-md-3 col-xs-12">
+                <img src="imgs/img_titulo.png" class="img-responsive center-block hidden-sm hidden-xs img-titulo">
+              </div>
+              <div class="col-md-9 col-xs-12 div-titulo">
+                <img src="imgs/borda_inicio.png" class="img-borda hidden-sm hidden-xs">
+                <p>Olá, aluno(a)! Até este momento do curso, você já percorreu várias etapas de aprendizado, explorando variados estágios do desenvolvimento de um sistema. Nesse processo, você provavelmente conseguiu perceber que, em algumas situações, ainda que seu projeto estivesse funcionando, era necessário acrescentar novos ajustes, alterações e funcionalidades, que muitas vezes podiam se sobrepor aos códigos já elaborados anteriormente, gerando versões diferentes de um mesmo projeto (os clássicos “atividade1”, “atividade1 atualizado”, “atividade1 versaoFinal”, “atividade1essaÉpraEnviar”).</p>
+                <p>Quando se está nessa situação, até que o ajuste seja concluído, pode acontecer de você não conseguir executar corretamente o que foi finalizado anteriormente e estava funcionando, ou mesmo perder funcionalidades que tinha escrito anteriormente. Caso tenha desenvolvido ajustes para muitos arquivos diferentes, pode acabar sendo necessário remover boa parte dos novos códigos adicionados para recomeçar a lógica desde o início. O controle desses procedimentos pode ser um pouco trabalhoso, não é mesmo?</p>
+                <p>Agora, imagine esse cenário em um grande projeto em que diversas pessoas precisam programar códigos diferentes ao mesmo tempo! Como seria possível juntar todos os ajustes (ou a remoção destes) sem causar nenhum conflito? Como saber quem foi o responsável por determinada alteração que está gerando conflito com outro ajuste? Entre todos os projetos, como saber qual é a versão mais recente para seguir atualizando? Como saber qual era a última versão em que ainda estava funcionando o projeto?</p>
+                <p>Esses processos podem causar uma grande “dor de cabeça” caso você não esteja familiarizado com gerenciamento de configuração.</p>    
+              </div>
+            </div>
+            
+            <h3>Gerenciamento de configuração </h3>
+            <p>O gerenciamento de configuração é uma atividade abrangente presente na engenharia de <i>software</i> e que visa identificar mudanças em um projeto de <i>software</i>, controlar as mudanças, garantir sua adequada implementação e relatar essas mudanças a outras pessoas que possam ter interesse. </p>
+            <p>Configuração de <i>software</i> é um conjunto de artefatos produzidos e presentes em um projeto, divididos em três categorias: </p>
+            
+            <div class="row">
+              <div class="col-lg-5 col-sm-5 col-xs-12">
+                <img src="imgs/img_gerenciamento.png" class="img-responsive center-block no-print mt-60 hidden-xs" aria-hidden="true">
+              </div>
+              <div class="col-lg-7 col-sm-7 col-xs-12">
+                <img src="imgs/destaque1.png" aria-hidden="true" class="img-responsive center-block">
+                <img src="imgs/destaque2.png" aria-hidden="true" class="img-responsive center-block">
+                <img src="imgs/destaque3.png" aria-hidden="true" class="img-responsive center-block">
+              </div>
+            </div>
+            <div class="acessivel no-print">
+              1. Programa de computador (código-fonte e código executável)
+              2. Documentação de <i>software</i> (para desenvolvedores e para usuários)
+              3. Estruturas de dados (contidas no programa ou fora dele)
+            </div>
+
+            <h3>O que é versionamento de código?</h3>
+            <div class="row mt-40">
+              <div class="col-lg-4 col-sm-5 col-xs-12">
+                <img src="imgs/img_versionamento.png" aria-hidden="true" class="img-responsive center-block mt-20 hidden-xs">
+              </div>
+              <div class="col-lg-8 col-sm-7 col-xs-12">
+                <p>Uma versão de código é cada agrupamento de atualizações desenvolvidas para o sistema. Um versionamento de código, portanto, nada mais é do que o ato de gerenciar o desenvolvimento de várias etapas de um sistema e, quando concluídas corretamente, uni-las em uma nova versão, mantendo também o histórico de versões anteriores, sendo possível analisar os progressos e as alterações aplicadas ou até mesmo voltar em uma etapa em que o sistema ainda funcionava de outra maneira, além de ter outras diversas funcionalidades.</p>
+              </div>
+            </div>
+            <p>Esse processo tornou-se uma necessidade na área da programação, sendo uma forma de obter maior controle do que acontece no decorrer de um projeto.</p>
+            <p>No mercado de trabalho, é comum que vários desenvolvedores estejam trabalhando em um mesmo sistema e, com isso, um mesmo arquivo seja alterado por várias pessoas diferentes. Considerando que é um trabalho que ocorre de forma simultânea, não é possível aguardar que um termine para que outro desenvolvedor possa editar o arquivo atualizado. Com o versionamento, cada usuário edita a própria funcionalidade separadamente para unir, ao término, todos os ajustes em uma única versão final.</p>
+            <p>Outro cenário em que o versionamento deve ser aplicado pode ser analisado em casos em que desenvolvedor almeja modificar funcionalidades do sistema, entretanto mantendo a versão antiga ainda ativa para uso. Um exemplo bem comum em que se pode observar esse cenário é o sistema operacional Android. Veja, a seguir, um exemplo da progressão de versões desse sistema.</p>
+
+            <div class="no-print" aria-hidden="true">
+              <p class="text-center">Clique ou toque para visualizar o conteúdo. </p>
+              <button type="button" class="btn-android" data-toggle="modal" data-target="#modal-android"></button>
+            </div>
+            <div class="acessivel print">
+              <ul class="cor01">
+                <li>Android 13 – Última versão: 15/08/2022</li>
+                <li>Android 12 – Última versão: 04/10/2021</li>
+                <li>Android 11 – Última versão: 08/09/2020</li>
+                <li>Android 10 – Última versão: 22/08/2019</li>
+                <li>Android 9.0 Pie – Última versão: 06/08/2018</li>
+                <li>Android 8.1 Oreo – Última versão: 05/12/2017</li>
+                <li>Android 8.0 Oreo – Lançamento da versão: 05/12/2017</li>
+                <li>Android 7.1.2 Nougat – Última versão: 02/04/2017</li>
+                <li>Android 7.1.1 Nougat – Lançamento da versão: 06/12/2016</li>
+                <li>Android 7.1 Nougat – Lançamento da versão: 04/10/2016</li>
+                <li>Android 7.0 Nougat – Lançamento da versão: 01/09/2016</li>
+                <li>Android 6.0.1 Marshmallow – Última versão: 07/03/2016</li>
+                <li>Android 6.0 Marshmallow – Lançamento da versão: 29/09/2015</li>
+                <li>Android 5.1.1 Lollipop – Última versão: 21/04/2015</li>
+                <li>Android 5.1 Lollipop – Lançamento da versão: 09/03/2015</li>
+                <li>Android 5.0.2 Lollipop – Lançamento da versão: 20/12/2014</li>
+                <li>Android 5.0.1 Lollipop – Lançamento da versão: 02/12/2014</li>
+                <li>Android 5.0 Lollipop – Lançamento da versão: 17/10/2014</li>
+                <li>Android 4.4.4 KitKat – Última versão: 19/06/2014</li>
+                <li>Android 4.4.3 KitKat – Lançamento da versão: 01/04/2014</li>
+                <li>Android 4.4.2 KitKat – Lançamento da versão: 10/12/2013</li>
+                <li>Android 4.4 KitKat – Lançamento da versão: 31/10/2013</li>
+              </ul>
+            <p>Por meio dessa listagem de versões, é possível observar que, embora existam versões mais recentes, atualizadas e otimizadas do sistema operacional, versões antigas ainda seguem ativas, sendo utilizadas em <i>smartphones</i> que têm um <i>hardware</i> mais antigo. Dessa forma, o sistema é inovado e suas funcionalidades são atualizadas, visando atender novos usuários com tecnologias mais modernas ao mesmo tempo que retém o público de versões mais antigas.</p>
+            <p>Esses são alguns dos exemplos em que se pode perceber que aplicar os processos de versionamento de código auxilia na organização e no desenvolvimento de um projeto. Existem diversas outras situações em que os desenvolvedores são beneficiados com o uso dessa prática. Com base no que você leu e em suas experiências, consegue imaginar outros cenários favorecidos por esse versionamento?</p>
+            <p>Apesar de o exemplo anterior tratar de versões finais de sistemas operacionais, durante o processo de desenvolvimento existe também versionamento dos arquivos até que a última versão seja lançada. Observe a imagem a seguir.</p>
+            <img src="imgs/fig1.png" class="img-responsive center-block hidden-xs mt-20 no-print">
+            
+            </div>
+            <a href="imgs/fig1.png" target="_blank" class="visible-xs mt-20">
+              <p class="no-print">Clique ou toque para ampliar.</p>
+              <img src="imgs/fig1.png" class="img-responsive center-block no-print">
+            </a>
+
+            
+            <div class="acessivel print">
+              <img src="imgs/fig1.png" class="img-responsive center-block hidden-xs">
+              <img src="imgs/fig1.png" class="img-responsive center-block visible-xs">
+            </div>
+            <p class="legenda-imagem">
+              Figura 1 – Versionamento de código em arquivos de um projeto <br>
+              Fonte: adaptado de Document Locator (c2023)
+            </p>
+            <p class="acessivel no-print">No projeto disponibilizado no servidor, a desenvolvedora Alice criou um novo arquivo chamado SeuProjeto.Java. Esse mesmo arquivo foi acessado por Rodrigo por meio do servidor, o qual editou cadastros de usuário. O desenvolvedor João também acessou esse arquivo e adicionou a funcionalidade de edição de cadastros. Após todas as atualizações, o projeto final foi submetido ao gerente de projetos em busca de aprovação. O projeto foi aprovado e está com suas funcionalidades prontas para o uso do cliente.</p>
+            <p>Veja que nesse processo o arquivo que chegou até a versão final foi manipulado por diversos desenvolvedores. Cada um deles criou ou ajustou algo diferente em um mesmo arquivo que faz parte de um projeto, fazendo com que ele estivesse pronto para uso do cliente. Esse arquivo que chegou à versão final fará parte do conjunto de arquivos atualizados que comporão uma nova versão final do sistema por completo.</p>
+            <p>Embora a ideia geral seja muito proveitosa, é necessário utilizar ferramentas adequadas para realizar versionamento de código. Criar várias pastas com cópias do projeto no computador ou colocar várias cópias do mesmo projeto na nuvem, por exemplo, não somente será pouco eficaz como também poderá causar mais desorganização e confusão no código.</p>
+
+            <h3><i>Softwares</i> e ferramentas de gerenciamento de configuração</h3>
+            <div class="row mt-40">
+              <div class="col-lg-4 col-sm-5 col-xs-12">
+                <img src="imgs/img_softwares_e_ferramentas.png" aria-hidden="true" class="img-responsive center-block mt-20 hidden-xs">
+              </div>
+              <div class="col-lg-8 col-sm-7 col-xs-12">
+                <p>Ainda que o conceito de gerenciamento de configuração seja aplicado no seu projeto, caso seja aplicado de forma leviana, não trará bons resultados. Como mencionado anteriormente, fazer várias cópias de arquivo no próprio computador ou na nuvem não é uma solução adequada. Considerando isso, é importante que algumas ferramentas de <i>software</i> sejam usadas para esse processo. É possível separá-las em três categorias: ferramentas de controle de modificação, ferramentas de controle de versão e ferramentas de gerenciamento de construção.</p>
+              </div>
+            </div>
+
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo.</p>
+              <!--<img src="imgs/elemento_ferramenta.png" class="img-responsive center-block hidden-xs">-->
+              <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <button type="button" class="btn-ferramentas btn-ferramenta01" data-toggle="modal" data-target="#modal-ferramenta01"></button>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <button type="button" class="btn-ferramentas btn-ferramenta02" data-toggle="modal" data-target="#modal-ferramenta02"></button>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                  <button type="button" class="btn-ferramentas btn-ferramenta03" data-toggle="modal" data-target="#modal-ferramenta03"></button>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <h3>Ferramentas de controle de modificação</h3>
+              <p>Os <i>softwares</i> de controle de modificação podem ser usados para realizar o acompanhamento das alterações realizadas no <i>software</i>, registrando as tarefas necessárias e o histórico da cada uma. O sistema é, portanto, responsável por armazenar o andamento das solicitações de mudança e por notificar essas informações aos interessados. Veja alguns exemplos de sistema de controle de modificação:</p>
+              <div>
+                <p><b>Bugzilla</b></p>
+                <p>Sistema <i>open source</i> de <i>bug tracking</i> (ou acompanhamento de defeitos) baseado em <i>web</i> no qual é possível registrar defeitos e solicitações de um <i>software</i>. É ideal para trabalho em times.</p>
+                <p><b>Jira</b></p>
+                <p>Sistema de gerenciamento de trabalho em equipe baseado no Kanban, mais abrangente que o Bugzilla, pois, além de <i>bug tracking</i>, traz ferramentas mais avançadas para controlar o fluxo de trabalho em equipe.</p>
+                <p><b>Trac</b></p>
+                <p>Sistema que conta com recursos de criação e acompanhamento de <i>tickets</i> para ajustes no <i>software</i>, integrando também controles de versão e documentações <i>wiki</i>.</p>
+              </div>
+              <h3>Ferramentas de gerenciamento de construção</h3>
+              <p>As ferramentas de gerenciamento de construção são responsáveis por auxiliar ou automatizar as tarefas de construção (<i>build</i>) do código-fonte em código executável. É o processo, por exemplo, de transformar código Java em arquivos JAR executáveis. Veja dois exemplos de ferramentas de construção:</p>
+              <div>
+                <p><b>Apache Ant</b></p>
+                <p>Permite centralizar a configuração de elementos e opções de compilação para um projeto Java, coordenando os processos de construção do executável.</p>
+                <p><b>Maven</b></p>
+                <p>Usada geralmente em projetos Java, facilita o gerenciamento das dependências do código, baseando-se em um repositório central de onde o sistema, automaticamente no processo de compilação, baixa a versão da biblioteca e inclui na construção do <i>software</i>.</p>
+              </div>
+              <h3>Ferramentas de controle de versão</h3>
+              <p>Ferramentas de versionamento são os sistemas utilizados para realizar todo o gerenciamento de desenvolvimento e evolução do código para novas versões. Pode-se afirmar que o processo de versionamento de código e as ferramentas de versionamento estão intrinsecamente ligados para a obtenção dos melhores resultados.</p>
+              <p>De um modo geral, embora existam diversas ferramentas de versionamento, é possível identificar alguns itens como benefícios em comum. Veja a seguir.</p>
+              <ul class="marcador-seta quadro-bg">
+                <li>Todas as alterações aplicadas no código ficam registradas em um histórico, sendo possível verificar sempre que um ajuste foi aplicado. Esse histórico possibilita saber quem foi o usuário que aplicou as alterações e quais alterações foram desenvolvidas de uma versão para a outra.</li>
+                <li>Várias pessoas podem colaborar simultaneamente com o projeto de forma segura, facilitando o trabalho em equipe.</li>
+                <li>Somente pessoas autorizadas terão acesso e poderão modificar arquivos, facilitando o gerenciamento dos desenvolvedores envolvidos no projeto e reduzindo a quantidade de erros nesse processo.</li>
+                <li>Facilidade em fazer alterações no código sem prejudicar outras versões do projeto.</li>
+              </ul>
+              <p>Outro aspecto importante a ser considerado antes de conhecer as ferramentas é entender que existem dois tipos de sistemas de controle de versão. Veja a seguir quais são eles.</p>
+              <div>
+                <p><b>Centralizado </b></p>
+                <p>Usa-se um servidor central para alocar um único repositório central do projeto, que será acessado e manipulado pelos integrantes do time ao realizar modificações nos arquivos do <i>software</i>. Cada integrante precisa conectar-se a esse servidor para usar o versionamento.</p>
+                <p><b>Distribuído</b></p>
+                <p>Cada usuário que for desenvolver código terá uma cópia completa do repositório central diretamente em seu ambiente local, contando com alguns comandos de versionamento local. Em algum momento, no entanto, deve refletir as alterações locais para um servidor central, para que os outros integrantes do time recebam as atualizações.</p>
+                <img src="imgs/fig2e3.png" class="img-responsive center-block hidden-xs">
+                <img src="imgs/fig2e3_mobile.png" class="img-responsive center-block visible-xs">
+                <div class="row">
+                  <div class="col-sm-6 col-xs-12">
+                    <p class="legenda-imagem">
+                      Figura 2 – Sistema de controle de versão centralizado <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="no-print acessivel">Computador A e computador B recebendo arquivos de um servidor.</p>
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <p class="legenda-imagem">
+                      Figura 3 – Sistema de controle de versão distribuído <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="no-print acessivel">Computador A e computador B tendo individualmente a cópia completa do servidor, utilizando os arquivos necessários.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <p>Veja, a seguir, as ferramentas de versionamento mais populares que se encontram no mercado.</p>
+              <div class="acessivel print">
+                <p><b>Git </b></p>
+                <p>O Git é um dos sistemas de versionamento <i>open source</i> mais usado pela comunidade de desenvolvedores, adequando-se com facilidade a projetos de pequena e de grande escala. Ele tem uma grande variedade de comandos, podendo ser um pouco complexo à primeira vista, entretanto sua rápida <i>performance</i> compensa. Nesta unidade curricular (UC), você aprenderá como trabalhar com esse sistema.</p>
+                <p><b>SVN (Apache Subversion) </b></p>
+                <p>O Apache Subversion surgiu no ano de 2000 como uma alternativa ao controle de versão CVS (Concurrent Version System), que foi lançado em 1986. O SVN é um sistema de controle de versão centralizado, gratuito e <i>open source</i>. </p>
+                <p><b>Mercurial </b></p>
+                <p>Também lançado em 2005, o Mercurial é outra opção quando se busca um sistema de controle de versão gratuito distribuído. Ele tem comandos e operações mais simples, similares ao Subversion. </p>
+              </div>
+              <div>
+                <p><b>Git </b></p>
+                <p>O Git é um dos sistemas de versionamento <i>open source</i> mais usado pela comunidade de desenvolvedores, adequando-se com facilidade a projetos de pequena e de grande escala. Ele tem uma grande variedade de comandos, podendo ser um pouco complexo à primeira vista, entretanto sua rápida <i>performance</i> compensa. Nesta unidade curricular (UC), você aprenderá como trabalhar com esse sistema.</p>
+                <p><b>SVN (Apache Subversion) </b></p>
+                <p>O Apache Subversion surgiu no ano de 2000 como uma alternativa ao controle de versão CVS (Concurrent Version System), que foi lançado em 1986. O SVN é um sistema de controle de versão centralizado, gratuito e <i>open source</i>. </p>
+                <p><b>Mercurial </b></p>
+                <p>Também lançado em 2005, o Mercurial é outra opção quando se busca um sistema de controle de versão gratuito distribuído. Ele tem comandos e operações mais simples, similares ao Subversion. </p>
+              </div>
+            </div>
+            
+            <p>Veja, a seguir, as ferramentas de versionamento mais populares que se encontram no mercado.</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo.</p>
+              <div class='panel-group gaitinha' id='accordion03' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading06'>
+                    <h3 class='panel-title'>
+                      <a role='button' data-toggle='collapse' data-parent='#accordion03' href='#collapse06' aria-expanded='false' aria-controls='collapse06'>
+                        Git
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse06' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading06'>
+                    <div class='panel-body'>
+                      <p>O Git é um dos sistemas de versionamento <i>open source</i> mais usado pela comunidade de desenvolvedores, adequando-se com facilidade a projetos de pequena e de grande escala. Ele tem uma grande variedade de comandos, podendo ser um pouco complexo à primeira vista, entretanto sua rápida <i>performance</i> compensa. Nesta unidade curricular (UC), você aprenderá como trabalhar com esse sistema.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading07'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion03' href='#collapse07' aria-expanded='false' aria-controls='collapse07'>
+                        SVN (Apache Subversion)
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse07' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading07'>
+                    <div class='panel-body'>
+                      <p>O Apache Subversion surgiu no ano de 2000 como uma alternativa ao controle de versão CVS (Concurrent Version System), que foi lançado em 1986. O SVN é um sistema de controle de versão centralizado, gratuito e <i>open source</i>. </p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading08'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion03' href='#collapse08' aria-expanded='false' aria-controls='collapse08'>
+                        Mercurial
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse08' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading08'>
+                    <div class='panel-body'>
+                      <p>Também lançado em 2005, o Mercurial é outra opção quando se busca um sistema de controle de versão gratuito distribuído. Ele tem comandos e operações mais simples, similares ao Subversion. </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3>Git e GitHub no <i>open source</i></h3>
+            <div class="row mt-40">
+              <div class="col-lg-4 col-sm-4 col-xs-12">
+                <img src="imgs/logo_git.png" aria-hidden="true" class="img-responsive center-block mt-20">
+              </div>
+              <div class="col-lg-8 col-sm-8 col-xs-12">
+                <p>Quando se fala sobre sistemas de controle de versionamento, um fator muito importante é o local onde os dados serão disponibilizados para que os desenvolvedores tenham acesso aos arquivos e possam atualizá-los. Esse local é chamado de repositório.</p>
+                <p>Quando se menciona o uso do Git como ferramenta mais utilizada atualmente, é possível lembrar do GitHub em razão da similaridade dos nomes. Embora os nomes sejam similares, as funcionalidades dessas ferramentas são bem diferentes e complementares. </p>
+              </div>
+            </div>
+            <div class="caixa-destaque icone importante mt-40">
+              <p>Vale destacar também que existem diversas outras opções de repositório, como GitLab, BitBucket, GitKraken, entre outros. Entretanto, em razão de seu maior uso no mercado, no conteúdo desta UC o foco será o GitHub. </p>
+            </div>
+            <p>Sabe-se que o Git serve para gerenciar todas as alterações realizadas em um projeto, vinculando usuários e históricos e, por fim, gerando novas versões de um projeto. Mas e quanto ao GitHub, você já tem alguma ideia do que é? Saiba agora, vendo a definição apresentada pelo próprio <i>site</i> do GitHub:</p>
+            
+            <div class="caixa-destaque">
+              <p>GitHub é uma plataforma de hospedagem de código para controle de versão e colaboração. Permite que você e outras pessoas trabalhem em conjunto em projetos de qualquer lugar (LET’S, c2023).</p>
+              <div class="no-print">
+                <img src="imgs/fig4.png" class="img-responsive center-block hidden-xs no-print">
+                <a href="imgs/fig4.png" target="_blank" class="visible-xs mt-20">
+                  <p class="no-print">Clique ou toque para ampliar.</p>
+                  <img src="imgs/fig4.png" class="img-responsive center-block no-print">
+                </a>
+              </div>
+              
+              <div class="acessivel print">
+                <img src="imgs/fig4.png" class="img-responsive center-block hidden-xs">
+                <img src="imgs/fig4.png" class="img-responsive center-block visible-xs">
+              </div>
+              <p class="legenda-imagem acessivel print">
+                Figura 4 – Página inicial do GitHub <br>
+                Fonte: GitHub (c2023)
+              </p>
+              <p class="legenda-imagem no-print">
+                Figura 4 – Página inicial do GitHub <br>
+                Fonte: GitHub (c2023)
+              </p>
+              <p class="acessivel no-print">Página inicial do GitHub, trazendo ao fundo uma imagem espacial e à frente um título em letras grandes “Let’s build from here” e o texto “Harnesses for productivity. Designed for collaboration. Celebrated for built-in security. Welcome to the plataforma developers love”. No topo, à direita, há opções de busca, de <i>sign in</i> (autenticar-se) e de <i>sing up</i> (cadastrar-se).</p>
+            </div>
+            
+            <p>Essa ampla visão que o GitHub apresenta abre inúmeras possibilidades quando se utiliza o Git em conjunto com a plataforma, pois o GitHub não atua somente como repositório, afinal ele tem várias outras funcionalidades que facilitam a comunicação entre desenvolvedores. Esse tipo de estrutura foi um enorme estímulo aos desenvolvedores para que compartilhassem seus projetos e tentassem auxiliar o desenvolvimento de outros.</p>
+            <p>Projetos disponibilizados publicamente onde qualquer pessoa pode acessar, analisar e adaptar o código são chamados de projetos <i>open source</i>. As razões para esse tipo de código ser disponibilizado são várias, por exemplo: proporcionar possibilidade de estudo de código a quem estiver interessado; auxiliar a comunidade a desenvolver novas versões melhores de determinado sistema; e disponibilizar bibliotecas gratuitas para uso pessoal ou comercial. As vantagens são inúmeras, desde a curiosidade até o uso do código de forma prática.</p>
+            <p>Embora a ideia de projetos <i>open source</i> pareça bastante ampla, vale destacar que existem várias licenças <i>open source</i>, ou seja, mesmo que o projeto seja aberto ao público, poderá ter algumas limitações ou obrigatoriedades em seu uso.</p>
+            <p>Veja, a seguir, alguns exemplos de licenças.</p>
+
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class="painel-clicavel">
+                <div class="row div-licencas">
+                  <div>
+                    <div class="col-sm-6 col-xs-12">
+                      <button type="button" class="btn-licencas btn-licenca01" data-toggle="modal" data-target="#modal-licenca01"></button>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <button type="button" class="btn-licencas btn-licenca02" data-toggle="modal" data-target="#modal-licenca02"></button>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <button type="button" class="btn-licencas btn-licenca03" data-toggle="modal" data-target="#modal-licenca03"></button>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <button type="button" class="btn-licencas btn-licenca04" data-toggle="modal" data-target="#modal-licenca04"></button>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                      <button type="button" class="btn-licencas btn-licenca05" data-toggle="modal" data-target="#modal-licenca05"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <h4>Apache License 2.0 </h4>
+              <p><b>Permissões</b></p>
+              <ul>
+                <li style="list-style: none"><b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. </li>
+                <li style="list-style: none"><b>Distribuição:</b> o material licenciado pode ser distribuído.</li>
+                <li style="list-style: none"><b>Modificação:</b> o material licenciado pode ser modificado.</li>
+                <li style="list-style: none"><b>Uso de patente:</b> essa licença fornece uma concessão expressa de direitos de patente de contribuidores.</li>
+                <li style="list-style: none"><b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.</li>
+              </ul>
+              <p><b>Condições</b></p>
+              <ul>
+                <li style="list-style: none"><b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado.</li>
+                <li style="list-style: none"><b>Mudanças de estado:</b> as alterações feitas no material licenciado devem ser documentadas.</li>
+              </ul>
+              <h4>Mozilla Public License 2.0</h4>
+              <p><b>Permissões</b></p>
+              <ul>
+                <li style="list-style: none"><b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. </li>
+                <li style="list-style: none"><b>Distribuição:</b> o material licenciado pode ser distribuído.</li>
+                <li style="list-style: none"><b>Modificação:</b> o material licenciado pode ser modificado.</li>
+                <li style="list-style: none"><b>Uso de patente:</b> essa licença fornece uma concessão expressa de direitos de patente de contribuidores.</li>
+                <li style="list-style: none"><b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.</li>
+              </ul>
+              <p><b>Condições</b></p>
+              <ul>
+                <li style="list-style: none"><b>Divulgação da fonte:</b> o código-fonte deve ser disponibilizado quando o material licenciado for distribuído. </li>
+                <li style="list-style: none"><b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado. </li>
+                <li style="list-style: none"><b>Mesma licença (arquivo):</b> modificações de arquivos existentes devem ser liberadas sob a mesma licença ao distribuir o material licenciado. Em alguns casos, uma licença semelhante ou relacionada pode ser usada.</li>
+              </ul>
+              <h4>GPLv3</h4>
+              <p><b>Permissões</b></p>
+              <ul>
+                <li style="list-style: none"><b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. </li>
+                <li style="list-style: none"><b>Distribuição:</b> o material licenciado pode ser distribuído.</li>
+                <li style="list-style: none"><b>Modificação:</b> o material licenciado pode ser modificado.</li>
+                <li style="list-style: none"><b>Uso de patente:</b> essa licença fornece uma concessão expressa de direitos de patente de contribuidores.</li>
+                <li style="list-style: none"><b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.</li>
+              </ul>
+              <p><b>Condições</b></p>
+              <ul>
+                <li style="list-style: none"><b>Divulgação da fonte:</b> o código-fonte deve ser disponibilizado quando o material licenciado for distribuído.</li>
+                <li style="list-style: none"><b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado.</li>
+                <li style="list-style: none"><b>Mesma licença:</b> as modificações devem ser liberadas sob a mesma licença ao distribuir o material licenciado. Em alguns casos, uma licença semelhante ou relacionada pode ser usada.</li>
+                <li style="list-style: none"><b>Mudanças de estado:</b> as alterações feitas no material licenciado devem ser documentadas.</li>
+              </ul>
+              <h4>MIT</h4>
+              <p><b>Permissões</b></p>
+              <ul>
+                <li style="list-style: none"><b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. </li>
+                <li style="list-style: none"><b>Distribuição:</b> o material licenciado pode ser distribuído.</li>
+                <li style="list-style: none"><b>Modificação:</b> o material licenciado pode ser modificado.</li>
+                <li style="list-style: none"><b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.</li>
+              </ul>
+              <p><b>Condições</b></p>
+              <ul><li style="list-style: none"><b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado.</li></ul>
+              <h4>BSD 3</h4>
+              <p><b>Permissões</b></p>
+              <ul>
+                <li style="list-style: none"><b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. </li>
+                <li style="list-style: none"><b>Distribuição:</b> o material licenciado pode ser distribuído.</li>
+                <li style="list-style: none"><b>Modificação:</b> o material licenciado pode ser modificado.</li>
+                <li style="list-style: none"><b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.</li>
+              </ul>
+              <p><b>Condições</b></p>
+              <ul><li style="list-style: none"><b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado.</li></ul>
+            </div>
+
+            <p>Diante desses tipos de licença encontrados entre os projetos <i>open source</i> (Apache License 2.0; Mozilla Public License 2.0; GPLv3, sigla para General Public License <i>version</i> 3; licença MIT, sigla para Massachusetts Institute of Technology; e licença BSD 3, sigla para Berkeley Software Distribution 3), é importante estar atento às permissões e às condições apresentadas. Muitas das permissões são comuns entre si, entretanto as condições de uso podem variar e devem ser analisadas com atenção. Note também que essa listagem apresenta somente as mais utilizadas, mas existem outros tipos de licenças que podem estar vinculadas a um projeto <i>open source</i>. </p>
+
+            <h3>Encerramento</h3>
+            <p>Logo no início deste conteúdo, você pode até ter se questionado: mas, afinal, qual é a diferença entre utilizar ferramentas de versionamento e fazer cópias do meu sistema na nuvem?</p>
+            <p>Ao longo do material, você pôde acompanhar os diversos benefícios do uso de um <i>software</i> para versionamento. Embora você possa fazer cópias de suas pastas ou salvá-las na nuvem, há alguns aspectos que tornam essencial a utilização de ferramentas corretas: os registros de alterações, a facilidade para trabalhar em grupo e a facilidade para criar novas versões de sistema e juntá-las com ajustes realizados por outros desenvolvedores, por exemplo.</p>
+            <p>A possibilidade de trabalhar em projetos <i>open source</i> ou a possibilidade de utilizar essas bibliotecas no próprio código também são enormes benefícios. Não esqueça também de que, atualmente, boa parte das empresas analisa os projetos publicados no GitHub para realizar novas contratações, fazendo com que essa plataforma se torne um ótimo portfólio para a sua jornada.</p>
+            <p>Prepare-se para, nos próximos conteúdos, aprofundar-se mais em alguns dos aspectos mencionados neste material!</p>
+            
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+    <div class="modal fade" id="modal-android" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel"></h4>
+          </div>
+          <div class="modal-body">
+            <ul class="cor01">
+              <li>Android 13 – Última versão: 15/08/2022</li>
+              <li>Android 12 – Última versão: 04/10/2021</li>
+              <li>Android 11 – Última versão: 08/09/2020</li>
+              <li>Android 10 – Última versão: 22/08/2019</li>
+              <li>Android 9.0 Pie – Última versão: 06/08/2018</li>
+              <li>Android 8.1 Oreo – Última versão: 05/12/2017</li>
+              <li>Android 8.0 Oreo – Lançamento da versão: 05/12/2017</li>
+              <li>Android 7.1.2 Nougat – Última versão: 02/04/2017</li>
+              <li>Android 7.1.1 Nougat – Lançamento da versão: 06/12/2016</li>
+              <li>Android 7.1 Nougat – Lançamento da versão: 04/10/2016</li>
+              <li>Android 7.0 Nougat – Lançamento da versão: 01/09/2016</li>
+              <li>Android 6.0.1 Marshmallow – Última versão: 07/03/2016</li>
+              <li>Android 6.0 Marshmallow – Lançamento da versão: 29/09/2015</li>
+              <li>Android 5.1.1 Lollipop – Última versão: 21/04/2015</li>
+              <li>Android 5.1 Lollipop – Lançamento da versão: 09/03/2015</li>
+              <li>Android 5.0.2 Lollipop – Lançamento da versão: 20/12/2014</li>
+              <li>Android 5.0.1 Lollipop – Lançamento da versão: 02/12/2014</li>
+              <li>Android 5.0 Lollipop – Lançamento da versão: 17/10/2014</li>
+              <li>Android 4.4.4 KitKat – Última versão: 19/06/2014</li>
+              <li>Android 4.4.3 KitKat – Lançamento da versão: 01/04/2014</li>
+              <li>Android 4.4.2 KitKat – Lançamento da versão: 10/12/2013</li>
+              <li>Android 4.4 KitKat – Lançamento da versão: 31/10/2013</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-licenca01" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">Apache License 2.0 </h4>
+          </div>
+          <div class="modal-body">
+            <p><b>Permissões</b></p>
+            <p>
+              <b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. <br>
+              <b>Distribuição:</b> o material licenciado pode ser distribuído.<br>
+              <b>Modificação:</b> o material licenciado pode ser modificado.<br>
+              <b>Uso de patente:</b> essa licença fornece uma concessão expressa de direitos de patente de contribuidores.<br>
+              <b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.
+            </p>
+            <p><b>Condições</b></p>
+            <p>
+              <b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado. <br>
+              <b>Mudanças de estado:</b> as alterações feitas no material licenciado devem ser documentadas.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-licenca02" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">Mozilla Public License 2.0</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>Permissões</b></p>
+            <p>
+              <b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. <br>
+              <b>Distribuição:</b> o material licenciado pode ser distribuído.<br>
+              <b>Modificação:</b> o material licenciado pode ser modificado.<br>
+              <b>Uso de patente:</b> essa licença fornece uma concessão expressa de direitos de patente de contribuidores.<br>
+              <b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.
+            </p>
+            <p><b>Condições</b></p>
+            <p>
+              <b>Divulgação da fonte:</b> o código-fonte deve ser disponibilizado quando o material licenciado for distribuído. <br>
+              <b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado. <br>
+              <b>Mesma licença (arquivo):</b> modificações de arquivos existentes devem ser liberadas sob a mesma licença ao distribuir o material licenciado. Em alguns casos, uma licença semelhante ou relacionada pode ser usada.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-licenca03" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">GPLv3</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>Permissões</b></p>
+            <p>
+              <b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. <br>
+              <b>Distribuição:</b> o material licenciado pode ser distribuído.<br>
+              <b>Modificação:</b> o material licenciado pode ser modificado.<br>
+              <b>Uso de patente:</b> essa licença fornece uma concessão expressa de direitos de patente de contribuidores.<br>
+              <b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.
+            </p>
+            <p><b>Condições</b></p>
+            <p>
+              <b>Divulgação da fonte:</b> o código-fonte deve ser disponibilizado quando o material licenciado for distribuído.<br>
+              <b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado.<br>
+              <b>Mesma licença:</b> as modificações devem ser liberadas sob a mesma licença ao distribuir o material licenciado. Em alguns casos, uma licença semelhante ou relacionada pode ser usada.<br>
+              <b>Mudanças de estado:</b> as alterações feitas no material licenciado devem ser documentadas.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-licenca04" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">MIT</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>Permissões</b></p>
+            <p>
+              <b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. <br>
+              <b>Distribuição:</b> o material licenciado pode ser distribuído.<br>
+              <b>Modificação:</b> o material licenciado pode ser modificado.<br>
+              <b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.
+            </p>
+            <p><b>Condições</b></p>
+            <p><b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-licenca05" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">BSD 3</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>Permissões</b></p>
+            <p>
+              <b>Uso comercial:</b> o material licenciado e os derivados podem ser usados para fins comerciais. <br>
+              <b>Distribuição:</b> o material licenciado pode ser distribuído.<br>
+              <b>Modificação:</b> o material licenciado pode ser modificado.<br>
+              <b>Uso privado:</b> o material licenciado pode ser usado e modificado em particular.
+            </p>
+            <p><b>Condições</b></p>
+            <p><b>Aviso de licença e direitos autorais:</b> uma cópia da licença e o aviso de direitos autorais devem ser incluídos com o material licenciado.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modais 100% -->
+    <div class="modal modal-100 fade" id="modal-ferramenta01" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content no-print">
+          <div class="modal-body">
+            <div class="container">
+              <div class="modal-header" style="padding-top: 30px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <h3>Ferramentas de controle de modificação</h3>
+              <p>Os <i>softwares</i> de controle de modificação podem ser usados para realizar o acompanhamento das alterações realizadas no <i>software</i>, registrando as tarefas necessárias e o histórico da cada uma. O sistema é, portanto, responsável por armazenar o andamento das solicitações de mudança e por notificar essas informações aos interessados. Veja alguns exemplos de sistema de controle de modificação:</p>
+              <div class="no-print" aria-hidden="true">
+                <p>Clique ou toque para visualizar o conteúdo. </p>
+                <div class='panel-group gaitinha' id='accordion01' role='tablist' aria-multiselectable='true'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='heading01'>
+                      <h3 class='panel-title'>
+                        <a role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse01' aria-expanded='false' aria-controls='collapse01'>
+                          Bugzilla
+                        </a>
+                      </h3>
+                    </div>
+                    <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
+                      <div class='panel-body'>
+                        <p>Sistema <i>open source</i> de <i>bug tracking</i> (ou acompanhamento de defeitos) baseado em <i>web</i> no qual é possível registrar defeitos e solicitações de um <i>software</i>. É ideal para trabalho em times.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='heading02'>
+                      <h3 class='panel-title'>
+                        <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse02' aria-expanded='false' aria-controls='collapse02'>
+                          Jira
+                        </a>
+                      </h3>
+                    </div>
+                    <div id='collapse02' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading02'>
+                      <div class='panel-body'>
+                        <p>Sistema de gerenciamento de trabalho em equipe baseado no Kanban, mais abrangente que o Bugzilla, pois, além de <i>bug tracking</i>, traz ferramentas mais avançadas para controlar o fluxo de trabalho em equipe.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='heading03'>
+                      <h3 class='panel-title'>
+                        <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse03' aria-expanded='false' aria-controls='collapse03'>
+                          Trac
+                        </a>
+                      </h3>
+                    </div>
+                    <div id='collapse03' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading03'>
+                      <div class='panel-body'>
+                        <p>Sistema que conta com recursos de criação e acompanhamento de <i>tickets</i> para ajustes no <i>software</i>, integrando também controles de versão e documentações <i>wiki</i>.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acessivel print">
+                <p><b>Bugzilla</b></p>
+                <p>Sistema <i>open source</i> de <i>bug tracking</i> (ou acompanhamento de defeitos) baseado em <i>web</i> no qual é possível registrar defeitos e solicitações de um <i>software</i>. É ideal para trabalho em times.</p>
+                <p><b>Jira</b></p>
+                <p>Sistema de gerenciamento de trabalho em equipe baseado no Kanban, mais abrangente que o Bugzilla, pois, além de <i>bug tracking</i>, traz ferramentas mais avançadas para controlar o fluxo de trabalho em equipe.</p>
+                <p><b>Trac</b></p>
+                <p>Sistema que conta com recursos de criação e acompanhamento de <i>tickets</i> para ajustes no <i>software</i>, integrando também controles de versão e documentações <i>wiki</i>.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="botao borda-primaria-03" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal modal-100 fade" id="modal-ferramenta02" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content no-print">
+          <div class="modal-body">
+            <div class="container">
+              <div class="modal-header" style="padding-top: 30px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <h3>Ferramentas de gerenciamento de construção</h3>
+              <p>As ferramentas de gerenciamento de construção são responsáveis por auxiliar ou automatizar as tarefas de construção (<i>build</i>) do código-fonte em código executável. É o processo, por exemplo, de transformar código Java em arquivos JAR executáveis. Veja dois exemplos de ferramentas de construção:</p>
+              <div class="no-print" aria-hidden="true">
+                <p>Clique ou toque para visualizar o conteúdo.</p>
+                <div class='panel-group gaitinha' id='accordion02' role='tablist' aria-multiselectable='true'>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='heading04'>
+                      <h3 class='panel-title'>
+                        <a role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse04' aria-expanded='false' aria-controls='collapse04'>
+                          Apache Ant
+                        </a>
+                      </h3>
+                    </div>
+                    <div id='collapse04' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading04'>
+                      <div class='panel-body'>
+                        <p>Permite centralizar a configuração de elementos e opções de compilação para um projeto Java, coordenando os processos de construção do executável.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='panel panel-default'>
+                    <div class='panel-heading' role='tab' id='heading05'>
+                      <h3 class='panel-title'>
+                        <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse05' aria-expanded='false' aria-controls='collapse05'>
+                          Maven
+                        </a>
+                      </h3>
+                    </div>
+                    <div id='collapse05' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading05'>
+                      <div class='panel-body'>
+                        <p>Usada geralmente em projetos Java, facilita o gerenciamento das dependências do código, baseando-se em um repositório central de onde o sistema, automaticamente no processo de compilação, baixa a versão da biblioteca e inclui na construção do <i>software</i>.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acessivel print">
+                <p><b>Apache Ant</b></p>
+                <p>Permite centralizar a configuração de elementos e opções de compilação para um projeto Java, coordenando os processos de construção do executável.</p>
+                <p><b>Maven</b></p>
+                <p>Usada geralmente em projetos Java, facilita o gerenciamento das dependências do código, baseando-se em um repositório central de onde o sistema, automaticamente no processo de compilação, baixa a versão da biblioteca e inclui na construção do <i>software</i>.</p>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="botao borda-primaria-03" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal modal-100 fade" id="modal-ferramenta03" aria-hidden="false">
+      <div class="modal-dialog">
+        <div class="modal-content no-print">
+          <div class="modal-body">
+            <div class="container">
+              <div class="modal-header" style="padding-top: 30px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <h3>Ferramentas de controle de versão</h3>
+              <p>Ferramentas de versionamento são os sistemas utilizados para realizar todo o gerenciamento de desenvolvimento e evolução do código para novas versões. Pode-se afirmar que o processo de versionamento de código e as ferramentas de versionamento estão intrinsecamente ligados para a obtenção dos melhores resultados.</p>
+              <p>De um modo geral, embora existam diversas ferramentas de versionamento, é possível identificar alguns itens como benefícios em comum. Veja a seguir.</p>
+              <ul class="marcador-seta">
+                <li>Todas as alterações aplicadas no código ficam registradas em um histórico, sendo possível verificar sempre que um ajuste foi aplicado. Esse histórico possibilita saber quem foi o usuário que aplicou as alterações e quais alterações foram desenvolvidas de uma versão para a outra.</li>
+                <li>Várias pessoas podem colaborar simultaneamente com o projeto de forma segura, facilitando o trabalho em equipe.</li>
+                <li>Somente pessoas autorizadas terão acesso e poderão modificar arquivos, facilitando o gerenciamento dos desenvolvedores envolvidos no projeto e reduzindo a quantidade de erros nesse processo.</li>
+                <li>Facilidade em fazer alterações no código sem prejudicar outras versões do projeto.</li>
+              </ul>
+              <p>Outro aspecto importante a ser considerado antes de conhecer as ferramentas é entender que existem dois tipos de sistemas de controle de versão. Veja a seguir quais são eles.</p>
+              <div class="no-print" aria-hidden="true">
+                <p>Clique ou toque para visualizar o conteúdo. </p>
+                <div class='caixa-destaque-livre'>
+                  <ul id='abas' class='nav nav-tabs' role='tablist'>
+                    <li role='presentation' class='active'><a href='#home' aria-controls='home' role='tab' data-toggle='tab'>Centralizado </a></li>
+                    <li role='presentation'><a href='#profile' aria-controls='profile' role='tab' data-toggle='tab'>Distribuído</a></li>
+                  </ul>
+                  <div class='tab-content'>
+                    <div role='tabpanel' class='tab-pane fade in active' id='home'>
+                      <p>Usa-se um servidor central para alocar um único repositório central do projeto, que será acessado e manipulado pelos integrantes do time ao realizar modificações nos arquivos do <i>software</i>. Cada integrante precisa conectar-se a esse servidor para usar o versionamento.</p>
+                    </div>
+                    <div role='tabpanel' class='tab-pane fade' id='profile'>
+                      <p>Cada usuário que for desenvolver código terá uma cópia completa do repositório central diretamente em seu ambiente local, contando com alguns comandos de versionamento local. Em algum momento, no entanto, deve refletir as alterações locais para um servidor central, para que os outros integrantes do time recebam as atualizações.</p>
+                      <!-- <img src="imgs/fig2e3_mobile.png" class="img-responsive center-block visible-xs"> -->
+                      <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                          <a href="imgs/fig2.png" target="_blank" rel="noopener noreferrer">
+                            <img src="imgs/fig2.png" class="img-responsive center-block">
+                          </a>
+                          <p class="legenda-imagem">
+                            Figura 2 – Sistema de controle de versão centralizado <br>
+                            Fonte: Senac EAD (2023)
+                          </p>
+                          <p class="no-print acessivel">Computador A e computador B recebendo arquivos de um servidor.</p>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                          <a href="imgs/fig3.png" target="_blank" rel="noopener noreferrer">
+                            <img src="imgs/fig3.png" class="img-responsive center-block">
+                          </a>
+                          
+                          <p class="legenda-imagem">
+                            Figura 3 – Sistema de controle de versão distribuído <br>
+                            Fonte: Senac EAD (2023)
+                          </p>
+                          <p class="no-print acessivel">Computador A e computador B tendo individualmente a cópia completa do servidor, utilizando os arquivos necessários.</p>
+                        
+                        </div>
+                      </div>
+                      <div class="row linha-imagem">
+                        <div class="col-sm-6 col-xs-12">
+                        </div>
+                        <div class="col-sm-6 col-xs-12"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="acessivel print">
+                <p><b>Centralizado </b></p>
+                <p>Usa-se um servidor central para alocar um único repositório central do projeto, que será acessado e manipulado pelos integrantes do time ao realizar modificações nos arquivos do <i>software</i>. Cada integrante precisa conectar-se a esse servidor para usar o versionamento.</p>
+                <p><b>Distribuído</b></p>
+                <p>Cada usuário que for desenvolver código terá uma cópia completa do repositório central diretamente em seu ambiente local, contando com alguns comandos de versionamento local. Em algum momento, no entanto, deve refletir as alterações locais para um servidor central, para que os outros integrantes do time recebam as atualizações.</p>
+                <img src="imgs/fig2e3.png" class="img-responsive center-block hidden-xs">
+                <img src="imgs/fig2e3_mobile.png" class="img-responsive center-block visible-xs">
+                <div class="row">
+                  <div class="col-sm-6 col-xs-12">
+                    <p class="legenda-imagem">
+                      Figura 2 – Sistema de controle de versão centralizado <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="no-print acessivel">Computador A e computador B recebendo arquivos de um servidor.</p>
+                  </div>
+                  <div class="col-sm-6 col-xs-12">
+                    <p class="legenda-imagem">
+                      Figura 3 – Sistema de controle de versão distribuído <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="no-print acessivel">Computador A e computador B tendo individualmente a cópia completa do servidor, utilizando os arquivos necessários.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="botao borda-primaria-03" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

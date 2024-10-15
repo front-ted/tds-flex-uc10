@@ -1,0 +1,286 @@
+body{
+  background: url('../imgs/bg_esquerda.png') no-repeat, url('../imgs/bg_direita.png') no-repeat;
+  background-position: left center, right center;
+  background-attachment: fixed;
+  background-size: contain;
+  background-color: #d2e4fc;
+}
+
+#marcadaguaLogo { display: none !important; }
+.fundo-tecnicos{
+  border-bottom: none !important;
+  background-color:transparent;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+h1 i,
+h2 i,
+h3 i,
+h4 i {
+  font-weight: bold;
+}
+h2{
+  font-weight: bold;
+  font-size: 36px;
+  color: #333;
+}
+.titulo-geral{
+  color: #044585;
+}
+h3 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+h4 {
+  margin: 0px;
+  margin-top: 40px;
+}
+pre {
+  padding: 0;
+  background: transparent;
+  border: none;
+  margin: 0;
+}
+
+.mt-20{margin-top: 20px;}
+.mt-40{margin-top: 40px;}
+.mt-60{margin-top: 60px;}
+
+
+.painel-abas{padding: 40px;}
+.nav-tabs{
+  margin-left: 0;
+}
+
+.carousel{
+  padding: 20px 40px;
+}
+.carousel-control.left{
+  left: -90px;
+  background: none;
+  color: #000;
+}
+.carousel-control.right{
+  right: -90px;
+  background: none;
+  color: #000;
+}
+.carousel-indicators{
+  bottom: 0;
+  margin-bottom: 0px;
+}
+.carousel-indicators .active{
+  background-color: #2875C6;
+}
+.carousel-indicators li{
+  border: 1px solid #2875C6;
+}
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #fff;
+  cursor: default;
+  background-color: #2875C6;
+  border: 1px solid #1d5591;
+  border-bottom-color: transparent;
+}
+
+.codigo-destaque{
+  background: #000;
+  color: #a39e9b;
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+.code-destaque{
+  background-color: #071772 !important;
+}
+
+
+.txt-popover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: #2875C6;
+}
+
+.marcador-seta li {
+  list-style-image: url("../imgs/setas.png");
+}
+
+.img-titulo{
+  margin-top: 120px;
+}
+.div-titulo{
+  padding-left: 40px;
+}
+.img-borda{
+  position: absolute;
+  margin-left: -70px;
+}
+
+.painel-fluxo{
+  background: url('../imgs/fig_infografico.png') no-repeat;
+  background-position: left center;
+  width: 500px;
+  height: 560px;
+  margin: 10px auto;
+}
+.btn-fluxo{
+  position: absolute;
+  display: block;
+  width: 110px;
+  height: 110px;
+  border: none;
+  margin: 20px auto;
+}
+.btn-fluxo01{background: url("../imgs/bt1.png") no-repeat; background-size: 100%;}
+.btn-fluxo02{background: url("../imgs/bt2.png") no-repeat; background-size: 100%;}
+.btn-fluxo03{background: url("../imgs/bt3.png") no-repeat; background-size: 100%;}
+.btn-fluxo04{background: url("../imgs/bt4.png") no-repeat; background-size: 100%;}
+.btn-fluxo05{background: url("../imgs/bt5.png") no-repeat; background-size: 100%;}
+.btn-fluxo06{background: url("../imgs/bt6.png") no-repeat; background-size: 100%;}
+
+
+.btn-fluxo01:hover{background: url("../imgs/bt1_hover.png") no-repeat; background-size: 100%;}
+.btn-fluxo02:hover{background: url("../imgs/bt2_hover.png") no-repeat; background-size: 100%;}
+.btn-fluxo03:hover{background: url("../imgs/bt3_hover.png") no-repeat; background-size: 100%;}
+.btn-fluxo04:hover{background: url("../imgs/bt4_hover.png") no-repeat; background-size: 100%;}
+.btn-fluxo05:hover{background: url("../imgs/bt5_hover.png") no-repeat; background-size: 100%;}
+.btn-fluxo06:hover{background: url("../imgs/bt6_hover.png") no-repeat; background-size: 100%;}
+
+.btn-fluxo01{
+  margin-left: 150px;
+}
+.btn-fluxo02{
+  margin-left: 260px;
+  margin-top: 50px;
+}
+.btn-fluxo03{
+  margin-left: 350px;
+  margin-top: 120px;
+}
+.btn-fluxo04{
+  margin-left: 380px;
+  margin-top: 230px;
+}
+.btn-fluxo05{
+  margin-left: 350px;
+  margin-top: 340px;
+}
+.btn-fluxo06{
+  margin-left: 280px;
+  margin-top: 430px;
+}
+
+
+.btn-ferramentas{
+  display: block;
+  width: 280px;
+  height: 91px;
+  border: none;
+  margin: 20px auto;
+}
+.btn-ferramenta01{background: url("../imgs/bt_controle_de_modificacao.png") no-repeat; background-size: 100%;}
+.btn-ferramenta02{background: url("../imgs/bt_gerenciamento_de_construcao.png") no-repeat; background-size: 100%;}
+.btn-ferramenta03{background: url("../imgs/bt_controle_de_versao.png") no-repeat; background-size: 100%;}
+.btn-ferramenta01:hover{background-image: url("../imgs/bt_controle_de_modificacao_hv.png");}
+.btn-ferramenta02:hover{background-image: url("../imgs/bt_gerenciamento_de_construcao_hv.png");}
+.btn-ferramenta03:hover{background-image: url("../imgs/bt_controle_de_versao_hv.png");}
+
+.linha-imagem{
+  width: 740px;
+  margin: 0 auto;
+}
+
+.painel-clicavel{
+  background: url('../imgs/painel.png') no-repeat;
+  background-position: center center;
+  width: 600px;
+  height: 492px;
+  padding-top: 30px;
+  margin: 10px auto;
+}
+.div-licencas{
+  width: 540px;
+  margin: 0px auto;
+}
+.btn-licencas{
+  display: block;
+  width: 200px;
+  height: 66px;
+  border: none;
+  margin: 12px auto;
+}
+.btn-licenca01{background: url("../imgs/bt_apache.png") no-repeat; background-size: 100%;}
+.btn-licenca02{background: url("../imgs/bt_mozilla.png") no-repeat; background-size: 100%;}
+.btn-licenca03{background: url("../imgs/bt_gplv3.png") no-repeat; background-size: 100%;}
+.btn-licenca04{background: url("../imgs/bt_mit.png") no-repeat; background-size: 100%;}
+.btn-licenca05{background: url("../imgs/bt_bsd3.png") no-repeat; background-size: 100%;}
+
+
+@media screen and (max-width: 1600px){
+  body{
+    background-position-x: -10%, 110%;
+  }
+}
+@media screen and (max-width: 1380px){
+  body{
+    background-position-x: -20%, 120%;
+  }
+}
+@media screen and (max-width: 1220px){
+  body{
+    background-position-x: -30%, 130%;
+  }
+}
+@media screen and (max-width: 1120px){
+  body{
+    background-image: none;
+  }
+}
+@media screen and (max-width: 820px){
+  body{
+    background: none;
+    background-color: #d2e4fc;
+  }
+  .fundo-tecnicos{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .painel2{
+    width: 100%;
+    background-size: contain;
+  }
+  .div-titulo{
+    border: #66a4f3 solid 2px;
+    border-radius: 20px;
+  }
+  .linha-imagem{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 480px){
+  .painel2{
+    padding-top: 300px;
+    height: auto;
+  }
+  .painel2 button{
+    margin: 10px auto;
+    display: block;
+  }
+  .caixa-destaque code{
+    word-break: break-word;
+  }
+
+  .painel-fluxo{
+    width: 0;
+    height: 0;
+  }
+  .btn-fluxo01, .btn-fluxo02, .btn-fluxo03,
+  .btn-fluxo04, .btn-fluxo05, .btn-fluxo06{
+    position: initial;
+    margin: 10px auto;
+  }
+
+}
